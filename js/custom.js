@@ -18,7 +18,6 @@ $(document).ready(function (e) {
 			});
 			container.children("div#subResultContainer").last().children().css({'border-bottom':'0px'});
 			$(this).addClass('minusResult').removeClass('plusResult');
-			console.log("2");
 		}
 		else{
 			container.css({'background-image': "none" });
@@ -29,7 +28,6 @@ $(document).ready(function (e) {
 				$(this).css({"display": "none" });
 			});
 			$(this).addClass('plusResult').removeClass('minusResult');
-			console.log("3");
 		}
 
 	});

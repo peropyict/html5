@@ -16,15 +16,15 @@ img {display: block;margin:0 auto;}
 	width : 100%;
 	height: auto;
 }
- #searchMenuContainer { 
-	background-image:url('img/searchNav.png');
+#searchMenuContainer { 
+	background-image:url('../img/searchNav.png');
 	width:auto;
 	height:auto;
 	text-align:center;
 	height:50px;
 } 
 #inputContainer{
-	background-image:url('img/searchRightBtn.png');
+	background-image:url('../img/searchRightBtn.png');
 	background-repeat:x;
 }
 #nameSearch{
