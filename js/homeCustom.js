@@ -5,12 +5,13 @@ $(document).ready(function (e) {
 			$(this).children().attr('src','img/homeDown1.png');
 			$(this).addClass('active').removeClass('pasive');
 		}		
-		setTimeout("window.location.href='search.html';",500);		
+		/*setTimeout("window.location.href='search.html';",5000);	For testing only*/	
 	});
 	
-	$("#home1").hover(function () {
+	$("#home1").hover(function () {		
 		$(this).children().attr('src','img/homeDown1.png');
-	},function(){
+	},function(){		
 		$(this).children().attr('src','img/home1.png');
 	});
+	
 });
