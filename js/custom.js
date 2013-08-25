@@ -1,37 +1,10 @@
 
-
 $(document).ready(function (e) {
 
 	$("#nameSearch, #codeSearch").each(function(){
 		$(this).height($("#searchForm").height()-2);
 	});
-	/*****************icon based solution*******************/
-	/*
-	$("#plusButton").on("click", function(e){
-		var container = $(this).parents("div#container");
-
-		if($(this).children().hasClass('icon-plus-circled')){
-			container.css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" });
-			container.css({'border-bottom':'3px outset #cfc5a1'});
-			$(this).children().addClass('icon-minus-circled').removeClass('icon-plus-circled');
-			container.children("div#subResultContainer").each(function(){
-				$(this).css({"display": "block" });
-			});
-			container.children("div#subResultContainer").last().children().css({'border-bottom':'0px'});
-
-			
-		}
-		else{
-			container.css({'background-image': "none" });
-			container.css({'border-bottom':'0px'});
-			$(this).children().addClass('icon-plus-circled').removeClass('icon-minus-circled');
-			container.children("div#subResultContainer").each(function(){
-				$(this).css({"display": "none" });
-			});
-		}
-
-	});
-	*/
+	
 	$("#plusResult").on("click", function(e){
 
 		var container = $(this).parents("div#container");
@@ -89,10 +62,7 @@ $(document).ready(function (e) {
 		}
 
 	});
-	
-	
-	
-	
+
 	$("#resultContainer").children().each(function(){
 		$(this).height($("#resultContainer").height());
 	});
@@ -119,13 +89,13 @@ $(document).ready(function (e) {
 	});
 	/* On resize window, for testing only: align title with background img. Various device and screen resolution */
 	$(window).resize(function() {
-
-		$("#prati").css({
-			position: "absolute",
-			top: $("#profile").position().top + $("#profile").height()/10 + "px",
-			left: ($("#profile").position().left + 20) + "px"
-		}).show();
-		
+		if($('#companyTitle').length > 0)
+			$("#companyTitle").css({
+				position: "absolute",
+				top: $("#profile").position().top + $("#profile").height()/10 + "px",
+				left: ($("#profile").position().left + 20) + "px"
+			}).show();
+		if($('#closeImg').length > 0)
 		$("#closeImg").css({
 			position: "absolute",
 				top: $("#profile").position().top,
@@ -133,22 +103,14 @@ $(document).ready(function (e) {
 			}).show();
 
 	});
-
-
 	$("#profile").load(function(){ //align head title with background img onload     
-		$("#prati").css({
+		$("#companyTitle").css({
 				position: "absolute",
 				top: $("#profile").position().top + $("#profile").height()/10 + "px",
 				left: ($("#profile").position().left + 20) + "px"
 			}).show();
     }) ;
-	/*Profile close image implementation?
-	$("#closeImg").css({
-		position: "absolute",
-			top: $("#profile").position().top,
-			right: "0px"
-		}).show();
-	*/
+
 	$("#closeImg").on("click", function(){
 		alert("close button clicked");
 	});
@@ -158,7 +120,7 @@ $(document).ready(function (e) {
 		window.location.href='profile.html';
 	});
 	$(".playButton").hover(function () {
-		$(this).css({'width':'90%'});
+		$(this).css({'width':'98%'});
 	},function(){
 		$(this).css({'width':'100%'});
 	});
