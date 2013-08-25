@@ -146,7 +146,60 @@ span{
 div.pointer{
 	cursor:pointer;
 }
+div.padding_left_none{
+	padding-left: 0px;
+}
+div.padding_left_10{
+	padding-left: 10px;
+}
+div.padding_right_10{
+	padding-right: 10px;
+}
+div.padding_right_40{
+	padding-right: 40px;
+}
+div.padding_top_10{
+	padding-top: 10px;
+}
+div.padding_bottom_20{
+	padding-bottom: 20px;
+}
+div.margin_top_10{		
+			margin-top: 10px;
+}
+div.margin_bottom_10{
+	margin-bottom: 10px;
+}
+div.margin-left_10{
+	margin-left: 10px;
+}
+div.margin-right_30{
+	margin-right: 80px;
+}
+div.color_white{
+	color:white;
+}
+div.color_blue{
+	color:blue;
+}
+button.full-width{
+	border: 0 none;
+	border-radius: 0 0 0 0;
+	display: block;
+	height: 50px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 50px;
+	color: #ffffff;
+	background-image:url('img/searchRightBtn.png');
+	background-repeat:x;
+}
 
+@gridGutterWidth: 0px;
+.row{
+	margin: 0;
+}
 
 @media (max-width: 979px) and (min-width: 768px) {
 
