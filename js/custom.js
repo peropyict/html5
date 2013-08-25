@@ -109,8 +109,10 @@ $(document).ready(function (e) {
 		{
 			$('.searchCategoryActive').each(function(){
 				$(this).addClass('searchCategoryPasive').removeClass('searchCategoryActive');
+				$("."+$(this).attr("id")).addClass('searchFormHiden').removeClass('searchFormVisible');
 			});
 			$(this).addClass('searchCategoryActive').removeClass('searchCategoryPasive');
+			$("."+$(this).attr("id")).addClass('searchFormVisible').removeClass('searchFormHiden');
 		}
 		
 		
