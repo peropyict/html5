@@ -143,7 +143,10 @@ span{
 }
 
 #subResultName,#subsubUrb,#subpostCode{
-	border-bottom:1px solid #cfc5a1;
+	/*border-bottom:1px solid #cfc5a1;*/
+}
+.border_top_profile_details{
+	border-top:1px solid #cfc5a1;
 }
 .glob_no_line{
 	line-height: 50px  !important;
