@@ -172,6 +172,9 @@ div.padding_right_40{
 div.padding_top_10{
 	padding-top: 10px;
 }
+div.padding_bottom_10{
+	padding-bottom: 10px;
+}
 div.padding_bottom_20{
 	padding-bottom: 20px;
 }
@@ -195,7 +198,7 @@ div.color_white{
 	color:white;
 }
 div.color_blue{
-	color:blue;
+	color:#0088d2;
 }
 
 button.full-width{
