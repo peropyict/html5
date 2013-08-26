@@ -23,20 +23,25 @@ img {display: block;margin:0 auto;}
 	text-align:center;
 	height:50px;
 } 
-#inputContainer{
-	background-image:url('../img/searchRightBtn.png');
-	background-repeat:x;
-}
+
 #nameSearch{
-	background: url("../img/searchLeftBtn.png") no-repeat #ffffff;
-	width:100%;
-	padding-left: 50px !important;
-	border-radius: 0 !important;
+	
+	background-image: url("../img/searchLeftBtn.png");
+	background-position: left center;
+	background-repeat: no-repeat;
+	width: 100%;
+	padding-left: 78px !important;
+	border-radius: 0px !important;
+}
+.clearBtn{
+	background-image: url("../img/clearBtn.png");
+	background-position: right center;
+	background-repeat: no-repeat;
+	width: 100%;
+	border-radius: 0px !important;
 }
 #codeSearch{
 	width:100%;
-	padding:0px !important;
-	padding-left:0 !important;
 	padding-right:0 !important;
 	border-radius: 0 !important;
 }
@@ -152,6 +157,12 @@ div.padding_left_none{
 div.padding_left_10{
 	padding-left: 10px;
 }
+div.padding_left_28, input.padding_left_28{
+	padding-left:28px !important;
+}
+div.padding_left_40{
+	padding-left:40px;
+}
 div.padding_right_10{
 	padding-right: 10px;
 }
@@ -176,12 +187,17 @@ div.margin-left_10{
 div.margin-right_30{
 	margin-right: 80px;
 }
+div.move-rigth{
+    display: block;
+    float: right;
+}
 div.color_white{
 	color:white;
 }
 div.color_blue{
 	color:blue;
 }
+
 button.full-width{
 	border: 0 none;
 	border-radius: 0 0 0 0;
@@ -213,10 +229,7 @@ button.full-width{
 	#logoImg{
 		width:60%;
 	}
-	.glob_no_line
-	{
-		line-height: 20px  !important;
-	}
+	
 }
 @media (max-width: 600px)  {
 	body{font-size:8px;}	

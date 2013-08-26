@@ -4,13 +4,13 @@ $(document).ready(function (e) {
 	$("#nameSearch, #codeSearch").each(function(){
 		$(this).height($("#searchForm").height()-2);
 	});
-	
 	$("#plusResult").on("click", function(e){
 
 		var container = $(this).parents("div#container");
 
 		if($(this).hasClass('plusResult')){
 			container.css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" });
+			container.css({'border-top':'1px solid #d0ab36'});
 			container.css({'border-bottom':'3px outset #cfc5a1'});
 			$(this).css({'background-image':'url(img/minusResult.png)'});
 			container.children("div#subResultContainer").each(function(){
@@ -21,6 +21,7 @@ $(document).ready(function (e) {
 		}
 		else{
 			container.css({'background-image': "none" });
+			container.css({'border-top':'0 '});
 			container.css({'border-bottom':'0px'});
 
 			$(this).css({'background-image':'url(img/plusResult.png)'});
