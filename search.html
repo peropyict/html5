@@ -42,6 +42,7 @@
         rel="stylesheet" />
 		
 		<script src="js/custom.js" type="text/javascript"></script>
+		<script src="js/search.js" type="text/javascript"></script> 
 		
 		<script src="js/bootstrap.js" type="text/javascript"></script>
 		
@@ -72,7 +73,7 @@
 					</div>
 				</div>
 				<div class="col-xs-5 col-md-5 col-wrap " id="inputContainer"><input type="text" placeholder="Enter suburb or post code" id="codeSearch" class="form-control  padding_left_28" style="height: 50px;"></div>
-				<div class="col-xs-2 col-md-2 " ><button class="btn btn-block full-width"><strong>Search</strong></button></div>
+				<div class="col-xs-2 col-md-2 " ><button id="searchBtn" class="btn btn-block full-width"><strong>Search</strong></button></div>
 			</div>
 			
 			<div class="row col-xs-12 col-md-12 Individuals searchFormHiden" id="individualSearchForm">
@@ -89,7 +90,7 @@
 			</div>
 			
 
-			
+			<div id="resultContainers">
 			<div id="container">
 				
 				<div  class="row" style="border-top:1px solid #cbcbcb">
@@ -161,8 +162,8 @@
 				</div>			
 				
 			</div>
+			</div>
 			
-
 			
 			<div class="row" id="bottom1">
 				<img src="img/bottom1.png" id="bottom1Img">

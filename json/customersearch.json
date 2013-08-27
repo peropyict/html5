@@ -1,0 +1,294 @@
+{
+   "success": true,
+   "results":    [
+            {
+         "entityType": "Organisation",
+         "entityId": "66761",
+         "name": "JP MORGAN AUSTRALIA LIMITED",
+         "score": 30,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMORGANAUSYDAU"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66766",
+         "name": "JP MORGAN TRUST AUSTRALIA LIMITED",
+         "score": 30,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMORGTSTSYDAU"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66767",
+         "name": "JP MORGAN SECURITIES INC",
+         "score": 25,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMORSECNYCUS"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66769",
+         "name": "JP MORGAN SECURITIES LIMITED",
+         "score": 25,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMSECLONGB"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "25904",
+         "name": "*J P MORGAN ADMINISTRATIVE SERVICES",
+         "score": 20,
+         "memberCount": 1,
+         "systemType": "ANZ Global Id",
+         "systemId": "25904"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "25909",
+         "name": "*J P MORGAN NOMINEES AUSTRALIA LTD.",
+         "score": 20,
+         "memberCount": 13,
+         "systemType": "ANZ Global Id",
+         "systemId": "25909"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "53424",
+         "name": "JP MORGAN CHASE BANK",
+         "score": 20,
+         "memberCount": 1,
+         "systemType": "DLD(AU)ID",
+         "systemId": "CHASEAMP"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66729",
+         "name": "JP MORGAN CHASE & CO",
+         "score": 20,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMCHASECOSYDAU"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66735",
+         "name": "JP MORGAN INVESTMENT MANAGEMENT INC - BLOCK",
+         "score": 20,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMIMBLOCK"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66736",
+         "name": "J P MORGAN INVESTMENT MANAGEMENT INC - BLOCK",
+         "score": 20,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMINBLOCKNYKUS"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66763",
+         "name": "JP MORGAN NOMINEES AUSTRALIA LIMITED",
+         "score": 20,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMORGANOMSYDAU"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "25890",
+         "name": "*J & P PTY LTD",
+         "score": 15,
+         "memberCount": 1,
+         "systemType": "ANZ Global Id",
+         "systemId": "25890"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "25908",
+         "name": "*JP MORGAN CHASE BANK NATIONAL",
+         "score": 15,
+         "memberCount": 1,
+         "systemType": "ANZ Global Id",
+         "systemId": "25908"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "32432",
+         "name": "*MORGAN PROPERTY TRUST",
+         "score": 15,
+         "memberCount": 1,
+         "systemType": "ANZ Global Id",
+         "systemId": "32432"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "32446",
+         "name": "*MORGAN SUPERANNUATION FUND",
+         "score": 15,
+         "memberCount": 1,
+         "systemType": "ANZ Global Id",
+         "systemId": "32446"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "54197",
+         "name": "JP MORGAN NOMINEES LIMITED ACF",
+         "score": 15,
+         "memberCount": 1,
+         "systemType": "DLD(AU)ID",
+         "systemId": "IFM AUSSUPER"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "56377",
+         "name": "JP MORGAN CHASE BANK, N.A.",
+         "score": 15,
+         "memberCount": 1,
+         "systemType": "DLD(NZ)ID",
+         "systemId": "JP MORGAN NZ"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66704",
+         "name": "JP MORGAN MARKETS AUSTRALIA PTY LIMITED",
+         "score": 15,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPM111"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66740",
+         "name": "JP MORGAN INTERNATIONAL BANK LTD, BRUSSELS BRANCH",
+         "score": 15,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMINTLBKLBRUBE"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66762",
+         "name": "JP MORGAN CHASE BANK N.A.",
+         "score": 15,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMORGANCHMUMIN"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "54199",
+         "name": "JP MORGAN NOMINEES LTD ACF AUST",
+         "score": 10,
+         "memberCount": 1,
+         "systemType": "DLD(AU)ID",
+         "systemId": "IFM DIVERSE"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "54425",
+         "name": "JP MORGAN NOMINEES AUSTRALIA LIMITE",
+         "score": 10,
+         "memberCount": 1,
+         "systemType": "DLD(AU)ID",
+         "systemId": "JPMORGANAUST"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "55161",
+         "name": "JP MORGAN CHASE ACF",
+         "score": 10,
+         "memberCount": 1,
+         "systemType": "DLD(AU)ID",
+         "systemId": "PRIME VALUE"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "61565",
+         "name": "JPMORGAN CHASE (FULCRUM ASSET MANAGEMENT LLP)",
+         "score": 10,
+         "memberCount": 37,
+         "systemType": "MUREXID",
+         "systemId": "CHASBK7002LONGB"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66705",
+         "name": "JP MORGAN INVESTMENT MANAGEMENT INC - ADV 860263",
+         "score": 10,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPM860263NYCUS"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66742",
+         "name": "J.P. MORGAN INVESTMENT MANAGEMENT INC - INVESTMENT ADV - 159378",
+         "score": 10,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMO159378NYKUS"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66768",
+         "name": "JP MORGAN SECURITIES ASIA PRIVATE LIMITED",
+         "score": 10,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMSECASIASINSG"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "25893",
+         "name": "*J & P BROWN INVESTMENTS PTY LTD",
+         "score": 5,
+         "memberCount": 1,
+         "systemType": "ANZ Global Id",
+         "systemId": "25893"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "32440",
+         "name": "*MORGAN STREET DEVELOPMENTS PTY LTD",
+         "score": 5,
+         "memberCount": 1,
+         "systemType": "ANZ Global Id",
+         "systemId": "32440"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "55575",
+         "name": "JP MORGAN NOMS AS CUSTODIAN FOR",
+         "score": 5,
+         "memberCount": 1,
+         "systemType": "DLD(AU)ID",
+         "systemId": "SSFS CASH"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66699",
+         "name": "JP MORGAN CHASE (PROLOGUE FUND LP)",
+         "score": 5,
+         "memberCount": 2,
+         "systemType": "MUREXID",
+         "systemId": "JPBREVASIALDNGB"
+      },
+            {
+         "entityType": "Organisation",
+         "entityId": "66728",
+         "name": "JP MORGAN CHASE BANK N.A. SINGAPORE BRANCH",
+         "score": 5,
+         "memberCount": 1,
+         "systemType": "MUREXID",
+         "systemId": "JPMCHASBANKSGSG"
+      }
+   ]
+}
+

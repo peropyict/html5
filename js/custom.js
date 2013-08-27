@@ -9,8 +9,8 @@ $(document).ready(function (e) {
 	$("#nameSearch, #codeSearch").each(function(){
 		$(this).height($("#searchForm").height()-2);
 	});
-	$("#plusResult").on("click", function(e){
-
+	$("#plusResult").on("click", function(e){ /*change this into .plusResult, but then remove/change class named plusResult in popupProfileContainer */
+		console.log("1");
 		var container = $(this).parents("div#container");
 
 		if($(this).hasClass('plusResult')){
@@ -103,6 +103,7 @@ $(document).ready(function (e) {
 		window.location.href='profile.html';
 	});*/
 	$(".playButton").on("click", function(){
+		console.log("2");
 		showPopup();
 	});
 	$(".playButton").hover(function () {
@@ -114,6 +115,9 @@ $(document).ready(function (e) {
 		closePopup();
 	});
 	
+	$("#searchBtn").on("click", function(){
+		customerSearch();
+	});
 	
 
 });
