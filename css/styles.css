@@ -151,7 +151,7 @@ span{
 .glob_no_line{
 	line-height: 50px  !important;
 }
-div.pointer{
+div.pointer, img.pointer{
 	cursor:pointer;
 }
 div.padding_left_none{
@@ -159,6 +159,12 @@ div.padding_left_none{
 }
 div.padding_left_10{
 	padding-left: 10px;
+}
+div.padding_left_20{
+	padding-left: 20px;
+}
+div.padding_left_30{
+	padding-left: 30px;
 }
 div.padding_left_28, input.padding_left_28{
 	padding-left:28px !important;
@@ -183,6 +189,9 @@ div.padding_bottom_20{
 }
 div.margin_top_10{		
 			margin-top: 10px;
+}
+div.margin_top_20{		
+			margin-top: 20px;
 }
 div.margin_bottom_10{
 	margin-bottom: 10px;
@@ -231,7 +240,7 @@ button.full-width{
 	}
 }
 @media (max-width: 768px)  {
-	body{font-size:10px;}
+	body{font-size:10px !important;}
 	#logoImg{
 		width:60%;
 	}
@@ -252,3 +261,26 @@ button.full-width{
 
 }
 
+
+#imageTitle
+{
+	position: relative;
+}
+#companyTitle
+{
+	position: absolute; 
+   top: 5px; 
+   left: 0; 
+   width: 100%; 
+}
+#closePopup
+{
+	position: absolute; 
+   top: 0px; 
+   right: 0; 
+   padding:0px !important;
+background:transparent !important;
+}
+#inCloseBtn{
+	width:100%;
+}

@@ -1,6 +1,11 @@
 
 $(document).ready(function (e) {
 
+	$("#mapPointerImg").on("click", function(){
+		console.log("go to specified location on google maps");
+		//alert("go to specified location on google maps");
+	});
+	$("#conatainerr").css({'width':$(window).width()});
 	$("#nameSearch, #codeSearch").each(function(){
 		$(this).height($("#searchForm").height()-2);
 	});
@@ -33,11 +38,12 @@ $(document).ready(function (e) {
 
 	});
 	
-		$("#plusResultProfile").on("click", function(e){
-		
-		var container = $(this).parents("div#container");
+		$(".plusResultProfile").on("click", function(e){
+
+		var container = $(this).parents("div#ProfileRowsContainer");
 
 		if($(this).hasClass('plusResult')){
+
 			container.css({'background-image': "url(img/detailsResult.png)", 'background-repeat':"x" });
 			container.css({'border-bottom':'3px outset #cfc5a1'});
 			$(this).css({'background-image':'url(img/profileMinusPic.png)'});
@@ -86,44 +92,52 @@ $(document).ready(function (e) {
 		
 		
 	});
-	/* On resize window, for testing only: align title with background img. Various device and screen resolution */
-	$(window).resize(function() {
-		if($('#companyTitle').length > 0)
-			$("#companyTitle").css({
-				position: "absolute",
-				top: $("#profile").position().top + $("#profile").height()/10 + "px",
-				left: ($("#profile").position().left + 20) + "px"
-			}).show();
-		if($('#closeImg').length > 0)
-		$("#closeImg").css({
-			position: "absolute",
-				top: $("#profile").position().top,
-				right: "0px"
-			}).show();
 
-	});
-	$("#profile").load(function(){ //align head title with background img onload     
-		$("#companyTitle").css({
-				position: "absolute",
-				top: $("#profile").position().top + $("#profile").height()/10 + "px",
-				left: ($("#profile").position().left + 20) + "px"
-			}).show();
-    }) ;
 
 	$("#closeImg").on("click", function(){
 		alert("close button clicked");
 	});
 	
-	$(".playButton").on("click", function(){
+	/*$(".playButton").on("click", function(){ old code redirect to search page - before popup implementation
 		setTimeout("window.location.href='profile.html';",500);
 		window.location.href='profile.html';
+	});*/
+	$(".playButton").on("click", function(){
+		showPopup();
 	});
 	$(".playButton").hover(function () {
 		$(this).css({'width':'98%'});
 	},function(){
 		$(this).css({'width':'100%'});
 	});
-
+	$("#closePopup").on("click", function(){
+		closePopup();
+	});
+	
+	
 
 });
+function showPopup(){
+	//$("#searchPageContainer").css({'display':'none'});
+	//$("#popupProfileContainer").css({'display':'block'});		 
+	 $('#popupProfileContainer').fadeIn('slow', function() {
+		$('#popupProfileContainer').css('display','block');
+    });
+	$("#searchPageContainer").css({'display':'none'});
+}
+function closePopup(){
+	/*$("#searchPageContainer").css({'display':'block'});
+	$("#popupProfileContainer").css({'display':'none'});*/	
+	$('#searchPageContainer').fadeIn('slow', function() {
+		$('#searchPageContainer').css('display','block');		
+    });
+	$("#popupProfileContainer").css({'display':'none'});
+}
+function positionOfCompanyTitleInPopup(){
+	$("#companyTitle").css({
+				position: "absolute",
+				top: $("#profile").position().top + $("#profile").height()/10 + "px",
+				left: ($("#profile").position().left + 20) + "px"
+			}).show();
+}
 	
