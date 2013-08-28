@@ -2,15 +2,16 @@
 $(document).ready(function (e) {
 
 	$("#mapPointerImg").on("click", function(){
-		console.log("go to specified location on google maps");
-		//alert("go to specified location on google maps");
+		//console.log("go to specified location on google maps");
+		
 	});
 	$("#conatainerr").css({'width':$(window).width()});
 	$("#nameSearch, #codeSearch").each(function(){
 		$(this).height($("#searchForm").height()-2);
 	});
-	$("#plusResult").on("click", function(e){ /*change this into .plusResult, but then remove/change class named plusResult in popupProfileContainer */
-		console.log("1");
+	$("#plusResult").on("click", function(e){ 
+	/*change this into .plusResult, then remove/change class named plusResult in popupProfileContainer. review code bellow */
+		//console.log("1");
 		var container = $(this).parents("div#container");
 
 		if($(this).hasClass('plusResult')){
@@ -39,7 +40,7 @@ $(document).ready(function (e) {
 	});
 	
 		$(".plusResultProfile").on("click", function(e){
-
+			//console.log("2");
 		var container = $(this).parents("div#ProfileRowsContainer");
 
 		if($(this).hasClass('plusResult')){
@@ -122,16 +123,14 @@ $(document).ready(function (e) {
 
 });
 function showPopup(){
-	//$("#searchPageContainer").css({'display':'none'});
-	//$("#popupProfileContainer").css({'display':'block'});		 
+		 
 	 $('#popupProfileContainer').fadeIn('slow', function() {
 		$('#popupProfileContainer').css('display','block');
     });
 	$("#searchPageContainer").css({'display':'none'});
 }
 function closePopup(){
-	/*$("#searchPageContainer").css({'display':'block'});
-	$("#popupProfileContainer").css({'display':'none'});*/	
+
 	$('#searchPageContainer').fadeIn('slow', function() {
 		$('#searchPageContainer').css('display','block');		
     });
