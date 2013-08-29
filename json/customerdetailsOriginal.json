@@ -1,0 +1,115 @@
+{
+   "success": true,
+   "entity":    {
+      "name": "NO NAME FOUND",
+      "systemType": "ANZ Global Id",
+      "systemId": "25909",
+      "relatedSystems":       [
+                  {
+            "type": "KYC",
+            "name": "38764"
+         },
+                  {
+            "type": "ICIS",
+            "name": "01230277L"
+         },
+                  {
+            "type": "RAZOR",
+            "name": "JPMORGA"
+         },
+                  {
+            "type": "RIS",
+            "name": "634285015"
+         }
+      ],
+      "customerIdentifiers": [      {
+         "type": "",
+         "name": "75002899961"
+      }],
+      "upstreamEntities": [],
+      "coreBankingEntities": ["CACHE"],
+      "externalRegistryEntities": [],
+      "tradingEntities": [],
+      "members":       [
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-1"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-10"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-11"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD.",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-12"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-13"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-14"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*JP MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-15"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*JP MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-16"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-4"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-5"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-7"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-8"
+         },
+                  {
+            "srcCode": "CACHEORG",
+            "name": "*J P MORGAN NOMINEES AUSTRALIA LTD",
+            "systemType": "CACHEID",
+            "systemId": "2-JPMONOMAU-9"
+         }
+      ]
+   }
+}
+

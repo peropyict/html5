@@ -1,16 +1,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-	<title>Responsive HTML5</title>
-		
+	<title>Responsive HTML5</title>		
 	<link href="css/bootstrap.css" rel="stylesheet">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	  
-	<link href="css/bootstrap-theme.css" rel="stylesheet">
-	
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">	  
+	<link href="css/bootstrap-theme.css" rel="stylesheet">	
 	<link type="text/css" rel="stylesheet" href="css/styles.css">
-	
-	
-
 	
 	<style>
 	.row {
@@ -29,7 +23,7 @@
 		width: 100%;
 		height: 50px;
 
-		color: #ffffff;
+		color: #ffffff !important;
 		background-image:url('img/searchRightBtn.png');
 		background-repeat:x;
 	}
@@ -43,6 +37,7 @@
 		
 		<script src="js/custom.js" type="text/javascript"></script>
 		<script src="js/search.js" type="text/javascript"></script> 
+		<script src="js/jquery.extensions.js" type="text/javascript"></script>
 		
 		<script src="js/bootstrap.js" type="text/javascript"></script>
 		
@@ -90,17 +85,37 @@
 			</div>
 			
 
-			<div id="resultContainers">
-			<div id="container">
-				
-				<div  class="row" style="border-top:1px solid #cbcbcb">
-					<div class="col-xs-5 col-sm-5 col-md-5" >
-						<div class="row">
-							<div class="col-xs-1 col-sm-1 col-md-1 plusResult" style="display:inline-block;min-height:1px;max-width:50px;line-height: 50px;background-image:url('img/plusResult.png');background-repeat:no-repeat;background-position:left;"  id="plusResult">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 padding_left_28">
-								<div style="line-height: 25px; ">
-									<strong>Yakka </strong>(NZ)LTD (4)
-
+			<div id="resultContainers">			
+			</div>			
+			<div class="row" id="bottom1">
+				<img src="img/bottom1.png" id="bottom1Img">
+			</div>			
+			<div style="min-height:40px" class="small-block-grid-2" id="bottom2">			
+				<div class="col-xs-5 col-md-5 .col-lg-5.col-offset-1 color_white padding_left_10 padding_top_10" id="noOfSearchResult"> 1 - 8 Results Found</div>
+			</div>		
+ 
+	</div><!--searchPageContainer container END-->
+	
+	
+	<!--popup container Start-->
+	<div class="row">
+		<div id="popupProfileContainer" class="col-xs-12 col-md-12 col-sm-12" style="display:none">
+		</div>
+	</div>
+	<!--popupContainer END-->
+	
+	<!--templates start-->
+	
+	<script id="CustomerSearchResultsTemplate" type="text/html">
+		<div id="container">
+				<div id="<#= entityId #>"  class="row mainResultContainer"><div class="col-xs-5 col-sm-5 col-md-5" >
+						<div class="row">							
+							<div class="col-xs-1 col-sm-1 col-md-1 memberCountPlus plusSearchResult plusResult" id="plusResult" onclick="searchPlusExpand($(this))">
+								<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
+							</div>
+							<div class="col-xs-7 col-sm-10 col-md-10 padding_left_28">
+								<div style="line-height: 25px; ">									
+									<strong> <#= name #> </strong><#= memberCount #>
 								</div>
 								<div style="line-height: 25px; ">
 									<small>26 King William St,...</small>
@@ -111,147 +126,180 @@
 					<div class="row col-xs-5 col-sm-5 col-md-5">
 						<div class="row">
 							<div class="col-xs-4 col-sm-4 col-md-4 glob_no_line">
-									Global ID
+								<#= systemType #>
 							</div>
-							<div class="col-xs-6 col-xs-offset-6 col-sm-6 col-sm-offset-1 col-md-6 col-md-offset-1 glob_no_line" > 
-									100000012311111133333
+							<div class="col-xs-6 col-xs-offset-6 col-sm-6 col-sm-offset-1 col-md-6 col-md-offset-1 glob_no_line" > 									<#= systemId #>
 							</div>
 						</div>
 					</div>
 						<div class="col-xs-1 col-sm-1 col-md-1 text-center search_number" style="height:50px;">
-							<div class="" style="line-height: 50px; background-image:url('img/search_number.png');background-repeat:no-repeat; background-position:center; color:blue">
-								8
+							<div class="score">								
+								<#= score #>
 							</div>
 						</div>
-						<div class="col-xs-1 col-sm-1 col-md-1" style="text-align:center">
-							
-							<div id="12" class="col-xs-1 col-md-1 plusResult playButton pointer" style="float:center;display:inline-block;min-height:1px;width:100%;line-height: 50px;background-image:url('img/arrow.png');background-repeat:no-repeat;background-position:right;"  >
-							  &nbsp&nbsp&nbsp				
-							</div>
-						
-						</div>
-						
-					</div>
-				
-				<!--detils-->
-				<div class="row" id="subResultContainer">
+						<div class="col-xs-1 col-sm-1 col-md-1" style="text-align:center">						
+							<div id="<#= entityId #>" class="col-xs-1 col-md-1 openPopupBtn playButton pointer" onclick="showPopup($(this))">
+							  &nbsp&nbsp&nbsp			
+							</div>						
+						</div>						
+				</div></div>
+	</script>
+	
+	<script id="CustomerSearchResultsExpandMembersTemplate" type="text/html">
+		<div class="row" id="subResultContainer">
 					<div class="col-xs-5 col-sm-5 col-md-5">
-
-						<div class="col-xs-1 col-sm-1 col-md-1" id="subFirstColResult" style="width:50px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></div>	
-						<div class="col-xs-6 col-sm-6 col-md-6 padding_left_28" id="subResultName">1. resultsub1.</div>
+						<div class="col-xs-1 col-sm-1 col-md-1" id="subFirstColResult" style="width:50px">
+							<span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></div>
+						<div class="col-xs-7 col-sm-10 col-md-10 padding_left_28" id="subResultName">
+							<#= name #>
+						</div>
 					</div>
 					<div class="col-xs-5 col-sm-5 col-md-5">
 						<div class="row">
-							<div class="col-xs-4 col-sm-4 col-md-4" id="subsubUrb">.col 1</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-sm-offset-1 col-md-offset-1" id="subpostCode">.col 2</div>
+							<div class="col-xs-4 col-sm-4 col-md-4" id="subsubUrb"><#= systemType #></div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-sm-offset-1 col-md-offset-1" id="subpostCode"><#= systemId #></div>
 						</div>
 					</div>
 				</div>
-				<div class="row" id="subResultContainer">
-						<div class="col-xs-5 col-sm-5 col-md-5">
-
-						<div class="col-xs-1 col-sm-1 col-md-1" id="subFirstColResult" style="width:50px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></div>	
-						<div class="col-xs-6 col-sm-6 col-md-6 padding_left_28" id="subResultName">2. resultsub1.</div>
-					</div>
-					<div class="col-xs-5 col-sm-5 col-md-5">
-						<div class="row">
-							<div class="col-xs-4 col-sm-4 col-md-4" id="subsubUrb">.col 1</div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-sm-offset-1 col-md-offset-1" id="subpostCode">.col 2</div>
-						</div>
-					</div>	
-				</div>			
-				
-			</div>
-			</div>
-			
-			
-			<div class="row" id="bottom1">
-				<img src="img/bottom1.png" id="bottom1Img">
-			</div>
-			
-			<div style="min-height:40px" class="small-block-grid-2" id="bottom2">
-			
-				<div class="col-xs-5 col-md-5 .col-lg-5.col-offset-1 color_white padding_left_10 padding_top_10" id="noOfSearchResult"> 1 - 8 Results Found</div>
-			</div>
-			
-			
- 
-	</div><!--search container END-->
+	</script>
 	
-	<!--popup container Start-->
-	<div class="row">
-	<div id="popupProfileContainer" class="col-xs-12 col-md-12 col-sm-12" style="display:none">
-			<div class="row">
-				<div id="imageTitle" class="col-xs-12 col-md-12 col-sm-12">
+	
+	<script id="popupHeaderTemplate" type="text/html">
+		<div class='row'>
+				<div id='imageTitle' class='col-xs-12 col-md-12 col-sm-12'>
 					<img id="profile" style="min-height:50px; max-width: 100%;" src="img/popupTop.png" class="img-responsive" alt="Responsive image">
 					<div id="companyTitle" class="row col-xs-12 col-sm-12 col-md-12 color_white">
-
-						
 						<div class="col-xs-7 col-sm-8 col-md-8 padding_left_30">
 							<div style="line-height: 25px;">
-								<strong>Yakka </strong>(NZ)LTD (4)
-
+								<strong><#= entity.name #></strong>
 							</div>
 							<div style="line-height: 25px;">
-								<small>26 King William St,...</small>
+								<small>'/*26 King William St,...*/+'there should be legalName but not found in customerdetails.json'+'</small>
 							</div>
 							
 						</div>
 						
 						<div class="col-xs-7 col-md-3 col-sm-3 padding_left_10">
 							<div style="line-height: 25px;">
-								Global ID
+				
+								<#= entity.systemType #>
 							</div>
 						</div>
 						<div class="col-xs-7 col-md-2 col-sm-2 padding_left_10">
 							<div style="line-height: 25px;">
-								100000012311111133333
+							
+								<#= entity.systemId #>
 							</div>
-						</div>				
+						</div>	
 					</div>
-					<button id="closePopup" class="btn btn-mini active btn-xs"><img id="inCloseBtn" src="img/closePopup.png" class="img-responsive"></button>
-				</div>
-
-
-			</div>
-		
-			
-	<div id="profileScroolContainer" class="row">
-		
-			<div id="profileBody" class="row col-xs-12 col-md-12 img-responsive" style="background-image:url('img/ProfileBodyBackBlue.png');background-repeat:x; color:blue">
+					<button id="closePopup" onclick="closePopup()" class="btn btn-mini active btn-xs"><img id="inCloseBtn" src="img/closePopup.png" class="img-responsive"></button>
+		</div>
+    </script>
+	
+	
+	
+	
+	
+	
+	<script id="popupSumaryTemplate" type="text/html">
+			<div class="row" id="profileScroolContainer"><div class="row col-xs-12 col-md-12 profileBody img-responsive" id="profileBody"> 
 				<div class="row margin-left_10">
 				  <div class="col-md-7 col-xs-7 padding_left_30">
 					
-					<div class="row margin_top_20 " style="border-radius:3px; background-image:url('img/profileBody1.png');background-repeat:repeat; background-position:left;">
 
-					 <div class="col-md-12 col-xs-12 padding_right_10 padding_top_10 padding_bottom_10 padding_left_10" style="border-radius: 3px; height:auto;line-height: 20px; background-image:url('img/profile_red_small.png');background-repeat:no-repeat; background-position:right; color:white">
-						ovdje zaglavlje slika 1
+					<div class="row margin_top_20 upstreamEntities">
+						<div class="col-md-12 col-xs-12 upstreamEntitiesContent padding_right_10 padding_top_10 padding_bottom_10 padding_left_10">
+							<span class="color_black">Upstream:&nbsp</span>
+							<#
+							if(entity.upstreamEntities.length == 0)
+								#><span class="color_white font_bold"> None</span><#
+							else
+								for(var i=0; i < entity.upstreamEntities.length; i++)     
+								{
+									if(i == 0)
+										#><span class="color_white"> <#= entity.upstreamEntities[i] #></span><#
+									else
+										#><span class="color_white">, &nbsp<#= entity.upstreamEntities[i] #></span><#
+								}
+							#>
+						</div>
+					</div>
+
+					<div class="row coreBankingEntities margin_top_20">
+					  <div class="col-md-12 col-xs-12 coreBankingEntitiesContent padding_right_10 padding_top_10 padding_bottom_10 padding_left_10">
+						<span class="color_black">Core Banking:&nbsp</span>
+						<#
+						if(entity.coreBankingEntities.length == 0)
+							#><span class="color_black font_bold"> None</span><#
+						else
+							for(var i=0; i < entity.coreBankingEntities.length; i++)     
+							{
+								if(i == 0)
+									#><span class="color_black font_bold"> <#= entity.coreBankingEntities[i] #></span><#
+								else
+									#><span class="color_black font_bold">, &nbsp<#= entity.coreBankingEntities[i] #></span><#
+							}
+						#>
 					  </div>
 					</div>
-					<div class="row margin_top_20" style="border-radius:3px; background-image:url('img/profileCol2White.png');background-repeat:repeat; background-position:left;">
-					  <div class="col-md-12 col-xs-12 padding_right_10 padding_top_10 padding_bottom_10 padding_left_10"  style="border-radius: 3px; height:auto;line-height: 20px; background-image:url('img/profile_red_small.png');background-repeat:no-repeat; background-position:right; color:black">
-						ovdje zaglavlje slika 2
-					  </div>
-					</div>
-					<div class="row margin_top_20 margin_bottom_10 ">
-						<div class="row col-md-4 col-xs-4"  style="border-radius:3px; background-image:url('img/profileCol3Blue.png');background-repeat:repeat; background-position:left;">
-							<div class="col-md-12 col-xs-12 padding_right_10 padding_top_10 padding_bottom_10 padding_left_10" style="background-size:10px 100%; min-height:40px;border-radius: 3px; height:auto;line-height: 20px; background-image:url('img/profileCol3Green.png');background-repeat:no-repeat; background-position:right; color:white">
-								donja slika 1 slika 1
+					<div class="row margin_top_20 margin_bottom_10 ">							
+						<div class="col-md-4 col-xs-4 externalRegistryEntities">
+							<div class="col-md-12 col-xs-12 externalRegistryEntitiesContent padding_right_10 padding_top_10 padding_bottom_10 padding_left_10">
+								<span class="color_black">External Registry:&nbsp</span>
+								<#
+								if(entity.externalRegistryEntities.length == 0)
+									#><span class="color_white font_bold"> None</span><#
+								else{
+									for(var i=0; i < entity.externalRegistryEntities.length; i++)     
+									{
+										#><div class="row col-xs-11 col-md-11 col-xs-11">
+											<span class="color_white font_bold"> <#= entity.externalRegistryEntities[i] #></span>
+										</div><#
+									}								
+								}
+								#>
 							</div>
 						</div>
 						
 
 					  <div class="col-md-4 col-xs-4 padding_left_10">
-						<div class="row"  style="border-radius:3px; background-image:url('img/profileCol3Blue.png');background-repeat:repeat; background-position:left;">
-							<div class="col-md-12 col-xs-12 padding_right_10 padding_top_10 padding_bottom_10 padding_left_10" style="background-size:10px 100%; min-height:40px;border-radius: 3px; height:auto;line-height: 20px; background-image:url('img/profileCol3Red.png');background-repeat:no-repeat; background-position:right; color:white">
-								donja slika 2 slika 2
+						<div class="row tradingEntities">
+							<div class="col-md-12 col-xs-12 tradingEntitiesContent padding_right_10 padding_top_10 padding_bottom_10 padding_left_10">
+								<span class="color_black">Trading:&nbsp</span>
+								<#
+								if(entity.tradingEntities.length == 0)
+									#><span class="color_white font_bold"> None</span><#
+								else{
+									for(var i=0; i < entity.tradingEntities.length; i++)     
+									{
+										#><div class="row col-xs-11 col-md-11 col-xs-11">
+											<span class="color_white font_bold"> <#= entity.tradingEntities[i] #></span>
+										</div><#
+									}								
+								}
+								#>
 							</div>
-						</div>
+							</div>
 					  </div>
 					  <div class="col-md-4 col-xs-4 padding_left_10">
-						<div class="row"  style="background-size:1px 100%; border-radius:6px; background-image:url('img/profileCol3Blue140.png');background-repeat:repeat; background-position:left;">
-							<div class="col-md-12 col-xs-12 padding_right_10 padding_top_10 padding_bottom_10 padding_left_10" style="background-size:10px 100%; min-height:40px;border-radius: 6px; height:auto;line-height: 20px; background-image:url('img/profileCol3Yellow.png');background-repeat:no-repeat; background-position:right; color:white">
-								donja slika 3 slika 3 ej baja ko si tiiiiiii loret loret loret
+						<div class="row downstreamEntities">
+							<div class="col-md-12 col-xs-12 downstreamEntitiesContent padding_right_10 padding_top_10 padding_bottom_10 padding_left_10">
+								<span class="color_black">Downstream:&nbsp</span>
+								<#
+								if(!entity.downstreamEntities)
+									#><span class="color_white font_bold"> entity.downstreamEntities is undefined</span><#
+								else
+									if(entity.downstreamEntities.length == 0)
+										#><span class="color_white font_bold"> None</span><#
+									else{
+										for(var i=0; i < entity.downstreamEntities.length; i++)     
+										{
+											#><div class="row col-xs-11 col-md-11 col-xs-11">
+												<span class="color_white font_bold"> <#= entity.downstreamEntities[i] #></span>
+											</div><#
+										}								
+									}
+								#>
 							</div>
 						</div>
 					  </div>
@@ -259,340 +307,50 @@
 				  </div>
 				  <div class="col-md-1 col-xs-1 margin_top_10 ">
 				  </div>
-				  <div class="col-md-4 col-xs-4 margin_top_20 ">
-					<div class="row">
-					  <div class="col-md-3 col-xs-3 color_blue">
-						KYC ID:
-					  </div>
-					  <div class="col-md-8 col-xs-8 color_white">
-						col2 row1
-					  </div>
-					</div>
-					<div class="row">
-					  <div class="col-md-3 col-xs-3 color_blue">
-						ICIS:
-					  </div>
-					  <div class="col-md-8 col-xs-8 color_white">
-						col2 row2
-					  </div>
-					</div>
-					<div class="row">
-					  <div class="row col-md-3 col-xs-3 color_blue">
-						RAZOR:
-					  </div>
-					  <div class="row col-md-8 col-xs-8 color_white">
-						col2 row3
-					  </div>
-					</div>
-					<div class="row">
-					  <div class="row col-md-3 col-xs-3 color_blue">
-						RIS:
-					  </div>
-					  <div class="row col-md-8 col-xs-8 color_white">
-						col2 row4
-					  </div>
-					</div>
-					<div class="row">
-						<div class="row col-md-10 col-xs-10" style="">
-							<hr  style="margin: 10px 0; line-height: 20px; color:#045485; border-color:#045485; background-color:#045485">
+				  <div class="col-md-4 col-xs-4 margin_top_20 ">				  
+					<#for(var i=0; i < entity.relatedSystems.length; i++)     
+					{#>
+						<div class="row">
+						  <div class="col-md-3 col-xs-3 color_blue">
+							<!--KYC ID:--> <!--relatedSystems into loop-->
+							<#= entity.relatedSystems[i].type #>:
+						  </div>
+						  <div class="col-md-8 col-xs-8 color_white">
+							<#= entity.relatedSystems[i].name #>
+							<!--col2 row1-->
+						  </div>
 						</div>
-					</div>
+					<#}#>
 					<div class="row">
-					  <div class="row col-md-3 col-xs-3 color_blue">
-						ABN:
-					  </div>
-					  <div class="row col-md-8 col-xs-8 color_white">
-						col2 row4
-					  </div>
-					</div>
-					<div class="row">
-					  <div class="row col-md-3 col-xs-3 color_blue">
-						ACN:
-					  </div>
-					  <div class="row col-md-8 col-xs-8 color_white">
-						col2 row4
-					  </div>
-					</div>
+						<div style="" class="row col-md-10 col-xs-10">
+							<hr style="margin: 10px 0; line-height: 20px; color:#045485; border-color:#045485; background-color:#045485">
+						</div>
+					</div>					
+					<#for(var i=0; i < entity.customerIdentifiers.length; i++)     
+					{#>
+						<div class="row">
+						  <div class="row col-md-3 col-xs-3 color_blue">
+							<# 
+							if(entity.customerIdentifiers[i].type == "")
+								#>"type": ""<#
+							else
+								entity.customerIdentifiers[i].type;
+							#>:<!--ABN: turn it into loop entity.customerIdentifiers-->
+						  </div>
+						  <div class="row col-md-8 col-xs-8 color_white">
+							<#= entity.customerIdentifiers[i].name #><!--col2 row4-->
+						  </div>
+						</div>				
+					<#}#>
 				  </div>
 				</div>
-
-
 			</div>
-			<div class="row margin_top_10">
-				<div class="col-md-12 col-xs-12" style="border-radius:6px; background-image:url('img/profileBodyBottomDevider.png');background-repeat:x;>
-				<img src="img/profileBodyBottomDevider.png" class="img-responsive" alt="Responsive image">
-				</div>
-			</div>
-
-
 			
-			
-		<div id="ProfileRowsContainer" class="row">
-				
-				<div id="profileMainRow" class="row">
-					<div class="col-xs-6 col-md-6 row">
-						<div class="col-xs-1 col-md-1 plusResult padding_right_40 plusResultProfile" style="cursor:pointer;display:inline-block;min-height:1px;line-height: 50px;background-image:url('img/plusResult.png');background-repeat:no-repeat;background-position:center;"  id="plusResultProfile"><span style="font-size:0px">
-							  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>					
-						</div>
-						<div class="col-xs-6 col-md-6 margin_left_10">
-							<div style="line-height: 25px;">
-								<strong>Yakka </strong>(NZ)LTD (4)
-
-							</div>
-							<div style="line-height: 25px;">
-								<small>46 King William St,...</small>
-							</div>
-						</div>
-					</div>
-					<div class="row col-xs-5 col-md-6 col-sm-6">
-						<div class="col-xs-5 col-md-6 col-sm-6">
-							<div style="line-height: 50px;">
-								Global ID
-							</div>
-						</div>
-						<div class="col-xs-5 col-md-3 col-sm-3">
-							<div style="line-height: 50px;">
-								100000012311111133333
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				
-				
-
-			<div class="row" id="subResultContainer"><!--subresult Container 1-->
-				
-					<div class="row padding_top_10 padding_bottom_10 border_top_profile_details" id="resultMap">
-						<div class="col-xs-12 col-md-15 padding_left_none">
-							<div class="row padding_left_none">
-								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-								</div>
-								<div class="col-xs-10 col-sm-10 col-md-10 ">
-									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg"  class="pointer"> <span style="padding-left:10px">26 King William St...</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row padding_top_10 padding_bottom_10" id="resultMap2">
-						<div class="col-xs-12 col-md-15 padding_left_none">
-							<div class="row padding_left_none">
-								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-								</div>
-								<div class="col-xs-10 col-sm-10 col-md-10 ">
-									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg"  class="pointer"><span style="padding-left:10px">26 King William St...</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				
-				
-				
-				<div class="row border_top_profile_details padding_bottom_10">
-					<div class="col-xs-6 col-md-6 padding_left_none padding_top_10">
-						<div class="row">
-							<div class="col-xs-1 col-sm-1 col-md-1" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></div>	
-							<div class="col-xs-9 col-md-9 padding_left_none">
-								<div class="row  ">
-									<div class="col-xs-3 col-md-3">
-										<small>Indystry:</small>
-									</div>
-									<div class="col-xs-9 col-md-9">
-										<small>CLOTHING WHOLESALE</small>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-3 col-md-3  padding_top_10" id="subResultName"><small>KYCID:</small></div>
-					<div class="col-xs-3 col-md-3  padding_top_10" id="subsubUrb"><small>38764</small></div>			
-				</div>				
-				
-			</div>	<!--subresultcontainerEND-->
-			
-			
-		</div><!--ProfileRowsContainer END-->
-		
-		
-		<div id="ProfileRowsContainer" class="row">
-				
-				<div id="profileMainRow" class="row">
-					<div class="col-xs-6 col-md-6 row">
-						<div class="col-xs-1 col-md-1 plusResult padding_right_40 plusResultProfile" style="cursor:pointer;display:inline-block;min-height:1px;line-height: 50px;background-image:url('img/plusResult.png');background-repeat:no-repeat;background-position:center;"  id="plusResultProfile"><span style="font-size:0px">
-							  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>					
-						</div>
-						<div class="col-xs-6 col-md-6 margin_left_10">
-							<div style="line-height: 25px;">
-								<strong>Yakka </strong>(NZ)LTD (4)
-
-							</div>
-							<div style="line-height: 25px;">
-								<small>46 King William St,...</small>
-							</div>
-						</div>
-					</div>
-					<div class="row col-xs-5 col-md-6 col-sm-6">
-						<div class="col-xs-5 col-md-6 col-sm-6">
-							<div style="line-height: 50px;">
-								Global ID
-							</div>
-						</div>
-						<div class="col-xs-5 col-md-3 col-sm-3">
-							<div style="line-height: 50px;">
-								100000012311111133333
-							</div>
-						</div>
-					</div>
-
-				</div>
-				
-				
-				
-
-			<div class="row" id="subResultContainer"><!--subresult Container 1-->
-				
-					<div class="row padding_top_10 padding_bottom_10 border_top_profile_details" id="resultMap">
-						<div class="col-xs-12 col-md-15 padding_left_none">
-							<div class="row padding_left_none">
-								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-								</div>
-								<div class="col-xs-10 col-sm-10 col-md-10 ">
-									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg"  class="pointer"> <span style="padding-left:10px">26 King William St...</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row padding_top_10 padding_bottom_10" id="resultMap2">
-						<div class="col-xs-12 col-md-15 padding_left_none">
-							<div class="row padding_left_none">
-								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-								</div>
-								<div class="col-xs-10 col-sm-10 col-md-10 ">
-									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg"  class="pointer"><span style="padding-left:10px">26 King William St...</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				
-				
-				
-				<div class="row border_top_profile_details padding_bottom_10">
-					<div class="col-xs-6 col-md-6 padding_left_none padding_top_10">
-						<div class="row">
-							<div class="col-xs-1 col-sm-1 col-md-1" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></div>	
-							<div class="col-xs-9 col-md-9 padding_left_none">
-								<div class="row  ">
-									<div class="col-xs-3 col-md-3">
-										<small>Indystry:</small>
-									</div>
-									<div class="col-xs-9 col-md-9">
-										<small>CLOTHING WHOLESALE</small>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-3 col-md-3  padding_top_10" id="subResultName"><small>KYCID:</small></div>
-					<div class="col-xs-3 col-md-3  padding_top_10" id="subsubUrb"><small>38764</small></div>			
-				</div>
-
-
-				
-			</div>	<!--subresultcontainerEND-->
-			
-			
-				
-		</div><!--ProfileRowsContainer END-->
-		
-		<div id="ProfileRowsContainer" class="row">
-				
-				<div id="profileMainRow" class="row">
-					<div class="col-xs-6 col-md-6 row">
-						<div class="col-xs-1 col-md-1 plusResult padding_right_40 plusResultProfile" style="cursor:pointer;display:inline-block;min-height:1px;line-height: 50px;background-image:url('img/plusResult.png');background-repeat:no-repeat;background-position:center;"  id="plusResultProfile"><span style="font-size:0px">
-							  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>					
-						</div>
-						<div class="col-xs-6 col-md-6 margin_left_10">
-							<div style="line-height: 25px;">
-								<strong>Yakka </strong>(NZ)LTD (4)
-
-							</div>
-							<div style="line-height: 25px;">
-								<small>26 King William St,...</small>
-							</div>
-						</div>
-					</div>
-					<div class="row col-xs-5 col-md-6 col-sm-6">
-						<div class="col-xs-5 col-md-6 col-sm-6">
-							<div style="line-height: 50px;">
-								Global ID
-							</div>
-						</div>
-						<div class="col-xs-5 col-md-3 col-sm-3">
-							<div style="line-height: 50px;">
-								100000012311111133333
-							</div>
-						</div>
-					</div>
-
-				</div>
-				
-				
-				
-
-			<div class="row" id="subResultContainer"><!--subresult Container 1-->
-				
-					<div class="row padding_top_10 padding_bottom_10 border_top_profile_details" id="resultMap">
-						<div class="col-xs-12 col-md-15 padding_left_none">
-							<div class="row padding_left_none">
-								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-								</div>
-								<div class="col-xs-10 col-sm-10 col-md-10 ">
-									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg"  class="pointer"> <span style="padding-left:10px">26 King William St...</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row padding_top_10 padding_bottom_10" id="resultMap2">
-						<div class="col-xs-12 col-md-15 padding_left_none">
-							<div class="row padding_left_none">
-								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-								</div>
-								<div class="col-xs-10 col-sm-10 col-md-10 ">
-									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg"  class="pointer"><span style="padding-left:10px">26 King William St...</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				
-				
-				
-				<div class="row border_top_profile_details padding_bottom_10">
-					<div class="col-xs-6 col-md-6 padding_left_none padding_top_10">
-						<div class="row">
-							<div class="col-xs-1 col-sm-1 col-md-1" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></div>	
-							<div class="col-xs-9 col-md-9 padding_left_none">
-								<div class="row  ">
-									<div class="col-xs-3 col-md-3">
-										<small>Indystry:</small>
-									</div>
-									<div class="col-xs-9 col-md-9">
-										<small>CLOTHING WHOLESALE</small>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-3 col-md-3  padding_top_10" id="subResultName"><small>KYCID:</small></div>
-					<div class="col-xs-3 col-md-3  padding_top_10" id="subsubUrb"><small>38764</small></div>			
-				</div>
-
-				
-			</div>	<!--subresultcontainerEND-->
-			
-			
-				
-		</div><!--ProfileRowsContainer END-->
-		
+	</script>
+	
+	
+	
+	<script  id="popupRowsTemplate" type="text/html">
 		<div id="ProfileRowsContainer" class="row">
 				
 				<div id="profileMainRow" class="row">
@@ -624,11 +382,18 @@
 					</div>
 
 				</div>
-				
-				
-				
-
-			<div class="row" id="subResultContainer"><!--subresult Container 1-->
+	
+		</div>
+	
+	
+	</script>
+	
+	
+	
+	
+	
+	<script id="popupSubRowsTemplate" type="text/html">
+		<div class="row" id="subResultContainer">
 				
 					<div class="row padding_top_10 padding_bottom_10 border_top_profile_details" id="resultMap">
 						<div class="col-xs-12 col-md-15 padding_left_none">
@@ -675,16 +440,13 @@
 					<div class="col-xs-3 col-md-3  padding_top_10" id="subsubUrb"><small>38764</small></div>			
 				</div>
 		
-			</div>	<!--subresultcontainerEND-->
-			
-			
-				
-		</div><!--ProfileRowsContainer END-->
-			
-	</div>	<!--profileScroolContainer END-->	
-			
-			<div class="row" style="background-image:url('img/profileBottomBack.png');background-repeat:x">
-
+			</div>
+	</script>
+	
+	
+	
+	<script id="popupBottomTemplate" type="text/html">
+		<div class="row" style="background-image:url('img/profileBottomBack.png');background-repeat:x">
 					<div class="row" style="line-height: 50px;">
 						<div class="col-xs-12 col-md-7 col-sm-7 col-md-offset-5 col-sm-offset-5" >
 						<div class="col-xs-12 col-md-8 col-sm-8" style="float:center">
@@ -710,10 +472,8 @@
 					</div>
 				</div>
 			</div>
-			
-			
-			
-		</div>
-	</div></div> <!--popupContainer END-->
+	</script>
+	
+	
  
  </body></html>

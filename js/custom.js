@@ -9,9 +9,9 @@ $(document).ready(function (e) {
 	$("#nameSearch, #codeSearch").each(function(){
 		$(this).height($("#searchForm").height()-2);
 	});
-	$("#plusResult").on("click", function(e){ 
-	/*change this into .plusResult, then remove/change class named plusResult in popupProfileContainer. review code bellow */
-		//console.log("1");
+	/*$(".plusResult").on("click", function(e){ 
+	//change this into .plusResult, then remove/change class named plusResult in popupProfileContainer. review code bellow 
+		console.log("1");
 		var container = $(this).parents("div#container");
 
 		if($(this).hasClass('plusResult')){
@@ -37,10 +37,9 @@ $(document).ready(function (e) {
 			$(this).addClass('plusResult').removeClass('minusResult');
 		}
 
-	});
+	});*/
 	
 		$(".plusResultProfile").on("click", function(e){
-			//console.log("2");
 		var container = $(this).parents("div#ProfileRowsContainer");
 
 		if($(this).hasClass('plusResult')){
@@ -99,21 +98,18 @@ $(document).ready(function (e) {
 		alert("close button clicked");
 	});
 	
-	/*$(".playButton").on("click", function(){ old code redirect to search page - before popup implementation
-		setTimeout("window.location.href='profile.html';",500);
-		window.location.href='profile.html';
-	});*/
-	$(".playButton").on("click", function(){
-		console.log("2");
-		showPopup();
+	$(".openPopupBtn").on("click", function(e){
+		console.log(e);
+		//showPopup(e);
 	});
-	$(".playButton").hover(function () {
+	$(".openPopupBtn").hover(function () {
 		$(this).css({'width':'98%'});
 	},function(){
 		$(this).css({'width':'100%'});
 	});
 	$("#closePopup").on("click", function(){
 		closePopup();
+
 	});
 	
 	$("#searchBtn").on("click", function(){
@@ -122,8 +118,9 @@ $(document).ready(function (e) {
 	
 
 });
-function showPopup(){
-		 
+function showPopup(e){
+	console.log(e);
+	fillPopupData(e);
 	 $('#popupProfileContainer').fadeIn('slow', function() {
 		$('#popupProfileContainer').css('display','block');
     });
@@ -135,12 +132,52 @@ function closePopup(){
 		$('#searchPageContainer').css('display','block');		
     });
 	$("#popupProfileContainer").css({'display':'none'});
+	
+	$("#popupProfileContainer").empty();
 }
+
+
 function positionOfCompanyTitleInPopup(){
 	$("#companyTitle").css({
 				position: "absolute",
 				top: $("#profile").position().top + $("#profile").height()/10 + "px",
 				left: ($("#profile").position().left + 20) + "px"
 			}).show();
+}
+
+function searchPlusExpand(elem){
+
+		/*change this into .plusResult, then remove/change class named plusResult in popupProfileContainer. review code bellow */
+	
+		var container = elem.parents("div#container");
+		
+		
+		if(elem.hasClass('plusResult')){
+			console.log("hasClass +");
+			container.css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" });
+			container.css({'border-top':'1px solid #d0ab36'});
+			container.css({'border-bottom':'3px outset #cfc5a1'});
+			elem.css({'background-image':'url(img/minusResult.png)'});
+			console.log(container.children("div#subResultContainer"));
+			container.children("div#subResultContainer").each(function(e){
+				//console.log("tttttttt" + e);
+				$(this).css({"display": "block" });
+				$(this).addClass('test');
+			});
+			container.children("div#subResultContainer").last().children().css({'border-bottom':'0px'});
+			elem.addClass('minusResult').removeClass('plusResult');
+		}
+		else{
+			container.css({'background-image': "none" });
+			container.css({'border-top':'0 '});
+			container.css({'border-bottom':'0px'});
+
+			elem.css({'background-image':'url(img/plusResult.png)'});
+			container.children("div#subResultContainer").each(function(){
+				$(this).css({"display": "none" });
+			});
+			elem.addClass('plusResult').removeClass('minusResult');
+		}
+
 }
 	

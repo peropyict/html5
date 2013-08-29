@@ -206,11 +206,17 @@ div.move-rigth{
     display: block;
     float: right;
 }
-div.color_white{
-	color:white;
+div.color_white, span.color_white{
+	color:white !important;
+}
+div.color_black, span.color_black{
+	color:black !important;
 }
 div.color_blue{
 	color:#0088d2;
+}
+div.font_bold, span.font_bold{
+	font-weight:bold;
 }
 
 button.full-width{
@@ -283,4 +289,123 @@ background:transparent !important;
 }
 #inCloseBtn{
 	width:100%;
+}
+.profileBody{
+	background-image:url('../img/ProfileBodyBackBlue.png');
+	background-repeat:x; 
+	color:blue;
+}
+.upstreamEntities{
+	border-radius:3px; 
+	background-image:url('../img/profileBody1.png');
+	background-repeat:repeat; 
+	background-position:left;
+}
+.upstreamEntitiesContent{
+	border-radius: 3px; 
+	height:auto;
+	line-height: 18px; 
+	background-image:url('../img/profile_red_small.png');
+	background-repeat:no-repeat; 
+	background-position:right; 
+	color:white;
+}
+.coreBankingEntities{
+	border-radius:3px; 
+	background-image:url('../img/profileCol2White.png');
+	background-repeat:repeat; 
+	background-position:left;
+}
+.coreBankingEntitiesContent{
+	border-radius: 3px; 
+	height:auto;
+	line-height: 18px; 
+	background-image:url('../img/profile_red_small.png');
+	background-repeat:no-repeat; 
+	background-position:right; 
+	color:black;
+
+}
+.externalRegistryEntities{
+	border-radius:6px; 
+	background-image:url('../img/profileCol3Blue.png');
+	background-repeat:repeat; 
+	background-position:left;
+
+}
+.externalRegistryEntitiesContent{
+	background-size:10px 100%; 
+	min-height:40px;
+	border-radius: 3px; 
+	height:auto;
+	line-height: 20px; 
+	background-image:url('../img/profileCol3Green.png');
+	background-repeat:no-repeat; 
+	background-position:right; 
+	color:white;
+	display: inline-block !important;
+}
+.tradingEntities{
+	border-radius:6px; 
+	background-image:url('../img/profileCol3Blue.png');
+	background-repeat:repeat; 
+	background-position:left;
+}
+.tradingEntitiesContent{
+	background-size:10px 100%; 
+	min-height:40px;border-radius: 3px; 
+	height:auto;line-height: 20px; 
+	background-image:url('../img/profileCol3Red.png');
+	background-repeat:no-repeat; 
+	background-position:right; 
+	color:white;
+	display: inline-block !important;
+}
+.downstreamEntities{
+	background-size:1px 100%; 
+	border-radius:6px; 
+	background-image:url('../img/profileCol3Blue140.png');
+	background-repeat:repeat; 
+	background-position:left;
+}
+.downstreamEntitiesContent{
+	background-size:10px 100%; 
+	min-height:40px;
+	border-radius: 6px; 
+	height:auto;
+	line-height: 20px; 
+	background-image:url('img/profileCol3Yellow.png');
+	background-repeat:no-repeat; 
+	background-position:right; 
+	color:white;
+	display: inline-block !important;
+}
+.memberCountPlus{
+	display:inline-block;
+	min-height:1px;
+	max-width:50px;
+	line-height: 50px;
+	background-image:url('../img/plusResult.png');
+	background-repeat:no-repeat;
+	background-position:left;
+}
+.score{
+	line-height: 50px; 
+	background-image:url('../img/search_number.png');
+	background-repeat:no-repeat; 
+	background-position:center; 
+	color:blue;
+}
+.openPopupBtn{
+	float:center;
+	display:inline-block;
+	min-height:1px;
+	width:100%;
+	line-height: 50px;
+	background-image:url('../img/arrow.png');
+	background-repeat:no-repeat;
+	background-position:right;
+}
+.mainResultContainer{
+	border-top:1px solid #cbcbcb;
 }
