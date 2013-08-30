@@ -301,10 +301,15 @@
 								<span class="color_black">Downstream:&nbsp</span>
 								<#
 								if(!entity.downstreamEntities)
-									#><span class="color_white font_bold"> entity.downstreamEntities is undefined</span><#
+									#>
+									<div class="row col-xs-11 col-md-11 col-xs-11 color_white font_bold">
+											<span class="color_white font_bold">downstreamEntities undefined</span>
+										</div>
+									
+									<#
 								else
 									if(entity.downstreamEntities.length == 0)
-										#><span class="color_white font_bold"> None</span><#
+										#><div class="row col-xs-11 col-md-11 col-xs-11"><span class="color_white font_bold"> None</span></div><#
 									else{
 										for(var i=0; i < entity.downstreamEntities.length; i++)     
 										{

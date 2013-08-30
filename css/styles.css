@@ -388,7 +388,7 @@ background:transparent !important;
 	border-radius: 6px; 
 	height:auto;
 	line-height: 20px; 
-	background-image:url('img/profileCol3Yellow.png');
+	background-image:url('../img/profileCol3Yellow.png');
 	background-repeat:no-repeat; 
 	background-position:right; 
 	color:white;
@@ -397,7 +397,7 @@ background:transparent !important;
 .memberCountPlus{
 	display:inline-block;
 	min-height:1px;
-	max-width:50px;
+	min-width:50px;
 	line-height: 50px;
 	background-image:url('../img/plusResult.png');
 	background-repeat:no-repeat;
