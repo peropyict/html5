@@ -436,3 +436,6 @@ background:transparent !important;
 	background-image:url('../img/profileGrayPagination.png');
 	background-repeat:no-repeat;
 }
+div.inline{
+	display: inline-block !important;
+}
