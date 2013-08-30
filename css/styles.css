@@ -5,6 +5,10 @@ html, body {
 	padding: 0;
 	height: 100%;
 	width: 100%;
+	font-size: 14px;
+}
+#resultContainers{
+	font-size: 12px;
 }
 h5 {
    color:white !important;
@@ -112,7 +116,12 @@ img {display: block;margin:0 auto;}
 	background-repeat:x;
 	height:auto;
 	display:none;
+	
 }
+#subResultContainer div{
+	/*border-top: 1px solid #cbcbcb;*/
+}
+
 #resultNoAndArrow{
 	left: 0px; 
 	 top: 0px; 

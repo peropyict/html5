@@ -11,7 +11,7 @@ function customerSearch(){
 			if(json.results.length > 0)
 				totalResultsNumber = "1 - " + json.results.length +" Results Found";
 			else
-				totalResultsNumber = "0 Results Found";
+				totalResultsNumber = "No results found";
 			$("#noOfSearchResult").append(totalResultsNumber);
 		}
 	});
