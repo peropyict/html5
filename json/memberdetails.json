@@ -1,0 +1,31 @@
+{
+   "success": true,
+   "entity":    {
+      "otherNames": [      {
+         "type": "Legal Name",
+         "name": "*J P MORGAN NOMINEES AUSTRALIA LTD."
+      }],
+      "addresses": [{"name": "A/C SCHRODERS AUST CORP BOND POOL GROSVENOR PL 32/225 GEORGE ST SYDNEY NSW 02000"}, {"name": "A/C SCHRODERS AUST CORP BOND POOL GROSVENOR PL 32/225 GEORGE ST SYDNEY NSW 2000"}],
+      "metadata":       [
+                  {
+            "type": "Organisation Type",
+            "name": "Company"
+         },
+                  {
+            "type": "Established date",
+            "name": "2012-01-02"
+         }
+      ],
+      "relatedSystems":       [
+                  {
+            "type": "KYC",
+            "name": "38764"
+         },
+                  {
+            "type": "RAZOR",
+            "name": "JPMORGA"
+         }
+      ]
+   }
+}
+

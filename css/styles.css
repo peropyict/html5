@@ -23,7 +23,9 @@ img {display: block;margin:0 auto;}
 	text-align:center;
 	height:50px;
 } 
-
+#inputContainer{
+	height:50px;
+}
 #nameSearch{
 	
 	background-image: url("../img/searchLeftBtn.png");
@@ -142,11 +144,14 @@ span{
 	background:none;
 }
 
-#subResultName,#subsubUrb,#subpostCode{
-	/*border-bottom:1px solid #cfc5a1;*/
-}
+/*#subResultName,#subsubUrb,#subpostCode{
+	border-bottom:1px solid #cfc5a1;
+}*/
 .border_top_profile_details{
 	border-top:1px solid #cfc5a1;
+}
+.border_top_main_row{
+	border-top: 1px solid #cbcbcb;
 }
 .glob_no_line{
 	line-height: 50px  !important;
@@ -406,6 +411,12 @@ background:transparent !important;
 	background-repeat:no-repeat;
 	background-position:right;
 }
-.mainResultContainer{
-	border-top:1px solid #cbcbcb;
+.COMembersPlus{
+	cursor:pointer;
+	display:inline-block;
+	min-height:1px;
+	line-height: 50px;
+	background-image:url('../img/plusResult.png');
+	background-repeat:no-repeat;
+	background-position:center;
 }

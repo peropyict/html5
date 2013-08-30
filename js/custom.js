@@ -39,7 +39,7 @@ $(document).ready(function (e) {
 
 	});*/
 	
-		$(".plusResultProfile").on("click", function(e){
+	$(".plusResultProfile").on("click", function(e){
 		var container = $(this).parents("div#ProfileRowsContainer");
 
 		if($(this).hasClass('plusResult')){
@@ -119,7 +119,7 @@ $(document).ready(function (e) {
 
 });
 function showPopup(e){
-	console.log(e);
+	//console.log(e);
 	fillPopupData(e);
 	 $('#popupProfileContainer').fadeIn('slow', function() {
 		$('#popupProfileContainer').css('display','block');
@@ -179,5 +179,40 @@ function searchPlusExpand(elem){
 			elem.addClass('plusResult').removeClass('minusResult');
 		}
 
+}
+
+function COPlusExpand(elem){
+	
+		var container = elem.parents("div.ProfileRowsContainer");
+
+		if(elem.hasClass('plusResult')){
+
+			container.css({'background-image': "url(img/detailsResult.png)", 'background-repeat':"x" });
+			container.css({'border-bottom':'3px outset #cfc5a1'});
+			elem.css({'background-image':'url(img/profileMinusPic.png)'});
+
+			container.children("div#subResultContainer").each(function(){
+				$(this).css({"display": "block" });
+			});
+			container.children("div#subResultContainer").last().children().css({'border-bottom':'0px'});
+			elem.addClass('minusResult').removeClass('plusResult');
+			
+		}
+		else{
+			container.css({'background-image': "none" });
+			container.css({'border-bottom':'0px'});
+
+			elem.css({'background-image':'url(img/plusResult.png)'});
+			container.children("div#subResultContainer").each(function(){
+				$(this).css({"display": "none" });
+			});
+			elem.addClass('plusResult').removeClass('minusResult');
+		}
+
+	
+}
+function gotoAddress(elem){
+
+	console.log(elem.next().text());
 }
 	

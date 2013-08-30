@@ -19,7 +19,6 @@ function writeCustomerSearchResults(node){
 
 function expandMembers(entityId){
 	/*there should be code for ajax expandcustomermembers call with provided entityId?*/
-	//console.log("expandMembers");
 	$.getJSON("json/expandcustomermembers.json", function(json) {
 		if(json.success == true)
 			for(var i=0; i < json.results.length; i++){
@@ -28,7 +27,6 @@ function expandMembers(entityId){
 	});
 }
 function writexpandMembersResults(node, entityId){
-	//console.log(node);
 	var container = $("#"+entityId).parents("div#container");
 	var output = $('#CustomerSearchResultsExpandMembersTemplate').parseTemplate(node);
 	container.append(output);
@@ -37,11 +35,9 @@ function writexpandMembersResults(node, entityId){
 
 function fillPopupData(element)
 {
-	//console.log(element.attr("id"));
 	/*ajax request for customerdetails.json*/
 	$.getJSON("json/customerdetails.json", function(json) {
 		//console.log("fillPopupData json consuming: " + json.entity);
-		//console.log(json);
 		if(json.success == true)
 			writeCustomerOverview(json, element.attr("id"));
 	});
@@ -51,7 +47,8 @@ function writeCustomerOverview(json, entityId){
 	writeCustomerOverviewHeader(json, entityId);
 	writeCustomerOverviewSumary(json, entityId);
 	writeCustomerOverviewRows(json, entityId);
-	writeCustomerOverviewSubRows(json, entityId);
+	CustomerOverviewMemberDetails(entityId);
+	//writeCustomerOverviewSubRows(json, entityId);
 	writeCustomerOverviewBottom(json, entityId);
 }
 function writeCustomerOverviewHeader(node, entityId){
@@ -63,13 +60,54 @@ function writeCustomerOverviewSumary(node, entityId){
 	$("#popupProfileContainer").append(output);
 }
 function writeCustomerOverviewRows(node, entityId){
-	var output = $('#popupRowsTemplate').parseTemplate(node);
-	$("#popupProfileContainer").append(output);
+	for(var i=0; i < node.entity.members.length; i++){
+		var output = $('#popupRowsTemplate').parseTemplate(node.entity.members[i]);
+		$("#popupProfileContainer").append(output);
+	}
 }
 function writeCustomerOverviewSubRows(node, entityId){
+	console.log(node);
+	for(var i=0; i < node.entity.members.length; i++){
+		console.log(node.entity.members[i].name);
+	}
 	var output = $('#popupSubRowsTemplate').parseTemplate(node);
 	$("#ProfileRowsContainer").append(output);
 }
+function CustomerOverviewMemberDetails(entityId){
+	/*there should be code for ajax memberdetails call with provided systemId or srcCode?*/
+	
+	$.each($(".ProfileRowsContainer"), function(e){
+		//console.log($(this));
+		//console.log($(this).find("div.COMembersPlus"));
+		//console.log(($(this).find("div.COMembersPlus")).attr("id"));
+		var parentId = $(this).attr("id");
+		//console.log(parentId);
+		$.getJSON("json/memberdetails.json", function(json) {
+			if(json.success == true){
+				writeCustomerOverviewMemberDetails(parentId, json.entity, entityId);
+				/*console.log(parentId);
+				var output = $('#popupSubRowsTemplate').parseTemplate(json.entity);
+				$("#"+parentId).append(output);*/
+			}
+		});
+		
+	})
+	
+	//($(this).find("div.COMembersPlus")).attr("id") ------ this param will be used during memberdetails.json quering 
+	
+	
+	
+	/*$.getJSON("json/memberdetails.json", function(json) {
+		if(json.success == true)
+			writeCustomerOverviewMemberDetails(json.entity, entityId);
+	});*/
+}
+function writeCustomerOverviewMemberDetails(parentId, node, entityId){
+	console.log(parentId);
+	var output = $('#popupSubRowsTemplate').parseTemplate(node);
+	$("#"+parentId).append(output);
+}
+
 function writeCustomerOverviewBottom(node, entityId){
 	var output = $('#popupBottomTemplate').parseTemplate(node);
 	$("#popupProfileContainer").append(output);

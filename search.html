@@ -49,7 +49,7 @@
 		
 		
 	</head>
-	<body class="containerr">
+	<body>
 
 		<div class="row">
 		<img src="img/profile_top1.png" class="img-responsive" alt="Responsive image">
@@ -108,7 +108,7 @@
 	
 	<script id="CustomerSearchResultsTemplate" type="text/html">
 		<div id="container">
-				<div id="<#= entityId #>"  class="row mainResultContainer"><div class="col-xs-5 col-sm-5 col-md-5" >
+				<div id="<#= entityId #>"  class="row border_top_main_row"><div class="col-xs-5 col-sm-5 col-md-5" >
 						<div class="row">							
 							<div class="col-xs-1 col-sm-1 col-md-1 memberCountPlus plusSearchResult plusResult" id="plusResult" onclick="searchPlusExpand($(this))">
 								<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
@@ -351,41 +351,35 @@
 	
 	
 	<script  id="popupRowsTemplate" type="text/html">
-		<div id="ProfileRowsContainer" class="row">
-				
+	
+		<div id="<#= srcCode + systemId #>" class="row ProfileRowsContainer border_top_main_row">				
 				<div id="profileMainRow" class="row">
 					<div class="col-xs-6 col-md-6 row">
-						<div class="col-xs-1 col-md-1 plusResult padding_right_40 plusResultProfile" style="cursor:pointer;display:inline-block;min-height:1px;line-height: 50px;background-image:url('img/plusResult.png');background-repeat:no-repeat;background-position:center;"  id="plusResultProfile"><span style="font-size:0px">
+						<!--which of parameters should I use for id of plus result?-->
+						<div class="col-xs-1 col-md-1 plusResult padding_right_40 plusResultProfile COMembersPlus" onclick="COPlusExpand($(this))" id="<#= srcCode + systemId #>"><span style="font-size:0px">
 							  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>					
 						</div>
-						<div class="col-xs-6 col-md-6 margin_left_10">
-							<div style="line-height: 25px;">
-								<strong>Yakka </strong>(NZ)LTD (4)
-
-							</div>
-							<div style="line-height: 25px;">
-								<small>66 King William St,...</small>
+						<div class="col-xs-8 col-md-8 margin_left_10">
+							<div style="line-height: 50px;">
+								<small><#= name #></small>
 							</div>
 						</div>
 					</div>
-					<div class="row col-xs-5 col-md-6 col-sm-6">
-						<div class="col-xs-5 col-md-6 col-sm-6">
+					<div class="row col-xs-5 col-md-5 col-sm-5">
+						<div class="col-xs-5 col-md-5 col-sm-5">
 							<div style="line-height: 50px;">
-								Global ID
+								<#= systemType #>
 							</div>
 						</div>
-						<div class="col-xs-5 col-md-3 col-sm-3">
+						<div class="col-xs-5 col-md-5 col-sm-5">
 							<div style="line-height: 50px;">
-								100000012311111133333
+								<#= systemId #>
 							</div>
 						</div>
 					</div>
-
-				</div>
-	
+				</div>	
 		</div>
-	
-	
+		
 	</script>
 	
 	
@@ -394,52 +388,69 @@
 	
 	<script id="popupSubRowsTemplate" type="text/html">
 		<div class="row" id="subResultContainer">
-				
-					<div class="row padding_top_10 padding_bottom_10 border_top_profile_details" id="resultMap">
+					
+				<div class="row border_top_profile_details padding_top_10 padding_bottom_10"> 
+				<#
+				console.log(addresses.length);
+				for(var i=0; i < addresses.length; i++)     
+					{#>
+					<div class="row ">
 						<div class="col-xs-12 col-md-15 padding_left_none">
 							<div class="row padding_left_none">
 								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
 								</div>
 								<div class="col-xs-10 col-sm-10 col-md-10 ">
-									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg" class="pointer"> <span style="padding-left:10px">26 King William St...</span>
+									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg" class="pointer" onclick="gotoAddress($(this))"> <small class="text-muted small" style="padding-left:10px"><#= addresses[i].name #></small>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row padding_top_10 padding_bottom_10" id="resultMap2">
-						<div class="col-xs-12 col-md-15 padding_left_none">
-							<div class="row padding_left_none">
-								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-								</div>
-								<div class="col-xs-10 col-sm-10 col-md-10 ">
-									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg" class="pointer"><span style="padding-left:10px">26 King William St...</span>
-								</div>
-							</div>
-						</div>
-					</div>
+					</div>					
+				<#}#>	
+				</div>	
+					
 				
-				
-				
-				<div class="row border_top_profile_details padding_bottom_10">
-					<div class="col-xs-6 col-md-6 padding_left_none padding_top_10">
-						<div class="row">
-							<div class="col-xs-1 col-sm-1 col-md-1" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></div>	
-							<div class="col-xs-9 col-md-9 padding_left_none">
-								<div class="row  ">
-									<div class="col-xs-3 col-md-3">
-										<small>Indystry:</small>
-									</div>
-									<div class="col-xs-9 col-md-9">
-										<small>CLOTHING WHOLESALE</small>
+				<div class="row border_top_profile_details padding_bottom_10"> 
+					<div class="row  ">
+						<div class="col-xs-6 col-md-6 padding_left_none padding_top_10">					
+						<#
+						for(var i=0; i < metadata.length; i++)     
+							{#>					
+								<div class="row">
+									<div class="col-xs-1 col-sm-1 col-md-1" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></div>	
+									<div class="col-xs-8 col-md-9 padding_left_none">
+										<div class="row">
+											<div class="row  ">
+												<div class="col-xs-5 col-md-5">
+													<small><#= metadata[i].type #>:</small>
+												</div>
+												<div class="col-xs-7 col-md-7">
+													<small><#= metadata[i].name #></small>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
+							<#}
+						#>							
 						</div>
+						<div class="col-xs-5 col-md-5  padding_top_10" id="relatedSystems">					
+							<#
+							for(var i=0; i < relatedSystems.length; i++)     
+								{#>	
+									<div class="row">
+											<div class="col-xs-5 col-md-5">
+												<small><#=relatedSystems[i].type #>: </small>
+											</div>
+											<div class="col-xs-5 col-md-5">
+												<small><#=relatedSystems[i].name #></small>
+											</div>
+									</div>
+								<#}
+							#>
+						</div>			
 					</div>
-					<div class="col-xs-3 col-md-3  padding_top_10" id="subResultName"><small>KYCID:</small></div>
-					<div class="col-xs-3 col-md-3  padding_top_10" id="subsubUrb"><small>38764</small></div>			
 				</div>
-		
+				
 			</div>
 	</script>
 	
