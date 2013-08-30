@@ -114,12 +114,20 @@
 								<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
 							</div>
 							<div class="col-xs-7 col-sm-10 col-md-10 padding_left_28">
-								<div style="line-height: 25px; ">									
-									<strong> <#= name #> </strong><#= memberCount #>
-								</div>
-								<div style="line-height: 25px; ">
-									<small>26 King William St,...</small>
-								</div>
+								<# if(typeof address != 'undefined') { #>
+									<div style="line-height: 25px; ">									
+										<strong> <#= name #> &nbsp</strong>(<#= memberCount #>)
+									</div>
+									<div style="line-height: 25px; ">
+										<small><#= address #></small>
+									</div>
+								<#}
+								else{ #>
+									<div style="line-height: 50px; ">									
+										<strong> <#= name #> &nbsp</strong>(<#= memberCount #>)
+									</div>
+								<#}
+								#>
 							</div>
 						</div>
 					</div>
@@ -173,9 +181,15 @@
 							<div style="line-height: 25px;">
 								<strong><#= entity.name #></strong>
 							</div>
-							<div style="line-height: 25px;">
-								<small>'/*26 King William St,...*/+'there should be legalName but not found in customerdetails.json'+'</small>
-							</div>
+							<# if(typeof entity.legalName != 'undefined') { #>
+								<div style="line-height: 25px;">
+									<small><#= entity.legalName #></small>
+								</div>
+							<#}else { #>
+								<div style="line-height: 25px;">
+									<small>there should be legalName but not found in customerdetails.json</small>
+								</div>
+							<#}#>
 							
 						</div>
 						
@@ -312,12 +326,10 @@
 					{#>
 						<div class="row">
 						  <div class="col-md-3 col-xs-3 color_blue">
-							<!--KYC ID:--> <!--relatedSystems into loop-->
 							<#= entity.relatedSystems[i].type #>:
 						  </div>
 						  <div class="col-md-8 col-xs-8 color_white">
 							<#= entity.relatedSystems[i].name #>
-							<!--col2 row1-->
 						  </div>
 						</div>
 					<#}#>
@@ -331,14 +343,11 @@
 						<div class="row">
 						  <div class="row col-md-3 col-xs-3 color_blue">
 							<# 
-							if(entity.customerIdentifiers[i].type == "")
-								#>"type": ""<#
-							else
 								entity.customerIdentifiers[i].type;
-							#>:<!--ABN: turn it into loop entity.customerIdentifiers-->
+							#>:
 						  </div>
 						  <div class="row col-md-8 col-xs-8 color_white">
-							<#= entity.customerIdentifiers[i].name #><!--col2 row4-->
+							<#= entity.customerIdentifiers[i].name #>
 						  </div>
 						</div>				
 					<#}#>
@@ -464,19 +473,18 @@
 							<div class="row margin_top_10">
 								<div class="col-xs-12 col-md-12 col-sm-12 ">
 
-										<div class="col-xs-1 col-md-1 col-sm-1 pointer" style="background-image:url('img/profileLeftArrow.png');background-repeat:no-repeat">
+										<div class="col-xs-1 col-md-1 col-sm-1 pointer leftPaginationArrow">
 											<span style="font-size:0px">&nbsp&nbsp</span>
 										</div>
-										<div class="col-xs-1 col-md-1 col-sm-1 pointer" style="background-image:url('img/profileBluePagination.png');background-repeat:no-repeat">
+										<div class="col-xs-1 col-md-1 col-sm-1 pointer bluePagination">
 											<span style="font-size:0px">&nbsp&nbsp</span>
 										</div>
-										<div class="col-xs-1 col-md-1 col-sm-1 pointer" style="background-image:url('img/profileGrayPagination.png');background-repeat:no-repeat">
+										<div class="col-xs-1 col-md-1 col-sm-1 pointer grayPagination">
 											<span style="font-size:0px">&nbsp&nbsp</span>
 										</div>
-										<div class="col-xs-1 col-md-1 col-sm-1 pointer" style="background-image:url('img/profileRightArrow.png');background-repeat:no-repeat">
+										<div class="col-xs-1 col-md-1 col-sm-1 pointer rightPaginationArrow">
 											<span style="font-size:0px">&nbsp&nbsp</span>
 										</div>
-
 								</div>
 							</div>
 						</div>

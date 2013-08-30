@@ -420,3 +420,19 @@ background:transparent !important;
 	background-repeat:no-repeat;
 	background-position:center;
 }
+.leftPaginationArrow{
+	background-image:url('../img/profileLeftArrow.png');
+	background-repeat:no-repeat;
+}
+.rightPaginationArrow{
+	background-image:url('../img/profileRightArrow.png');
+	background-repeat:no-repeat;
+}
+.bluePagination{
+	background-image:url('../img/profileBluePagination.png');
+	background-repeat:no-repeat;
+}
+.grayPagination{
+	background-image:url('../img/profileGrayPagination.png');
+	background-repeat:no-repeat;
+}
