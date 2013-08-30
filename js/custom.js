@@ -212,7 +212,8 @@ function COPlusExpand(elem){
 	
 }
 function gotoAddress(elem){
-
+	var googleMapUrl = "https://maps.google.com.au/maps?q=" + elem.next().text();
 	console.log(elem.next().text());
+	window.open(googleMapUrl);
 }
 	
