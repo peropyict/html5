@@ -3,6 +3,40 @@ function customerSearch(){
 	$("#resultContainers").empty();
 	var totalResultsNumber = "";
 	$("#noOfSearchResult").empty();
+
+	
+	
+	 /*$.ajax({
+        type:"POST",
+        url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.json",
+        data: { orgName: "MORGAN", systemType: "MUREXID"},
+        contentType:"application/json",
+		crossDomain:true,
+        beforeSend: function(jqXHR) {
+            jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
+        },
+        dataType:"jsonp",
+        success: function (data) {
+            console.log("success");
+            console.log(data);
+        }
+       
+    }).done(function(data) {
+        console.log("Data Loaded: " + data);
+
+        if(json.success == true){
+            for(var i=0; i < json.results.length; i++){
+				writeCustomerSearchResults(json.results[i]);
+			}
+			if(json.results.length > 0)
+				totalResultsNumber = "1 - " + json.results.length +" Results Found";
+			else
+				totalResultsNumber = "No results found";
+			$("#noOfSearchResult").append(totalResultsNumber);
+         }
+    });*/
+	
+	
 	$.getJSON("json/customersearch.json", function(json) {
 		if(json.success == true){
 			for(var i=0; i < json.results.length; i++){
@@ -56,6 +90,7 @@ function writeCustomerOverview(json, entityId){
 	writeCustomerOverviewRows(json, entityId);
 	CustomerOverviewMemberDetails(entityId);
 	//writeCustomerOverviewSubRows(json, entityId);
+	writeCustomerHierarchy(json, entityId);
 	writeCustomerOverviewBottom(json, entityId);
 }
 function writeCustomerOverviewHeader(node, entityId){
@@ -63,13 +98,14 @@ function writeCustomerOverviewHeader(node, entityId){
     $("#popupProfileContainer").prepend(output);
 }
 function writeCustomerOverviewSumary(node, entityId){	
+	console.log("5");
 	var output = $('#popupSumaryTemplate').parseTemplate(node);
-	$("#popupProfileContainer").append(output);
+	$("#profileScroolContainer").append(output);
 }
 function writeCustomerOverviewRows(node, entityId){
 	for(var i=0; i < node.entity.members.length; i++){
 		var output = $('#popupRowsTemplate').parseTemplate(node.entity.members[i]);
-		$("#popupProfileContainer").append(output);
+		$("#profileRowsContainer").append(output);
 	}
 }
 /*function writeCustomerOverviewSubRows(node, entityId){
@@ -101,5 +137,13 @@ function writeCustomerOverviewMemberDetails(parentId, node, entityId){
 
 function writeCustomerOverviewBottom(node, entityId){
 	var output = $('#popupBottomTemplate').parseTemplate(node);
-	$("#popupProfileContainer").append(output);
+	$("#profileBottomContainer").append(output);
+}
+function writeCustomerHierarchy(node, identityId){
+	var output = $('#CustomerHierarchyTemplate').parseTemplate(node);
+	$("#customerHierarchyContainer").append(output);
+	$("#org").jOrgChart({
+            chartElement : '#chart',
+            dragAndDrop  : true
+        });
 }

@@ -9,35 +9,6 @@ $(document).ready(function (e) {
 	$("#nameSearch, #codeSearch").each(function(){
 		$(this).height($("#searchForm").height()-2);
 	});
-	/*$(".plusResult").on("click", function(e){ 
-	//change this into .plusResult, then remove/change class named plusResult in popupProfileContainer. review code bellow 
-		console.log("1");
-		var container = $(this).parents("div#container");
-
-		if($(this).hasClass('plusResult')){
-			container.css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" });
-			container.css({'border-top':'1px solid #d0ab36'});
-			container.css({'border-bottom':'3px outset #cfc5a1'});
-			$(this).css({'background-image':'url(img/minusResult.png)'});
-			container.children("div#subResultContainer").each(function(){
-				$(this).css({"display": "block" });
-			});
-			container.children("div#subResultContainer").last().children().css({'border-bottom':'0px'});
-			$(this).addClass('minusResult').removeClass('plusResult');
-		}
-		else{
-			container.css({'background-image': "none" });
-			container.css({'border-top':'0 '});
-			container.css({'border-bottom':'0px'});
-
-			$(this).css({'background-image':'url(img/plusResult.png)'});
-			container.children("div#subResultContainer").each(function(){
-				$(this).css({"display": "none" });
-			});
-			$(this).addClass('plusResult').removeClass('minusResult');
-		}
-
-	});*/
 	
 	$(".plusResultProfile").on("click", function(e){
 		var container = $(this).parents("div#ProfileRowsContainer");
@@ -79,7 +50,6 @@ $(document).ready(function (e) {
 	
 	$("#searchMenuContainer div").on("click", function(e){
 
-
 		if($(this).hasClass('searchCategoryPasive'))
 		{
 			$('.searchCategoryActive').each(function(){
@@ -88,9 +58,7 @@ $(document).ready(function (e) {
 			});
 			$(this).addClass('searchCategoryActive').removeClass('searchCategoryPasive');
 			$("."+$(this).attr("id")).addClass('searchFormVisible').removeClass('searchFormHiden');
-		}
-		
-		
+		}			
 	});
 
 
@@ -119,7 +87,6 @@ $(document).ready(function (e) {
 
 });
 function showPopup(e){
-	//console.log(e);
 	fillPopupData(e);
 	 $('#popupProfileContainer').fadeIn('slow', function() {
 		$('#popupProfileContainer').css('display','block');
@@ -131,9 +98,16 @@ function closePopup(){
 	$('#searchPageContainer').fadeIn('slow', function() {
 		$('#searchPageContainer').css('display','block');		
     });
-	$("#popupProfileContainer").css({'display':'none'});
-	
-	$("#popupProfileContainer").empty();
+	$("#popupProfileContainer").css({'display':'none'});	
+	//$("#popupProfileContainer").empty();
+	emptyPopup();
+}
+function emptyPopup(){
+	$("#popupHeader").empty();
+	$("#profileScroolContainer").empty();
+	$("#profileRowsContainer").empty();
+	$("#customerHierarchyContainer").empty();
+	$("#profileBottomContainer").empty();
 }
 
 
@@ -146,21 +120,16 @@ function positionOfCompanyTitleInPopup(){
 }
 
 function searchPlusExpand(elem){
-
-		/*change this into .plusResult, then remove/change class named plusResult in popupProfileContainer. review code bellow */
 	
 		var container = elem.parents("div#container");
-		
-		
+				
 		if(elem.hasClass('plusResult')){
-			console.log("hasClass +");
 			container.css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" });
 			container.css({'border-top':'1px solid #d0ab36'});
 			container.css({'border-bottom':'3px outset #cfc5a1'});
 			elem.css({'background-image':'url(img/minusResult.png)'});
-			console.log(container.children("div#subResultContainer"));
+
 			container.children("div#subResultContainer").each(function(e){
-				//console.log("tttttttt" + e);
 				$(this).css({"display": "block" });
 				$(this).addClass('test');
 			});
@@ -178,7 +147,6 @@ function searchPlusExpand(elem){
 			});
 			elem.addClass('plusResult').removeClass('minusResult');
 		}
-
 }
 
 function COPlusExpand(elem){
@@ -186,7 +154,6 @@ function COPlusExpand(elem){
 		var container = elem.parents("div.ProfileRowsContainer");
 
 		if(elem.hasClass('plusResult')){
-
 			container.css({'background-image': "url(img/detailsResult.png)", 'background-repeat':"x" });
 			container.css({'border-bottom':'3px outset #cfc5a1'});
 			elem.css({'background-image':'url(img/profileMinusPic.png)'});
@@ -195,8 +162,7 @@ function COPlusExpand(elem){
 				$(this).css({"display": "block" });
 			});
 			container.children("div#subResultContainer").last().children().css({'border-bottom':'0px'});
-			elem.addClass('minusResult').removeClass('plusResult');
-			
+			elem.addClass('minusResult').removeClass('plusResult');			
 		}
 		else{
 			container.css({'background-image': "none" });
@@ -207,13 +173,50 @@ function COPlusExpand(elem){
 				$(this).css({"display": "none" });
 			});
 			elem.addClass('plusResult').removeClass('minusResult');
-		}
-
-	
+		}	
 }
 function gotoAddress(elem){
 	var googleMapUrl = "https://maps.google.com.au/maps?q=" + elem.next().text();
 	console.log(elem.next().text());
 	window.open(googleMapUrl);
 }
-	
+function showCustomerHierarchy(){
+	$('#customerHierarchyContainer').fadeIn('slow', function() {
+		$('#customerHierarchyContainer').css('display','block');		
+    });
+	$("#profileScroolContainer").css({'display':'none'});
+	$("#profileRowsContainer").css({'display':'none'});
+
+	prettyPrint(); // call prettyPrint function from prettify.js
+}	
+function showHideCustomerHierarchy(elem){
+	if(elem.hasClass("bluePagination"))
+		return;
+	else{ 
+		if(elem.attr("id") == "popupNav1")
+			showPopupMain();
+		else if(elem.attr("id") == "popupNav2")
+			showCustomerHierarchy();
+	}
+	$(".popupPagination").each(function(){
+		$(this).addClass('grayPagination').removeClass('bluePagination');
+	});
+	elem.addClass('bluePagination').removeClass('grayPagination');
+
+}
+function showPopupMain(){
+	$('#profileScroolContainer').fadeIn('slow', function() {
+		$('#profileScroolContainer').css('display','block');		
+    });
+	$('#profileRowsContainer').fadeIn('slow', function() {
+		$('#profileRowsContainer').css('display','block');		
+    });
+	$("#customerHierarchyContainer").css({'display':'none'});
+}
+function showCustomerHierarchy(){
+	$('#customerHierarchyContainer').fadeIn('slow', function() {
+		$('#customerHierarchyContainer').css('display','block');		
+    });
+	$("#profileScroolContainer").css({'display':'none'});
+	$("#profileRowsContainer").css({'display':'none'});
+}	

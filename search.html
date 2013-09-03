@@ -31,21 +31,29 @@
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
-		<script src="js/bootstrap.input-clear.js" type="text/javascript"></script>
-		<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.css"
-        rel="stylesheet" />
+	<script src="js/bootstrap.input-clear.js" type="text/javascript"></script>
+	<!--link href="css/bootstrap2.1.1.css" rel="stylesheet" /-->
 		
-		<script src="js/custom.js" type="text/javascript"></script>
-		<script src="js/search.js" type="text/javascript"></script> 
-		<script src="js/jquery.extensions.js" type="text/javascript"></script>
+	<script src="js/custom.js" type="text/javascript"></script>
+	<script src="js/search.js" type="text/javascript"></script> 
+	<script src="js/jquery.extensions.js" type="text/javascript"></script>
 		
-		<script src="js/bootstrap.js" type="text/javascript"></script>
+	<script src="js/bootstrap.js" type="text/javascript"></script>
 		
-		<script type="text/javascript">
+	<script type="text/javascript">
 		$(function(){
 		enableInputClearOption();
 		});
-</script>
+	</script>
+
+	<script type="text/javascript" src="chart/prettify.js"></script>
+	<script src="chart/jquery.jOrgChart.js"></script>
+	
+	
+	
+	<link rel="stylesheet" href="chart/jquery.jOrgChart.css"/>  
+	<link href="chart/prettify.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="chart/custom.css"/>
 		
 		
 	</head>
@@ -100,6 +108,11 @@
 	<!--popup container Start-->
 	<div class="row">
 		<div id="popupProfileContainer" class="col-xs-12 col-md-12 col-sm-12" style="display:none">
+			<div id="popupHeader" class="row"></div>
+			<div id="profileScroolContainer" class="row"></div>
+			<div id="profileRowsContainer" class="row"></div>
+			<div id="customerHierarchyContainer" class="row" style="display:none"></div>
+			<div id="profileBottomContainer" class="row"></div>
 		</div>
 	</div>
 	<!--popupContainer END-->
@@ -173,7 +186,7 @@
 	
 	
 	<script id="popupHeaderTemplate" type="text/html">
-		<div class='row'>
+		<div class='row' id="popupHeader">
 				<div id='imageTitle' class='col-xs-12 col-md-12 col-sm-12'>
 					<img id="profile" style="min-height:50px; max-width: 100%;" src="img/popupTop.png" class="img-responsive" alt="Responsive image">
 					<div id="companyTitle" class="row col-xs-12 col-sm-12 col-md-12 color_white">
@@ -192,19 +205,19 @@
 							<#}#>
 							
 						</div>
-						
-						<div class="col-xs-7 col-md-3 col-sm-3 padding_left_10">
-							<div style="line-height: 25px;">
-				
-								<#= entity.systemType #>
+						<div class="col-md-1 col-xs-1 "> </div>
+						<div class="row col-xs-4 col-md-4 col-sm-4">
+							<div class="col-xs-8 col-md-6 col-sm-6">
+								<div style="line-height: 25px;">				
+									<#= entity.systemType #>
+								</div>
 							</div>
+							<div class="col-xs-8 col-md-6 col-sm-6">
+								<div style="line-height: 25px;">						
+									<#= entity.systemId #>
+								</div>
+							</div>	
 						</div>
-						<div class="col-xs-7 col-md-2 col-sm-2 padding_left_10">
-							<div style="line-height: 25px;">
-							
-								<#= entity.systemId #>
-							</div>
-						</div>	
 					</div>
 					<button id="closePopup" onclick="closePopup()" class="btn btn-mini active btn-xs"><img id="inCloseBtn" src="img/closePopup.png" class="img-responsive"></button>
 		</div>
@@ -212,11 +225,9 @@
 	
 	
 	
-	
-	
-	
 	<script id="popupSumaryTemplate" type="text/html">
-			<div class="row" id="profileScroolContainer"><div class="row col-xs-12 col-md-12 profileBody img-responsive" id="profileBody"> 
+			<!--div class="row" id="profileScroolContainer"-->
+			<div class="row col-xs-12 col-md-12 profileBody img-responsive" id="profileBody"> 
 				<div class="row margin-left_10">
 				  <div class="col-md-7 col-xs-7 padding_left_30">
 					
@@ -303,7 +314,7 @@
 								if(!entity.downstreamEntities)
 									#>
 									<div class="row col-xs-11 col-md-11 col-xs-11 color_white font_bold">
-											<span class="color_white font_bold">downstreamEntities undefined</span>
+											<span class="color_white font_bold">downstream Entities undefined</span>
 										</div>
 									
 									<#
@@ -358,7 +369,7 @@
 					<#}#>
 				  </div>
 				</div>
-			</div>
+			<!--/div-->
 			
 	</script>
 	
@@ -469,6 +480,62 @@
 	</script>
 	
 	
+	<!--customer hiararchy Template Start -->
+	<script id="CustomerHierarchyTemplate" type="text/html">
+	
+		
+		<div style="height: 50px; line-height: 50px; color: #ffffff;" class="row" id="searchMenuContainer">
+			<div class="col-xs-4 col-md-4 searchCategoryActive" id="CustomerCreditRisk" style="height: 50px;">Credit Risk</div>
+			<div class="col-xs-4 col-md-4 searchCategoryPasive" id="Individuals" style="height: 50px;">Profitability</div>
+			<div class="col-xs-4 col-md-4 searchCategoryPasive" id="System" style="height: 50px;">System</div>
+		</div>
+	
+		
+			<ul id="org" style="display:none">
+			<li>
+			   <small>Pacific  Brands Group</small>
+			   <ul>
+				 <li id="C1"><small>C1R1</small>
+					<ul>
+						<li><small>C1R2</small></li>
+					</ul>
+				</li>
+				 <li><small>C2R1</small>
+				   <ul>
+					 <li><small>C2R2</small>
+						<ul>
+						<li><small>C2R3</small></li>
+						</ul>
+					 </li>
+					 
+					 </li>
+				   </ul>
+				 </li>
+				 <li class="C3"><small>C3R1</small>
+				   <ul>
+					 <li><small>C3R2</small>
+					   <ul>
+						 <li><small>C3R3</small>
+							<ul><li><small>C4R4</small></li></ul>				 
+						 </li>
+						 
+					   </ul>
+					 </li>
+				   </ul>
+				 </li>
+				 <li><small>C5R1</small></li>
+				 <li><small>C6R1</small>
+				   <ul>
+					 <li><small>C6R2</small></li>
+				   </ul>
+				 </li>
+			   </ul>
+			 </li>
+		   </ul>  
+			<div id="chart" class="orgChart"></div>
+    </script>
+	<!--customer hiararchy Template END -->
+	
 	
 	<script id="popupBottomTemplate" type="text/html">
 		<div class="row" style="background-image:url('img/profileBottomBack.png');background-repeat:x">
@@ -481,10 +548,10 @@
 										<div class="col-xs-1 col-md-1 col-sm-1 pointer leftPaginationArrow">
 											<span style="font-size:0px">&nbsp&nbsp</span>
 										</div>
-										<div class="col-xs-1 col-md-1 col-sm-1 pointer bluePagination">
+										<div id="popupNav1" class="col-xs-1 col-md-1 col-sm-1 popupPagination pointer bluePagination" onclick="showHideCustomerHierarchy($(this));">
 											<span style="font-size:0px">&nbsp&nbsp</span>
 										</div>
-										<div class="col-xs-1 col-md-1 col-sm-1 pointer grayPagination">
+										<div id="popupNav2" class="col-xs-1 col-md-1 col-sm-1 popupPagination pointer grayPagination" onclick="showHideCustomerHierarchy($(this));">
 											<span style="font-size:0px">&nbsp&nbsp</span>
 										</div>
 										<div class="col-xs-1 col-md-1 col-sm-1 pointer rightPaginationArrow">
