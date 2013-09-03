@@ -1,10 +1,7 @@
 
 $(document).ready(function (e) {
-
-	$("#mapPointerImg").on("click", function(){
-		//console.log("go to specified location on google maps");
-		
-	});
+ 
+  
 	$("#conatainerr").css({'width':$(window).width()});
 	$("#nameSearch, #codeSearch").each(function(){
 		$(this).height($("#searchForm").height()-2);
