@@ -62,14 +62,6 @@ $(document).ready(function (e) {
 	});
 
 
-	$("#closeImg").on("click", function(){
-		alert("close button clicked");
-	});
-	
-	$(".openPopupBtn").on("click", function(e){
-		console.log(e);
-		//showPopup(e);
-	});
 	$(".openPopupBtn").hover(function () {
 		$(this).css({'width':'98%'});
 	},function(){
@@ -83,15 +75,18 @@ $(document).ready(function (e) {
 	$("#searchBtn").on("click", function(){
 		customerSearch();
 	});
-	
 
 });
 function showPopup(e){
+
 	fillPopupData(e);
+	
 	 $('#popupProfileContainer').fadeIn('slow', function() {
 		$('#popupProfileContainer').css('display','block');
     });
 	$("#searchPageContainer").css({'display':'none'});
+	
+	showPopupMain();
 }
 function closePopup(){
 
@@ -99,7 +94,7 @@ function closePopup(){
 		$('#searchPageContainer').css('display','block');		
     });
 	$("#popupProfileContainer").css({'display':'none'});	
-	//$("#popupProfileContainer").empty();
+
 	emptyPopup();
 }
 function emptyPopup(){
@@ -109,8 +104,6 @@ function emptyPopup(){
 	$("#customerHierarchyContainer").empty();
 	$("#profileBottomContainer").empty();
 }
-
-
 function positionOfCompanyTitleInPopup(){
 	$("#companyTitle").css({
 				position: "absolute",
@@ -118,7 +111,6 @@ function positionOfCompanyTitleInPopup(){
 				left: ($("#profile").position().left + 20) + "px"
 			}).show();
 }
-
 function searchPlusExpand(elem){
 	
 		var container = elem.parents("div#container");
@@ -190,19 +182,40 @@ function showCustomerHierarchy(){
 	prettyPrint(); // call prettyPrint function from prettify.js
 }	
 function showHideCustomerHierarchy(elem){
-	if(elem.hasClass("bluePagination"))
-		return;
-	else{ 
-		if(elem.attr("id") == "popupNav1")
-			showPopupMain();
-		else if(elem.attr("id") == "popupNav2")
+
+	if(elem.hasClass("rightPaginationArrow"))
+		if($("#popupNav2").hasClass("bluePagination"))
+			return;
+		else{
 			showCustomerHierarchy();
+			changePopupNavigationClass($("#popupNav2"));
+		}
+	else if(elem.hasClass("leftPaginationArrow"))
+		if($("#popupNav1").hasClass("bluePagination"))
+			return;
+		else{
+			showPopupMain();
+			changePopupNavigationClass($("#popupNav1"));
+		}
+			
+	else{
+		if(elem.hasClass("bluePagination"))
+			return;
+		else{ 
+			if(elem.attr("id") == "popupNav1")
+				showPopupMain();
+			else if(elem.attr("id") == "popupNav2")
+				showCustomerHierarchy();
+		}
+		changePopupNavigationClass(elem);
 	}
+
+}
+function changePopupNavigationClass(elem){
 	$(".popupPagination").each(function(){
 		$(this).addClass('grayPagination').removeClass('bluePagination');
 	});
 	elem.addClass('bluePagination').removeClass('grayPagination');
-
 }
 function showPopupMain(){
 	$('#profileScroolContainer').fadeIn('slow', function() {
