@@ -39,7 +39,6 @@ function writeCustomerSearchResults(node){
 	
 	expandMembersAjax(node.entityId, node.entityType);
 }
-
 function expandMembersAjax(entityId, entityType){
 
 	$.ajax({
@@ -68,8 +67,6 @@ function writexpandMembersResults(node, entityId){
 	var output = $('#CustomerSearchResultsExpandMembersTemplate').parseTemplate(node);
 	container.append(output);
 }
-
-
 function fillPopupData(element)
 {
 	var entityType = element.parent().attr("id");
@@ -90,13 +87,12 @@ function fillPopupData(element)
 		}
     });	
 }
-
 function writeCustomerOverview(json, entityType, entityId){
 	writeCustomerOverviewHeader(json, entityId);
 	writeCustomerOverviewSumary(json, entityId);
 	writeCustomerOverviewRows(json, entityId);
 	CustomerOverviewMemberDetails(entityType);
-	writeCustomerHierarchy(json, entityId);
+	writeCustomerHierarchy(json, entityType, entityId);
 	writeCustomerOverviewBottom(json, entityId);
 }
 function writeCustomerOverviewHeader(node, entityId){
@@ -145,16 +141,33 @@ function writeCustomerOverviewMemberDetails(parentId, node){
 	var output = $('#popupSubRowsTemplate').parseTemplate(node);
 	$("#"+parentId).append(output);
 }
-
 function writeCustomerOverviewBottom(node, entityId){
 	var output = $('#popupBottomTemplate').parseTemplate(node);
 	$("#profileBottomContainer").append(output);
 }
-function writeCustomerHierarchy(node, identityId){
+function writeCustomerHierarchy(node, entityType, identityId){
 	var output = $('#CustomerHierarchyTemplate').parseTemplate(node);
 	$("#customerHierarchyContainer").append(output);
 	$("#org").jOrgChart({
             chartElement : '#chart',
             dragAndDrop  : true
         });
+		
+	/*
+	$.ajax({
+        type:"GET",
+        url: "http://gcs.ventiv.com.au/gcs/v1/" + "customerchartdata.jsonp" + '?callback=?',
+        data: { "entityType": entityType, "entityId": entityId, "type": CREDIT},
+        contentType:"application/json",
+        beforeSend: function(jqXHR) {
+            jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
+        },
+        dataType:"jsonp",
+		success: function (json, idtype){	
+			if(json.success == true){
+				writeCustomerHierarchy(json, entityType, entityId);
+			}
+		}
+    });	
+	*/
 }
