@@ -262,7 +262,7 @@ function writeCustomerOverviewBottom(node, entityId){
 	var output = $('#popupBottomTemplate').parseTemplate(node);
 	$("#profileBottomContainer").append(output);
 }
-function writeCustomerHierarchy(node, entityType, identityId){
+function writeCustomerHierarchy(node, entityType, entityId){
 	var output = $('#CustomerHierarchyTemplate').parseTemplate(node);
 	$("#customerHierarchyContainer").append(output);
 	$("#org").jOrgChart({
@@ -270,11 +270,11 @@ function writeCustomerHierarchy(node, entityType, identityId){
             dragAndDrop  : true
         });
 		
-	/*
+	/*console.log("hierarchy");
 	$.ajax({
         type:"GET",
         url: "http://gcs.ventiv.com.au/gcs/v1/" + "customerchartdata.jsonp" + '?callback=?',
-        data: { "entityType": entityType, "entityId": entityId, "type": CREDIT},
+        data: { "entityType": entityType, "entityId": entityId, "type": "CREDIT"},
         contentType:"application/json",
         beforeSend: function(jqXHR) {
             jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
@@ -282,9 +282,9 @@ function writeCustomerHierarchy(node, entityType, identityId){
         dataType:"jsonp",
 		success: function (json, idtype){	
 			if(json.success == true){
-				writeCustomerHierarchy(json, entityType, entityId);
+				console.log(json);//(json, entityType, entityId);
 			}
 		}
-    });	
-	*/
+    });	*/
+	
 }
