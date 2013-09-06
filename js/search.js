@@ -231,15 +231,12 @@ function writeCustomerOverviewRows(json, entityId){
 }
 function CustomerOverviewMemberDetails(entityType){
 	
-	var parentId = "";
 	var srcCode = "";
 	var systemId = "";
-	
 	$.each($(".ProfileRowsContainer"), function(e){
-		parentId = $(this).attr("id");
+		var parentId = $(this).attr("id");
 		systemId = parentId;
 		srcCode = $(this).children().first().attr("id");
-
 		$.ajax({
 			type:"GET",
 			url: "http://gcs.ventiv.com.au/gcs/v1/" + "memberdetails.jsonp" + '?callback=?',
