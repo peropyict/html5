@@ -192,6 +192,36 @@ function writeCustomerOverviewHeader(node, entityId){
 function writeCustomerOverviewSumary(node, entityId){	
 	var output = $('#popupSumaryTemplate').parseTemplate(node);
 	$("#profileScroolContainer").append(output);
+
+	/**Rules for vertical highlight colour for Entity boxes START**/
+	if(node.entity.upstreamEntities.length > 0)
+		$(".upstreamEntitiesContent").css({"background-image":"url('img/profileCol3Green.png')"});
+	else
+		$(".upstreamEntitiesContent").css({"background-image":"url('img/profile_red_small.png')"});
+		
+	if(node.entity.coreBankingEntities.length > 0)
+		$(".coreBankingEntitiesContent").css({"background-image":"url('img/profileCol3Green.png')"});
+	else
+		$(".coreBankingEntitiesContent").css({"background-image":"url('img/profile_red_small.png')"});
+		
+	if(node.entity.externalRegistryEntities.length > 0)
+		$(".externalRegistryEntitiesContent").css({"background-image":"url('img/profileCol3Green.png')"});
+	else
+		$(".externalRegistryEntitiesContent").css({"background-image":"url('img/profile_red_small.png')"});
+		
+	if(node.entity.tradingEntities.length > 0)
+		$(".tradingEntitiesContent").css({"background-image":"url('img/profileCol3Green.png')"});
+	else
+		$(".tradingEntitiesContent").css({"background-image":"url('img/profileCol3Yellow.png')"});
+	
+	if(node.entity.downstreamEntities){
+		if(node.entity.downstreamEntities.length > 0)
+			$(".downstreamEntitiesContent").css({"background-image":"url('img/profileCol3Green.png')"});
+		else
+			$(".downstreamEntitiesContent").css({"background-image":"url('img/profileCol3Yellow.png')"});
+	}
+	/**Rules for vertical highlight colour for Entity boxes END**/
+	
 }
 function writeCustomerOverviewRows(json, entityId){
 	for(var i=0; i < json.entity.members.length; i++){
