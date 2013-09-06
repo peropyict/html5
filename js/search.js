@@ -104,6 +104,23 @@ function customersearchCallback(json){
 			totalResultsNumber = "No results found";
 		$("#noOfSearchResult").append(totalResultsNumber);
     }
+	$(".customerResultName").each(function(){
+		var resultname = $(this).html();
+		var newresultName = resultname;
+		var orgSearchedName = $("#nameSearch").val();
+
+		if (resultname.indexOf(orgSearchedName) >= 0){
+			newresultname = resultname.substring(0, resultname.indexOf(orgSearchedName))+ "<strong>" + orgSearchedName + "</strong>" + resultname.substring(resultname.indexOf(orgSearchedName) + orgSearchedName.length, resultname.length);
+		
+			$(this).html(newresultname);
+		}
+		else if (resultname.indexOf(orgSearchedName.toUpperCase()) >= 0){
+			newresultname = resultname.substring(0, resultname.indexOf(orgSearchedName.toUpperCase()))+ "<strong>" + orgSearchedName.toUpperCase() + "</strong>" + resultname.substring(resultname.indexOf(orgSearchedName.toUpperCase()) + orgSearchedName.length, resultname.length);
+		
+			$(this).html(newresultname);
+		}		
+	});
+	
 }
 /*TODO null instead plus button, if doesn't contain members*/
 function writeCustomerSearchResults(node){
