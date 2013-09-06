@@ -69,6 +69,24 @@ $(document).ready(function (e) {
 
 	});
 	
+	/******** "GO" keypress event start********/
+	$("#organisationSearchForm").on("keypress", function(e){	
+		if(e.which === 13) {
+			customerOrganisationSearch();
+		}
+	});
+	$("#individualSearchForm").on("keypress", function(e){	
+		if(e.which === 13) {
+			customerIndividualSearch();
+		}
+	});
+	$("#SystemSearchForm").on("keypress", function(e){	
+		if(e.which === 13) {
+			customerSystemSearch();
+		}
+	});
+	/******** "GO" keypress event end********/
+	
 	/***validation stuff - remove warnings - start***/
 	$("#nameSearch").on("keydown", function(){
 		$("#nameSearch").parent().removeClass("has-error");
@@ -84,6 +102,7 @@ $(document).ready(function (e) {
 		});
 	});
 	/***validation stuff - remove warnings - end***/
+	
 	
 });
 function showPopup(e){
