@@ -135,10 +135,18 @@
 	<script id="CustomerSearchResultsTemplate" type="text/html">
 		<div id="container">
 				<div id="<#= entityId #>"  class="row border_top_main_row"><div class="col-xs-5 col-sm-5 col-md-5" >
-						<div class="row">							
-							<div class="col-xs-1 col-sm-1 col-md-1 memberCountPlus plusSearchResult plusResult" id="plusResult" onclick="searchPlusExpand($(this))">
-								<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
-							</div>
+						<div class="row">	
+							<# if (memberCount > 0) { #>
+								<div class="col-xs-1 col-sm-1 col-md-1 memberCountPlus plusSearchResult plusResult" id="plusResult" onclick="searchPlusExpand($(this))">
+									<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
+								</div>
+							<#}
+							else{ #>
+								<div class="col-xs-1 col-sm-1 col-md-1 memberCountNoPlus plusSearchResult plusResult" id="plusResult">
+									<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
+								</div>
+							<#}
+							#>	
 							<div class="col-xs-7 col-sm-10 col-md-10 padding_left_28">
 								<# if(address != null) { #>
 									<div style="line-height: 25px; ">									

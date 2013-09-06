@@ -373,6 +373,15 @@ background:transparent !important;
 	background-repeat:no-repeat;
 	background-position:left;
 }
+.memberCountNoPlus{
+	display:inline-block;
+	min-height:1px;
+	min-width:50px;
+	line-height: 50px;
+	background-image:url('../img/plusResultNull.png');
+	background-repeat:no-repeat;
+	background-position:left;
+}
 .score{
 	line-height: 50px; 
 	background-image:url('../img/search_number.png');
