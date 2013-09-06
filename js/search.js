@@ -1,14 +1,87 @@
-function customerSearch(){
-
+function customerOrganisationSearch(){
+	/**empty previous results**/
 	$("#resultContainers").empty();
-	var totalResultsNumber = "";
-	$("#noOfSearchResult").empty();
-	
+	$("#noOfSearchResult").empty();	
+	/**get input values**/
+	var orgName = $("#nameSearch").val();
+	var orgLocation = $("#codeSearch").val();
+	/**validation**/
+	if(orgName == ""){
+		$("#nameSearch").parent().addClass("has-error");
+		$("#nameSearch").focus();
+		return;
+	}
+	/**Ajax request**/
 	$.ajax({
         type:"POST",
         url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.jsonp" + '?callback=?',
 		//jsonpCallback: "customersearchCallback",
-        data: { "orgName": "MORGAN", "systemType": "MUREXID"},
+        data: { "orgName": orgName, "orgLocation": orgLocation},
+        contentType:"application/json",
+        beforeSend: function(jqXHR) {
+            jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
+        },
+        dataType:"jsonp",
+		success: function (json){
+			customersearchCallback(json);
+		}
+    });	
+}
+function customerIndividualSearch(){
+	/**empty previous results**/
+	$("#resultContainers").empty();
+	$("#noOfSearchResult").empty();	
+	/**get input values**/
+	var individualFamilyName = $("#fnameSearch").val();
+	var individualGivenName = $("#gnameSearch").val();
+	var individualLocation = $("#postcodeSearch").val();
+	/**validation**/
+	if((individualFamilyName == "") && (individualGivenName == "") && (individualLocation == "")){
+		$("#individualSearchForm").children().each(function(){
+			if($(this).hasClass("form-group"))
+				$(this).addClass("has-error");
+		});
+		$("#fnameSearch").focus();
+		return;
+	}	
+	/**Ajax request**/
+	$.ajax({
+        type:"POST",
+        url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.jsonp" + '?callback=?',
+		//jsonpCallback: "customersearchCallback",
+        data: { "individualFamilyName": individualFamilyName, "individualGivenName": individualGivenName, "individualLocation": individualLocation},
+        contentType:"application/json",
+        beforeSend: function(jqXHR) {
+            jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
+        },
+        dataType:"jsonp",
+		success: function (json){
+			customersearchCallback(json);
+		}
+    });	
+}
+function customerSystemSearch(){
+	/**empty previous results**/
+	$("#resultContainers").empty();
+	$("#noOfSearchResult").empty();	
+	/**get input values**/
+	var systemType = $("#systemTypeSearch").val();
+	var systemId = $("#systemIdSearch").val();
+	/**validation**/
+	if((systemType == "") && (systemId == "")){
+		$("#SystemSearchForm").children().each(function(){
+			if($(this).hasClass("form-group"))
+				$(this).addClass("has-error");
+		});
+		$("#systemTypeSearch").focus();
+		return;
+	}
+	/**Ajax request**/
+	$.ajax({
+        type:"POST",
+        url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.jsonp" + '?callback=?',
+		//jsonpCallback: "customersearchCallback",
+        data: { "systemType": systemType, "systemId": systemId},
         contentType:"application/json",
         beforeSend: function(jqXHR) {
             jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
@@ -52,7 +125,7 @@ function expandMembersAjax(entityId, entityType){
         dataType:"jsonp",
 		helperData: {entityId: entityId, entityType: entityType},
 		success: function (json, idtype){	
-			console.log(this.helperData.entityId);
+			//console.log(this.helperData.entityId);
 			if(json.success == true){
 				for(var i=0; i < json.results.length; i++){
 					writexpandMembersResults(json.results[i], this.helperData.entityId);

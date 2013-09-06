@@ -69,10 +69,22 @@ $(document).ready(function (e) {
 
 	});
 	
-	$("#searchBtn").on("click", function(){
-		customerSearch();
+	/***validation stuff - remove warnings - start***/
+	$("#nameSearch").on("keydown", function(){
+		$("#nameSearch").parent().removeClass("has-error");
 	});
-
+	$("#fnameSearch, #gnameSearch, #postcodeSearch").on("keydown", function(){
+		$("#individualSearchForm").children().each(function(){
+			$(this).removeClass("has-error");
+		});
+	});	
+	$("#systemTypeSearch, #systemIdSearch").on("keydown", function(){
+		$("#SystemSearchForm").children().each(function(){
+			$(this).removeClass("has-error");
+		});
+	});
+	/***validation stuff - remove warnings - end***/
+	
 });
 function showPopup(e){
 

@@ -80,27 +80,29 @@
 				<div class="col-xs-4 col-md-4 searchCategoryPasive" id="System" style="height: 50px;">System</div>
 			</div>
 		
-			<div class="row col-xs-12 col-md-12 Organisation searchFormVisible" id="organisationSearchForm">
-				<div class="col-xs-5 col-md-5 " id="inputContainer">
-					<div class="row">
-						<input type="text" placeholder="Enter name here" id="nameSearch" class="form-control " style="height: 50px;">
+			<div class="row col-xs-12 col-md-12 Organisation searchFormVisible searchForm" id="organisationSearchForm">
+				<div class="row col-xs-10 col-md-10 inputContainer">
+					<div class="col-xs-6 col-md-6 " id="inputContainer">
+						<div class="row form-group">
+							<input type="text" placeholder="Enter name here" id="nameSearch" class="form-control " style="height: 50px;">
+						</div>
 					</div>
+					<div class="col-xs-6 col-md-6 col-wrap form-group" id="inputContainer"><input type="text" placeholder="Enter suburb or post code" id="codeSearch" class="form-control  padding_left_28" style="height: 50px;"></div>
 				</div>
-				<div class="col-xs-5 col-md-5 col-wrap " id="inputContainer"><input type="text" placeholder="Enter suburb or post code" id="codeSearch" class="form-control  padding_left_28" style="height: 50px;"></div>
-				<div class="col-xs-2 col-md-2 " ><button id="searchBtn" class="btn btn-block full-width"><strong>Search</strong></button></div>
+				<div class="col-xs-2 col-md-2 " ><button id="searchBtn" class="btn btn-block full-width" onclick="customerOrganisationSearch()"><strong>Search</strong></button></div>
 			</div>
 			
-			<div class="row col-xs-12 col-md-12 Individuals searchFormHiden" id="individualSearchForm">
-				<div class="col-xs-4 col-md-4 " id="inputContainer"><input type="text" placeholder="Enter name here" id="nameSearch" class="form-control" style="height: 50px;"></div>
-				<div class="col-xs-3 col-md-3 col-wrap " id="inputContainer"><input type="text" placeholder="Enter suburb or post code" id="codeSearch" class="form-control padding_left_28" style="height: 50px;"></div>
-				<div class="col-xs-3 col-md-3 col-wrap " id="inputContainer"><input type="text" placeholder="Enter suburb or post code" id="codeSearch" class="form-control padding_left_28" style="height: 50px;"></div>
-				<div class="col-xs-2 col-md-2 " ><button class="btn btn-block full-width"><strong>Search</strong></button></div>
+			<div class="row col-xs-12 col-md-12 Individuals searchFormHiden searchForm" id="individualSearchForm">
+				<div class="col-xs-4 col-md-4 form-group" id="inputContainer"><input type="text" placeholder="Enter family name here" id="fnameSearch" class="form-control" style="height: 50px;"></div>
+				<div class="col-xs-3 col-md-3 col-wrap form-group" id="inputContainer"><input type="text" placeholder="Enter given name here" id="gnameSearch" class="form-control padding_left_28" style="height: 50px;"></div>
+				<div class="col-xs-3 col-md-3 col-wrap form-group" id="inputContainer"><input type="text" placeholder="Enter suburb or post code" id="postcodeSearch" class="form-control padding_left_28" style="height: 50px;"></div>
+				<div class="col-xs-2 col-md-2 " ><button class="btn btn-block full-width" onclick="customerIndividualSearch()"><strong>Search</strong></button></div>
 			</div>
 			
-			<div class="row col-xs-12 col-md-12 System searchFormHiden" id="SystemSearchForm">
-				<div class="col-xs-5 col-md-5 " id="inputContainer"><input type="text" placeholder="Enter System followed by the ID" id="nameSearch" class="form-control" style="height: 50px;"></div>
-				<div class="col-xs-5 col-md-5 col-wrap " id="inputContainer"><input type="text" placeholder="Enter Identifier" id="codeSearch" class="form-control padding_left_28" style="height: 50px;"></div>
-				<div class="col-xs-2 col-md-2 " ><button class="btn btn-block full-width"><strong>Search</strong></button></div>
+			<div class="row col-xs-12 col-md-12 System searchFormHiden searchForm" id="SystemSearchForm">
+				<div class="col-xs-5 col-md-5 form-group" id="inputContainer"><input type="text" placeholder="Enter System followed by the ID" id="systemTypeSearch" class="form-control" style="height: 50px;"></div>
+				<div class="col-xs-5 col-md-5 col-wrap form-group" id="inputContainer"><input type="text" placeholder="Enter Identifier" id="systemIdSearch" class="form-control padding_left_28" style="height: 50px;"></div>
+				<div class="col-xs-2 col-md-2 " ><button class="btn btn-block full-width" onclick="customerSystemSearch()"><strong>Search</strong></button></div>
 			</div>
 			
 
@@ -138,7 +140,7 @@
 								<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
 							</div>
 							<div class="col-xs-7 col-sm-10 col-md-10 padding_left_28">
-								<# if(typeof address != 'undefined') { #>
+								<# if(address != null) { #>
 									<div style="line-height: 25px; ">									
 										<#= name #> &nbsp(<#= memberCount #>)
 									</div>

@@ -30,7 +30,10 @@ img {display: block;margin:0 auto;}
 #inputContainer{
 	height:50px;
 }
-#nameSearch{
+.form-group{
+	margin-bottom: 0px !important ;
+}
+#nameSearch, #fnameSearch, #systemTypeSearch{
 	
 	background-image: url("../img/searchLeftBtn.png");
 	background-position: left center;
@@ -46,7 +49,7 @@ img {display: block;margin:0 auto;}
 	width: 100%;
 	border-radius: 0px !important;
 }
-#codeSearch{
+#codeSearch, #gnameSearch, #postcodeSearch, #systemIdSearch{
 	width:100%;
 	padding-right:0 !important;
 	border-radius: 0 !important;
