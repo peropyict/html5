@@ -80,16 +80,35 @@
 				<div class="col-xs-4 col-md-4 searchCategoryPasive" id="System" style="height: 50px;">System</div>
 			</div>
 		
-			<div class="row col-xs-12 col-md-12 Organisation searchFormVisible searchForm" id="organisationSearchForm">
-				<div class="row col-xs-10 col-md-10 inputContainer">
-					<div class="col-xs-6 col-md-6 " id="inputContainer">
+			<!--div class="row col-xs-12 col-md-12 Organisation searchFormVisible searchForm inputContainer1024" id="organisationSearchForm">
+				<div class="row col-xs-12 col-md-12 inputContainer1024">
+					<div class="col-xs-6 col-md-6 " id="inputContainer1">
 						<div class="row form-group">
 							<input type="text" placeholder="Enter name here" id="nameSearch" class="form-control " style="height: 50px;">
 						</div>
 					</div>
-					<div class="col-xs-6 col-md-6 col-wrap form-group" id="inputContainer"><input type="text" placeholder="Enter suburb or post code" id="codeSearch" class="form-control  padding_left_28" style="height: 50px;"></div>
+					<div class="col-xs-6 col-md-6 col-wrap form-group" id="inputContainer2">
+					
+					<input type="text" placeholder="Enter suburb or post code" id="codeSearch" class="form-control  padding_left_28" style="height: 50px;">
+					<button id="searchBtn" class="btn btn-block full-width" onclick="customerOrganisationSearch()"><strong>Search</strong></button>
+					
+					</div>
 				</div>
-				<div class="col-xs-2 col-md-2 " ><button id="searchBtn" class="btn btn-block full-width" onclick="customerOrganisationSearch()"><strong>Search</strong></button></div>
+			</div-->
+			<div class="row col-xs-12 col-md-12 Organisation searchFormVisible searchForm inputContainer768" id="organisationSearchForm">
+				<div class="row col-xs-10 col-md-10 inputContainer col-width-88">
+					<div class="col-xs-6 col-md-6 col-width-50" id="inputContainer">
+						<div class="row form-group">
+							<input type="text" placeholder="Enter name here" id="nameSearch" class="form-control " style="height: 50px;">
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-6 col-wrap form-group col-width-38" id="inputContainer">
+					
+					<input type="text" placeholder="Enter suburb or post code" id="codeSearch" class="form-control  padding_left_28" style="height: 50px;">
+					
+					</div>
+				</div>
+				<div class="col-xs-2 col-md-2 col-width-12" ><button id="searchBtn" class="btn btn-block full-width" onclick="customerOrganisationSearch()"><strong>Search</strong></button></div>
 			</div>
 			
 			<div class="row col-xs-12 col-md-12 Individuals searchFormHiden searchForm" id="individualSearchForm">
@@ -133,76 +152,88 @@
 	<!--templates start-->
 	
 	<script id="CustomerSearchResultsTemplate" type="text/html">
-		<div id="container">
-				<div id="<#= entityId #>"  class="row border_top_main_row"><div class="col-xs-5 col-sm-5 col-md-5" >
-						<div class="row">	
-							<# if (memberCount > 0) { #>
-								<div class="col-xs-1 col-sm-1 col-md-1 memberCountPlus plusSearchResult plusResult" id="plusResult" onclick="searchPlusExpand($(this))">
-									<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
+			<div id="container">
+				<div id="<#= entityId #>"  class="row border_top_main_row">
+					<div class="row">	
+						<div class="row col-xs-10 col-md-10 col-width-88">
+							<div class="col-xs-6 col-md-6 col-width-50" style="float:left;" id="subResultName">
+								<div class="row">
+										<# if (memberCount > 0) { #>
+											<div class="col-xs-1 col-sm-1 col-md-1 memberCountPlus plusSearchResult plusResult" id="plusResult" onclick="searchPlusExpand($(this))">
+												<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
+											</div>
+										<#}
+										else{ #>
+											<div class="col-xs-1 col-sm-1 col-md-1 memberCountNoPlus plusSearchResult plusResult" id="plusResult">
+												<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
+											</div>
+										<#}
+										#>
+										<div class="row col-xs-11 col-sm-11 col-md-11 padding_left_28" style="width:calc(100% - 50px)">
+											<# if(address != null) { #>
+												<div class="customerResultName" style="line-height: 25px;">	
+													<#= name #> &nbsp(<#= memberCount #>)
+												</div>
+												<div style="line-height: 25px; ">
+													<small><#= address #></small>
+												</div>
+											<#}
+											else{ #>
+												<div class="customerResultName" style="line-height: 50px; ">									
+													<#= name #> &nbsp(<#= memberCount #>)
+												</div>
+											<#}
+											#>
+										</div>
 								</div>
-							<#}
-							else{ #>
-								<div class="col-xs-1 col-sm-1 col-md-1 memberCountNoPlus plusSearchResult plusResult" id="plusResult">
-									<span style="font-size:1px;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>
+							</div>
+							
+							<div class="col-xs-6 col-md-6 col-width-38" style="float:right;">
+								<div class="row">
+									<div class="col-xs-4 col-sm-4 col-md-4 glob_no_line">
+										<small><#= systemType #></small>
+									</div>
+									<div class="col-xs-6 col-xs-offset-6 col-sm-6 col-sm-offset-1 col-md-6 col-md-offset-1 glob_no_line" > 									<#= systemId #>
+									</div>
 								</div>
-							<#}
-							#>	
-							<div class="col-xs-7 col-sm-10 col-md-10 padding_left_28">
-								<# if(address != null) { #>
-									<div class="customerResultName" style="line-height: 25px;">	
-										<#= name #> &nbsp(<#= memberCount #>)
-									</div>
-									<div style="line-height: 25px; ">
-										<small><#= address #></small>
-									</div>
-								<#}
-								else{ #>
-									<div class="customerResultName" style="line-height: 50px; ">									
-										<#= name #> &nbsp(<#= memberCount #>)
-									</div>
-								<#}
-								#>
 							</div>
 						</div>
-					</div>
-					<div class="row col-xs-5 col-sm-5 col-md-5">
-						<div class="row">
-							<div class="col-xs-4 col-sm-4 col-md-4 glob_no_line">
-								<small><#= systemType #></small>
+						
+						<div class="col-xs-1 col-md-1 col-width-12">
+							<div class="col-xs-6 col-sm-6 col-md-6 text-center search_number" style="height:50px;">
+								<div class="score">								
+									<small><#= score #></small>
+								</div>
 							</div>
-							<div class="col-xs-6 col-xs-offset-6 col-sm-6 col-sm-offset-1 col-md-6 col-md-offset-1 glob_no_line" > 									<#= systemId #>
-							</div>
+							<div id="<#= entityType #>" class="col-xs-6 col-sm-6 col-md-6" style="text-align:center">						
+								<div id="<#= entityId #>" class="col-xs-1 col-md-1 openPopupBtn playButton pointer" onclick="showPopup($(this))">
+								  &nbsp&nbsp&nbsp			
+								</div>						
+							</div>	
 						</div>
-					</div>
-						<div class="col-xs-1 col-sm-1 col-md-1 text-center search_number" style="height:50px;">
-							<div class="score">								
-								<small><#= score #></small>
-							</div>
-						</div>
-						<div id="<#= entityType #>" class="col-xs-1 col-sm-1 col-md-1" style="text-align:center">						
-							<div id="<#= entityId #>" class="col-xs-1 col-md-1 openPopupBtn playButton pointer" onclick="showPopup($(this))">
-							  &nbsp&nbsp&nbsp			
-							</div>						
-						</div>						
-				</div></div>
+					</div>	
+				</div>
+			</div>
 	</script>
 	
 	<script id="CustomerSearchResultsExpandMembersTemplate" type="text/html">
 		<div class="row" id="subResultContainer">
-					<div class="col-xs-5 col-sm-5 col-md-5">
-						<div class="col-xs-1 col-sm-1 col-md-1" id="subFirstColResult" style="width:50px">
-							<span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></div>
-						<div class="col-xs-7 col-sm-10 col-md-10 padding_left_28" id="subResultName">
-							<#= name #>
-						</div>
-					</div>
-					<div class="col-xs-5 col-sm-5 col-md-5">
+			<div class="row col-xs-10 col-md-10 col-width-88">
+					<div class="col-xs-6 col-md-6 col-width-50" style="padding-left: 28px !important; float:left;" id="subResultName">
 						<div class="row">
-							<div class="col-xs-4 col-sm-4 col-md-4" id="subsubUrb"><#= systemType #></div>
-							<div class="col-xs-6 col-sm-6 col-md-6 col-sm-offset-1 col-md-offset-1" id="subpostCode"><#= systemId #></div>
+							<div class="col-xs-1 col-md-1 " style="width:50px; float:left;"><img src="img/subRowsDevider.png"></div>
+							<div class="row col-xs-11 col-sm-11 col-md-11" style="border-bottom:1px solid #d0c7a8; width:calc(100% - 50px)">
+								<#= name #>
+							</div>
 						</div>
+						</div>							
+					<div class="col-xs-6 col-md-6 col-width-38" style="float:right; border-bottom:1px solid #d0c7a8;">
+						<div class="col-xs-4 col-sm-4 col-md-4" id="subsubUrb"  float:left"><#= systemType #></div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-sm-offset-1 col-md-offset-1" id="subpostCode" style="float:left"><#= systemId #></div>
 					</div>
-				</div>
+			</div>
+			<div class="col-xs-1 col-md-1 col-width-12"></div>
+		</div>
 	</script>
 	
 	
