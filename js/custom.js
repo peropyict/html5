@@ -80,8 +80,6 @@ function waitHide(){
 	$('#ajaxBusy').css({'display':'none'});
 }
 function showPopup(e){
-	/*if($(".ui-loader").css('display') == 'block')//prevent double click
-		return;*/
 	if($("#ajaxBusy").css('display') == 'block')//prevent double click
 		return;
 	fillPopupData(e);	
@@ -89,6 +87,11 @@ function showPopup(e){
 	/*$('#popupProfileContainer').fadeIn('slow', function() {$('#popupProfileContainer').css('display','block');});
 	$("#searchPageContainer").css({'display':'none'});*/	
 	showPopupMain();
+}
+function showPopupOnRowClick(e){
+	var container = e.parents("div#container");
+	var playElement = container.find("div.playButton");
+	showPopup(playElement);
 }
 function closePopup(){
 
@@ -132,11 +135,9 @@ function searchPlusExpand(elem,e){
 			else{
 				container.children("div#subResultContainer").each(function(e){
 					$(this).css({"display": "block" });
-					/*$(this).addClass('test');*/
 				});
 				container.children("div#subResultContainer").last().children().css({'border-bottom':'0px'});
-			}
-			
+			}			
 			/****hide bottom1 line****/
 			showHideElements($("#bottom1"), false);
 			
@@ -203,7 +204,6 @@ function gotoAddress(elem){
 }*/	
 function showHideCustomerHierarchy(elem){
 	//prevent double click
-	console.log(translationInProgress);
 	if(translationInProgress)
 		return;
 	if(elem.hasClass("rightPaginationArrow"))
@@ -275,7 +275,7 @@ function showCustomerHierarchy(){
 	translationInProgress = true;
 	//$(".ui-loader").css({'display':'block'});
 	var heightTranslation =$("#customerHierarchyContainer").css('height');
-	console.log(heightTranslation);
+
 	$('#customerProfileContainer').css({'height':heightTranslation});
 	$('#customerProfileContainer').css({'width':'100%'});
 	$("#customerProfileContainer").css({'display':'block'});

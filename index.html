@@ -210,7 +210,7 @@
 											<div style="float:left" class="col-xs-1 col-sm-1 col-md-1 noExpandResult"></div>
 										<#}
 										#>
-										<div class=" col-xs-11 col-sm-11 col-md-11 padding_left_28" style="width:calc(100% - 50px); height:60px; display:inline-clock; overflow:hidden; float:left" onclick="showPopup($(this));">
+										<div class=" col-xs-11 col-sm-11 col-md-11 padding_left_28" style="width:calc(100% - 50px); height:60px; display:inline-clock; overflow:hidden; float:left" onclick="showPopupOnRowClick($(this));">
 											<# if(address != null) { #>
 												<div class="customerResultName" style="line-height: 25px;">	
 													<#= name #> &nbsp(<#= memberCount #>)
@@ -229,7 +229,7 @@
 								</div>
 							</div>
 							
-							<div class="col-xs-6 col-md-6 searchResultIIofII" style="float:right;">
+							<div class="col-xs-6 col-md-6 searchResultIIofII" style="float:right;" onclick="showPopupOnRowClick($(this));">
 								<div class="row">
 									<div class="col-xs-4 col-sm-4 col-md-4 glob_no_line searchResultIofIIPartI">
 										<#= systemType #>
@@ -240,14 +240,14 @@
 							</div>
 						</div>
 						
-						<div id="mainSearchRowResultPart2" class="col-xs-1 col-md-1  mainSearchRowResultPart2" style="">
+						<div id="mainSearchRowResultPart2" class="col-xs-1 col-md-1  mainSearchRowResultPart2" onclick="showPopupOnRowClick($(this));">
 							<div class="col-xs-6 col-sm-6 col-md-6 text-center search_number" style="height:60px;">
 								<div class="score">								
 									<#= score #>
 								</div>
 							</div>
 							<div id="<#= entityType #>" class="col-xs-6 col-sm-6 col-md-6" style="text-align:center">						
-								<div id="<#= entityId #>" data-transition="pop" class="col-xs-1 col-md-1 openPopupBtn playButton pointer" onclick="showPopup($(this))">
+								<div id="<#= entityId #>" data-transition="pop" class="col-xs-1 col-md-1 openPopupBtn playButton pointer" >
 								  &nbsp&nbsp&nbsp			
 								</div>						
 							</div>	

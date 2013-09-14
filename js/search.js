@@ -14,7 +14,6 @@ function customerOrganisationSearch(){
 		return;
 	}
 	/**Ajax request**/
-	//$(".ui-loader").css({'display':'block'});
 	waitShow();
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
@@ -29,9 +28,7 @@ function customerOrganisationSearch(){
         dataType:"jsonp",
 		success: function (json){
 			customersearchCallback(json);
-			//$(".ui-loader").css({'display':'none'});
 			waitHide();
-			//$.mobile.loading( "hide" );
 		}
     });	
 }
@@ -54,7 +51,6 @@ function customerIndividualSearch(){
 	}	
 	/**Ajax request**/
 	waitShow();
-	//$(".ui-loader").css({'display':'block'});
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
         type:"POST",
@@ -68,7 +64,6 @@ function customerIndividualSearch(){
         dataType:"jsonp",
 		success: function (json){
 			customersearchCallback(json);
-			//$(".ui-loader").css({'display':'none'});
 			waitHide();
 		}
     });	
@@ -90,7 +85,6 @@ function customerSystemSearch(){
 		return;
 	}
 	/**Ajax request**/
-	//$(".ui-loader").css({'display':'block'});
 	waitShow();
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
@@ -105,7 +99,6 @@ function customerSystemSearch(){
         dataType:"jsonp",
 		success: function (json){
 			customersearchCallback(json);
-			//$(".ui-loader").css({'display':'block'});
 			waitHide();
 		}
     });	
@@ -175,7 +168,6 @@ function adjustSearchResultExpandedRowElementsWidth(scrollWidth){
 }
 function expandMembersAjax(entityId, entityType){
 
-	//$(".ui-loader").css({'display':'block'});
 	waitShow();
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
@@ -195,7 +187,6 @@ function expandMembersAjax(entityId, entityType){
 					writexpandMembersResults(json.results[i], this.helperData.entityId, false);					
 				}
 				writexpandMembersResults(json.results[json.results.length - 1], this.helperData.entityId, true);
-				//$(".ui-loader").css({'display':'none'});
 				waitHide();
 				adjustSearchResultExpandedRowElementsWidth(window.SCROLLBAR_WIDTH);
 			}
@@ -221,7 +212,6 @@ function fillPopupData(element)
 {
 	var entityType = element.parent().attr("id");
 	var entityId = element.attr("id");
-	//$(".ui-loader").css({'display':'block'});
 	waitShow();
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
@@ -236,7 +226,6 @@ function fillPopupData(element)
 		success: function (json, idtype){	
 			if(json.success == true){
 				writeCustomerOverview(json, entityType, entityId);
-				//$(".ui-loader").css({'display':'none'});
 				waitHide();
 				$('#popupProfileContainer').css('display','block');
 				$('#searchPageContainer').css({'height':'auto'});
