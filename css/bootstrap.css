@@ -2758,6 +2758,7 @@ input[type="button"].btn-block {
 
 .glyphicon-remove-circle:before {
   content: "\e088";
+  content: url("../img/clearBtn.png");
 }
 
 .glyphicon-ok-circle:before {

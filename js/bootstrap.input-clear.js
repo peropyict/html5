@@ -29,11 +29,12 @@ THE SOFTWARE.
 	// add private event handler to avoid conflict
         $("input[type=text]").not(".no-clear").unbind("clear-focus").bind("clear-focus", (function () {
             if ($(this).data("clear-button")) return;
-            var x = $("<a class='clear-text' style='cursor:pointer;color:#888;'><i class='icon-remove'></i></a>");
+            //var x = $("<a class='clear-text' style='cursor:pointer;color:#888;'><i class='icon-remove'></i></a>");
+			var x = $("<a class='clear-text' style='cursor:pointer;color:#888;'><i class='glyphicon-remove-circle'></i></a>");
             $(x).data("text-box", this);
             $(x).mouseover(function () { $(this).addClass("over"); }).mouseleave(function () { $(this).removeClass("over"); });
             $(this).data("clear-button", x);
-            $(x).css({ "position": "absolute", "left": ($(this).position().right), "top": $(this).position().top, "margin": "3px 0px 0px -20px" });
+            $(x).css({ "position": "absolute", "left": ($(this).position().right), "top": $(this).position().top, "margin": "1px 0px 0px -50px" });
             $(this).after(x);
             //$(this));
         })).unbind("clear-blur").bind("clear-blur", (function (e) {
