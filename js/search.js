@@ -240,8 +240,8 @@ function fillPopupData(element)
 function writeCustomerOverview(json, entityType, entityId){
 	writeCustomerOverviewHeader(json, entityId);
 	writeCustomerOverviewSumary(json, entityId);
-	writeCustomerOverviewRows(json, entityId);
-	CustomerOverviewMemberDetails(entityType);
+	writeCustomerOverviewRows(json, entityId, entityType);
+	//CustomerOverviewMemberDetails(entityType);
 	writeCustomerHierarchy(json, entityType, entityId);
 	writeCustomerOverviewBottom(json, entityId);
 	
@@ -287,14 +287,50 @@ function writeCustomerOverviewSumary(node, entityId){
 
 }
 
-function writeCustomerOverviewRows(json, entityId){
+function writeCustomerOverviewRows(json, entityId, entityType){
 	for(var i=0; i < json.entity.members.length; i++){
 		var output = $('#popupRowsTemplate').parseTemplate(json.entity.members[i]);
 		$("#profileRowsContainer").append(output);
+		$("#profileRowsContainer").append("<div id='"+entityType+"' class='entityType' style='display:none'></div>");
 	}
 
 }
-
+function prepareCustomerViewMembersDetails(elem){
+	var parent = $(elem).parents("div.ProfileRowsContainer");
+	var systemId =  $(elem).parents("div.ProfileRowsContainer").attr("id");
+	var srcCode = $(elem).parents("div.ProfileRowsContainer").children("div.srcCode").attr("id");
+	var entityType = $(elem).parents("div.ProfileRowsContainer").next("div.entityType").attr("id");
+	
+	CustomerOverViewMemberDetailsNew(elem, parent, systemId, srcCode, entityType);
+}
+function CustomerOverViewMemberDetailsNew(elem, parent, systemId, srcCode, entityType){
+	if(parent.hasClass("called")){
+		COPlusExpand(elem);
+		return;
+	}
+	waitShow();
+	$.ajax({
+			type:"GET",
+			url: "http://gcs.ventiv.com.au/gcs/v1/" + "memberdetails.jsonp" + '?callback=?',
+			data: { "entityType": entityType, "srcCode": srcCode, "memberId":systemId},
+			contentType:"application/json",
+			beforeSend: function(jqXHR) {
+				jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
+			},
+			dataType:"jsonp",
+			success: function (json, idtype){	
+				if(json.success == true){
+					writeCustomerOverviewMemberDetails(parent, json.entity);
+				}
+				parent.addClass("called");
+				waitHide();
+				/***********scroolbar? -> adjust elements**************/
+				profile_scrollbar_width = $("#customerContainer").outerWidth() - $("#customerProfileContainer").outerWidth();
+				adjustProfileHeaderElementsWidth(profile_scrollbar_width);
+				COPlusExpand(elem);
+			}
+		});	
+}
 function CustomerOverviewMemberDetails(entityType){
 	
 	var srcCode = "";
@@ -336,9 +372,11 @@ function adjustProfileHeaderElementsWidth(scrollWidth){
 	$(".col-width-profile-row-part-II").css({'width': 'calc('+(544*100)/(1024 + scrollWidth)+'%)'});
 	$(".col-width-profile-row-part-II-first").css({'width': 'calc('+(180*100)/(544 - scrollWidth)+'%)'});
 }
-function writeCustomerOverviewMemberDetails(parentId, node){
+function writeCustomerOverviewMemberDetails(parent, node){
 	var output = $('#popupSubRowsTemplate').parseTemplate(node);
-	$("#"+parentId).append(output);
+	$(parent).append(output);
+	$("#profileRowsContainer").append(output);
+
 }
 function writeCustomerOverviewBottom(node, entityId){
 	var output = $('#popupBottomTemplate').parseTemplate(node);

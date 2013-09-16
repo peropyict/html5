@@ -490,10 +490,10 @@
 	<script  id="popupRowsTemplate" type="text/html">
 	
 		<div id="<#= systemId #>" class="row ProfileRowsContainer border_top_main_row">				
-				<div id="<#= srcCode #>" class="row ">
+				<div id="<#= srcCode #>" class="row srcCode">
 					<div class="col-xs-6 col-md-6 row col-width-profile-row-part-I">
 						<!--which of parameters should I use for id of plus result?-->
-						<div class="col-xs-1 col-md-1 plusResult padding_right_40 plusResultProfile COMembersPlus" onclick="COPlusExpand($(this))" id="<#= srcCode + systemId #>"><span style="font-size:0px">
+						<div class="col-xs-1 col-md-1 plusResult padding_right_40 plusResultProfile COMembersPlus" onclick="prepareCustomerViewMembersDetails($(this))" id="<#= srcCode + systemId #>"><span style="font-size:0px">
 							  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>					
 						</div>
 						<div class="col-xs-8 col-md-8 margin_left_10 padding_left_20">
