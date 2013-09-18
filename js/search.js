@@ -7,12 +7,12 @@ function customerOrganisationSearch(){
 	/**get input values**/
 	var orgName = $("#nameSearch").val();
 	var orgLocation = $("#codeSearch").val();
-	/**validation**/
-	if(orgName == ""){
+	/**validation commented**/
+	/*if(orgName == ""){
 		$("#nameSearch").parent().addClass("has-error");
 		$("#nameSearch").focus();
 		return;
-	}
+	}*/
 	/**Ajax request**/
 	waitShow();
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
@@ -40,15 +40,15 @@ function customerIndividualSearch(){
 	var individualFamilyName = $("#fnameSearch").val();
 	var individualGivenName = $("#gnameSearch").val();
 	var individualLocation = $("#postcodeSearch").val();
-	/**validation**/
-	if((individualFamilyName == "") && (individualGivenName == "") && (individualLocation == "")){
+	/**validation commented**/
+	/*if((individualFamilyName == "") && (individualGivenName == "") && (individualLocation == "")){
 		$("#individualSearchForm").children().each(function(){
 			if($(this).hasClass("form-group"))
 				$(this).addClass("has-error");
 		});
 		$("#fnameSearch").focus();
 		return;
-	}	
+	}*/	
 	/**Ajax request**/
 	waitShow();
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
@@ -75,15 +75,15 @@ function customerSystemSearch(){
 	/**get input values**/
 	var systemType = $("#systemTypeSearch").val();
 	var systemId = $("#systemIdSearch").val();
-	/**validation**/
-	if((systemType == "") && (systemId == "")){
+	/**validation commented**/
+	/*if((systemType == "") && (systemId == "")){
 		$("#SystemSearchForm").children().each(function(){
 			if($(this).hasClass("form-group"))
 				$(this).addClass("has-error");
 		});
 		$("#systemTypeSearch").focus();
 		return;
-	}
+	}*/
 	/**Ajax request**/
 	waitShow();
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
@@ -105,11 +105,11 @@ function customerSystemSearch(){
 }
 function customersearchCallback(json){
 
-	/**************remove validation warnings********************/
-	$(".has-error").each(function(){
+	/**************remove validation warnings commented********************/
+	/*$(".has-error").each(function(){
 		$(this).removeClass("has-error");
 	});
-	$(this).removeClass("has-error");
+	$(this).removeClass("has-error");*/
 	/***show both bottom lines on search page***/
 	showHideElements($("#bottom1"), true);
 	showHideElements($("#bottom2"), true);
@@ -229,7 +229,7 @@ function fillPopupData(element)
 				waitHide();
 				$('#popupProfileContainer').css('display','block');
 				$('#searchPageContainer').css({'height':'auto'});
-				$( "#searchPageContainer").animate({ height: "0px" }, 2000, function(){
+				$( "#searchPageContainer").animate({ height: "0px" }, 500, function(){
 					$("#searchPageContainer").css({'display':'none'});
 					$("#searchPageContainer").css({'height':'auto'});
 				});	

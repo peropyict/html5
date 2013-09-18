@@ -123,7 +123,10 @@ function searchPlusExpand(elem,e){
 		var container = elem.parents("div#container");
 				
 		if(elem.hasClass('plusResult')){
-			container.css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" });
+			//container.css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" });
+			//container.children("div.main_row").css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" }); 
+			//#FCF6D4
+			container.children("div.main_row").css({'background': "#FFCC25" }); 
 			container.css({'border-top':'1px solid #d0ab36'});
 			container.css({'border-bottom':'3px outset #cfc5a1'});
 			elem.css({'background-image':'url(img/minusResult.png)'});
@@ -143,7 +146,8 @@ function searchPlusExpand(elem,e){
 			
 		}
 		else{
-			container.css({'background-image': "none" });
+			//container.css({'background-image': "none" });
+			container.children("div.main_row").css({'background-image': "none" });
 			container.css({'border-top':'0 '});
 			container.css({'border-bottom':'0px'});
 
@@ -254,11 +258,11 @@ function showPopupMain(){
 	translationInProgress = true;
 	$('#customerProfileContainer').addClass("width-zero-percent");
 	$("#customerProfileContainer").css({'display':'block'});
-	$('#customerProfileContainer').animate({width:'100%'}, 1000, function(){
+	$('#customerProfileContainer').animate({width:'100%'}, 500, function(){
 		$('#customerProfileContainer').removeClass("width-zero-percent");
 	});
 	$('#customerHierarchyContainer').css({'width':'100%'});
-	$("#customerHierarchyContainer").animate({ width: "0%" }, 1000, function(){
+	$("#customerHierarchyContainer").animate({ width: "0%" }, 500, function(){
 		$("#customerHierarchyContainer").css({'display':'none'});
 		translationInProgress = false;
 	});	
@@ -279,27 +283,16 @@ function showCustomerHierarchy(){
 	$('#customerProfileContainer').css({'height':heightTranslation});
 	$('#customerProfileContainer').css({'width':'100%'});
 	$("#customerProfileContainer").css({'display':'block'});
-	$('#customerProfileContainer').animate({width:'0%'}, 2000, function(){
+	$('#customerProfileContainer').animate({width:'0%'}, 1000, function(){
 		$("#customerProfileContainer").css({'display':'none'});
 		$('#customerProfileContainer').css({'height':'auto'});
 		translationInProgress = false;
 	});
 	$("#customerHierarchyContainer").css({ "width": "0%" });
 	$("#customerHierarchyContainer").css({'display':'block'});
-	$("#customerHierarchyContainer").animate({ width: "100%" }, 2000);
+	$("#customerHierarchyContainer").animate({ width: "100%" }, 1000);
 	//$(".ui-loader").css({'display':'none'});
 
-}
-function showCustomerHierarchyVersionI(){
-	//ODLICNO ALI se prethodni mora odmah sakriti
-	$('#customerHierarchyContainer').css({'width':'0%'});
-	$('#customerHierarchyContainer').css({'z-index':'3'});
-	$("#customerHierarchyContainer").css({'display':'block'});
-	$('#customerHierarchyContainer').animate({width:'100%'}, 1000, function(){
-	});
-	$("#customerProfileContainer").css({'z-index':'-1'});
-	$("#customerProfileContainer").animate({ right: "-100%" }, 1000, function(){});
-	$("#customerProfileContainer").css({'display':'none'});
 }
 function showCustomerHierarchyLinear(){	
 	//http://api.jqueryui.com/easings/
