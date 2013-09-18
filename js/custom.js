@@ -125,7 +125,6 @@ function searchPlusExpand(elem,e){
 		if(elem.hasClass('plusResult')){
 			//container.css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" });
 			//container.children("div.main_row").css({'background-image': "url(img/selectedResults.png)", 'background-repeat':"x" }); 
-			//#FCF6D4
 			container.children("div.main_row").css({'background': "#FFCC25" }); 
 			container.css({'border-top':'1px solid #d0ab36'});
 			container.css({'border-bottom':'3px outset #cfc5a1'});
@@ -147,7 +146,8 @@ function searchPlusExpand(elem,e){
 		}
 		else{
 			//container.css({'background-image': "none" });
-			container.children("div.main_row").css({'background-image': "none" });
+			//container.children("div.main_row").css({'background-image': "none" });
+			container.children("div.main_row").css({'background': "none" });
 			container.css({'border-top':'0 '});
 			container.css({'border-bottom':'0px'});
 

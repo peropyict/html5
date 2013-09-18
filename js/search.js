@@ -15,7 +15,7 @@ function customerOrganisationSearch(){
 	}*/
 	/**Ajax request**/
 	waitShow();
-	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
+	//$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
         type:"POST",
         url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.jsonp" + '?callback=?',
