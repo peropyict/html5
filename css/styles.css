@@ -431,6 +431,9 @@ div.font_bold, span.font_bold{	font-weight:bold !important;}
 .col-width-related-systems-part-I{
 	width:calc(100*100%/354);
 }
+.mainSearchRowResultPart1{
+	width: calc(900 * 100% / 1024);
+}
 
 
 /****scrool****/
