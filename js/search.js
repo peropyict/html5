@@ -165,10 +165,14 @@ function adjustSearchResultMainRowElementsWidth(scrollWidth){
 
 function adjustSearchResultExpandedRowElementsWidth(scrollWidth){
 	$(".expandedSearchRowResultPart1").each(function(){
-		$(this).css({'width':'calc('+(900*100)/(1024-scrollWidth)+'%)'});
+		//$(this).css({'width':'calc('+(900*100)/(1024-scrollWidth)+'%)'});
+		var width1 = $("#searchMenuContainer").width() - $(".searchButton").width(); 		
+		$(this).css({'width':'calc('+((width1)*100)/($("#searchMenuContainer").width() - scrollWidth)+'%)'});
 	});
 	$(".expandedSearchRowResultPart2").each(function(){
-		$(this).css({'width':'calc('+((1024-scrollWidth - $(".mainSearchRowResultPart1").width())*100)/1024+'%)'});
+		//$(this).css({'width':'calc('+((1024-scrollWidth - $(".mainSearchRowResultPart1").width())*100)/1024+'%)'});
+		var width2 = $("#searchMenuContainer").width() - $(".mainSearchRowResultPart1").width() - scrollWidth;
+		$(this).css({'width':'calc('+((width2)*100)/($("#searchMenuContainer").width())+'%)'});
 	});
 }
 function expandMembersAjax(entityId, entityType){
