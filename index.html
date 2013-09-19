@@ -3,7 +3,8 @@
 	<title>Responsive HTML5</title>		
 	<!--link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css"-->
 	<link href="css/bootstrap.css" rel="stylesheet">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">	  
+	<!--meta content="width=device-width, initial-scale=1.0" name="viewport"-->
+	<meta content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1" name="viewport">	  
 	<link href="css/bootstrap-theme.css" rel="stylesheet">	
 	
 	
@@ -74,8 +75,11 @@
 			oScript.type = "text/javascript";
 			oScript.src="js/jquery.mobile-1.3.2.min.js";
 			oHead.appendChild( oScript);
+
+
+
 			
-			if(hash.indexOf("o=") != 0){
+			if(hash.indexOf("o=") > 0){
 				$("#nameSearch").val(hash.substring(hash.indexOf("o=") + 2, hash.length));
 				customerOrganisationSearch();
 			}
@@ -84,6 +88,7 @@
 			$(".home").css({'display':'block'});
 			$(".searchPage").css({'display':'none'});
 		}
+
 	})
 	$(window).hashchange();
 	</script>
@@ -208,18 +213,18 @@
 				<div id="<#= entityId #>"  class="row border_top_main_row main_row">
 					<div class="row">	
 						<div id="mainSearchRowResultPart1" class="row col-xs-10 col-md-10  mainSearchRowResultPart1">
-							<div class="col-xs-6 col-md-6 searchResultIofII" style="float:left;" id="subResultName">
-								<div class="row">
+							<div class="row col-xs-6 col-md-6 searchResultIofII" id="subResultName">
+								<!--div class="row"-->
 										<# if (memberCount > 0) { #>
-											<div style="float:left" class="col-xs-1 col-sm-1 col-md-1 memberCountPlus plusSearchResult plusResult" id="<#= entityId #>" onclick="searchPlusExpand($(this))" >
+											<div class="col-xs-1 col-sm-1 col-md-1 memberCountPlus plusSearchResult plusResult padding_right_40" id="<#= entityId #>" onclick="searchPlusExpand($(this))" >
 												<span id="<#= entityType #>" style="font-size:1px;"><span>
 											</div>
 										<#}
 										else{ #>
-											<div style="float:left" class="col-xs-1 col-sm-1 col-md-1 noExpandResult"></div>
+											<div class="col-xs-1 col-sm-1 col-md-1 noExpandResult"></div>
 										<#}
 										#>
-										<div class=" col-xs-11 col-sm-11 col-md-11 padding_left_28" style="width:calc(100% - 50px); height:60px; display:inline-clock; overflow:hidden; float:left" onclick="showPopupOnRowClick($(this));">
+										<div class=" col-xs-8 col-sm-8 col-md-8 padding_left_28" style="width:calc(100% - 50px); height:60px; display:inline-clock; overflow:hidden;" onclick="showPopupOnRowClick($(this));">
 											<# if(address != null) { #>
 												<div class="customerResultName" style="line-height: 25px;">	
 													<#= name #> &nbsp(<#= memberCount #>)
@@ -235,7 +240,7 @@
 											<#}
 											#>
 										</div>
-								</div>
+								<!--/div-->
 							</div>
 							
 							<div class="col-xs-6 col-md-6 searchResultIIofII" style="float:right;" onclick="showPopupOnRowClick($(this));">
@@ -269,10 +274,10 @@
 	<script id="CustomerSearchResultsExpandMembersTemplate" type="text/html">
 		<div class="row" id="subResultContainer">
 			<div class="row col-xs-10 col-md-10 col-width-88 expandedSearchRowResultPart1">
-					<div class="col-xs-6 col-md-6 searchResultIofII" style="padding-left: 28px !important; float:left;" id="subResultName">
+					<div class="col-xs-6 col-md-6 searchResultIofII padding_left_none" id="subResultName">
 						<div class="row">
-							<div class="col-xs-1 col-md-1 " style="width:50px; float:left;"><img src="img/subRowsDevider.png"></div>
-							<div class="row col-xs-11 col-sm-11 col-md-11" style="border-bottom:1px solid #d0c7a8; width:calc(100% - 50px)">
+							<div class="col-xs-1 col-md-1 " style="width:78px !important;"><img src="img/subRowsDevider.png"></div>
+							<div class="col-xs-8 col-sm-8 col-md-8" style="border-bottom:1px solid #d0c7a8; width:calc(100% - 78px) !important">
 								<#= name #>
 							</div>
 						</div>
@@ -288,10 +293,10 @@
 	<script id="CustomerSearchResultsExpandMembersTemplateLastRow" type="text/html">
 		<div class="row" id="subResultContainer">
 			<div class="row col-xs-10 col-md-10 col-width-88 expandedSearchRowResultPart1">
-					<div class="col-xs-6 col-md-6 col-width-50" style="padding-left: 28px !important; float:left;" id="subResultName">
+					<div class="col-xs-6 col-md-6 searchResultIofII padding_left_none" id="subResultName">
 						<div class="row">
-							<div class="col-xs-1 col-md-1 " style="width:50px; float:left;"><img src="img/subRowsDevider.png"></div>
-							<div class="row col-xs-11 col-sm-11 col-md-11" style="width:calc(100% - 50px)">
+							<div class="col-xs-1 col-md-1 " style="width:78px !important;"><img src="img/subRowsDevider.png"></div>
+							<div class="col-xs-8 col-sm-8 col-md-8" style="width:calc(100% - 78px) !important">
 								<#= name #>
 							</div>
 						</div>
