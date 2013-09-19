@@ -143,9 +143,9 @@ h5 {
 #resultNoAndArrowImg{	width : 100%;	height: auto;}
 span{  display: inline-block;  vertical-align: middle;}
 #bottom1{
-	background-image:url('../img/bottom1.png');
+	background-image:url('../img/bottom1_50w.png');
 	background-repeat:x;
-	height:20px;
+	height:22px;
 	display:none;
 }
 /*#bottom1Img{	width : auto;}*/
