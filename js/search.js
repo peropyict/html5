@@ -238,7 +238,7 @@ function fillPopupData(element)
 				waitHide();
 				$('#popupProfileContainer').css('display','block');
 				$('#searchPageContainer').css({'height':'auto'});
-				$( "#searchPageContainer").animate({ height: "0px" }, 500, function(){
+				$( "#searchPageContainer").animate({ height: "0px" }, 100, function(){
 					$("#searchPageContainer").css({'display':'none'});
 					$("#searchPageContainer").css({'height':'auto'});
 				});	

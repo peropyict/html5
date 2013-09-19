@@ -258,11 +258,11 @@ function showPopupMain(){
 	translationInProgress = true;
 	$('#customerProfileContainer').addClass("width-zero-percent");
 	$("#customerProfileContainer").css({'display':'block'});
-	$('#customerProfileContainer').animate({width:'100%'}, 500, function(){
+	$('#customerProfileContainer').animate({width:'100%'}, 100, function(){
 		$('#customerProfileContainer').removeClass("width-zero-percent");
 	});
 	$('#customerHierarchyContainer').css({'width':'100%'});
-	$("#customerHierarchyContainer").animate({ width: "0%" }, 500, function(){
+	$("#customerHierarchyContainer").animate({ width: "0%" }, 100, function(){
 		$("#customerHierarchyContainer").css({'display':'none'});
 		translationInProgress = false;
 	});	
@@ -283,27 +283,16 @@ function showCustomerHierarchy(){
 	$('#customerProfileContainer').css({'height':heightTranslation});
 	$('#customerProfileContainer').css({'width':'100%'});
 	$("#customerProfileContainer").css({'display':'block'});
-	$('#customerProfileContainer').animate({width:'0%'}, 1000, function(){
+	$('#customerProfileContainer').animate({width:'0%'}, 200, function(){
 		$("#customerProfileContainer").css({'display':'none'});
 		$('#customerProfileContainer').css({'height':'auto'});
 		translationInProgress = false;
 	});
 	$("#customerHierarchyContainer").css({ "width": "0%" });
 	$("#customerHierarchyContainer").css({'display':'block'});
-	$("#customerHierarchyContainer").animate({ width: "100%" }, 1000);
+	$("#customerHierarchyContainer").animate({ width: "100%" }, 200);
 	//$(".ui-loader").css({'display':'none'});
 
-}
-function showCustomerHierarchyLinear(){	
-	//http://api.jqueryui.com/easings/
-	$('#customerProfileContainer').hide('slide', {direction:'right'}, 3000, function(){
-		$('#customerProfileContainer').css({'display':'none'});
-	});
-	
-	$("#customerHierarchyContainer").css({'left':'-100%'});
-	$("#customerHierarchyContainer").css({'display':'block'});
-	$("#customerHierarchyContainer").show('slide', {direction:'left'},3000, function(){		
-	});
 }
 function showHideElements(elem,show){
 	if(show)
