@@ -84,6 +84,7 @@ h5 {
 .form-control{	padding:0px !important;	padding-left:0 !important;	padding-right:0 !important;}
 #searchLeftBtn, .plusResult, .minusResult{	width:auto !important;	cursor:pointer;}
 .plusResult, .minusResult, .noExpandResult{	width:50px; height:60px;}
+.plusResultProfile{height:50px !important}
 #searchLeftImg, #plusResultImg{	height: auto;}
 #searchRightBtnBorder{	width:auto !important;}
 #searchRightImgBorder, #searchRightImg{	height: 100%;}
@@ -313,7 +314,7 @@ button.full-width{
 	display:inline-block;
 	min-height:1px;
 	line-height: 50px;
-	background-image:url('../img/plusResult.png');
+	background-image:url('../img/plusResultProfile.png');
 	background-repeat:no-repeat;
 	background-position:center;
 }
@@ -358,6 +359,7 @@ div.font_bold, span.font_bold{	font-weight:bold !important;}
 }
 @media (max-width: 1024px) and (min-width: 1024px) {
 	body{ height:768px !important;}
+	#mainSearchRowResultPart1{width:900px !important}
 }
 @media (max-width: 768px) and (min-width: 768px) {
 	body{ height:1024px !important;}
