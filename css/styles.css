@@ -7,7 +7,7 @@ html, body {
 }
 body{
 	overflow:hidden !important;
-	font-family: "VentivScript";
+	font-family: Verdana, Arial, sans-serif;
 	/*font-family: "VentivScript","Helvetica Neue" !important;*/
 	/*font-family: "Arial";*/
 }
@@ -48,13 +48,13 @@ h5 {
 	text-align:center;
 	height:50px;
 	/*font-family: Arial !important;*/
-	font-size:100% !important;
+	font-size: 16px !important;
 } 
 #inputContainer{
 	height:50px;
 }
 .form-group{	margin-bottom: 0px !important ;}
-.form-control{	font-size:12px !important;}
+.form-control{	font-size:18px !important;}
 .form-control::-moz-placeholder {
     color: #000000 !important;
     /*font-family: Arial !important;*/
@@ -125,7 +125,7 @@ h5 {
 }
 .customerResultName{
 	/*font-family: Arial !important;*/
-	font-size:12px !important;
+	font-size:16px !important;
 	height:60px;
 	overflow:hidden;
 }
@@ -136,7 +136,7 @@ h5 {
 	height:auto;
 	line-height:35px;
 	display:none;
-	font-size:9px !important;
+	font-size:12px !important;
 	/*font-family: "VentivScript" !important;*/	
 }
 #resultNoAndArrow{	left: 0px; 	 top: 0px; 	 height:auto;}
@@ -192,7 +192,7 @@ button.full-width{
 	background-image:url('../img/ProfileBodyBackBlue.png');
 	background-repeat:x; 
 	color:blue;
-	font-size:10px !important;
+	font-size:14px !important;
 }
 .profileScrollDevider{	background-image:url('../img/profileScollbarSpacer.gif');	background-repeat:x;}
 .upstreamEntities{
@@ -443,9 +443,9 @@ div.font_bold, span.font_bold{	font-weight:bold !important;}
 .ui-btn-inner{	display:none;}
 div.ui-loader h1{	display:none;}
 
-.searchResultIIofII,.ProfileRowsContainer {	font-size:10px !important;}
-.col-width-popup-name{	font-size:20px !important;}
-.popup-header-colII,.popup-header-colIII{	font-size:10px;}
+.searchResultIIofII,.ProfileRowsContainer {	font-size:14px !important;}
+.col-width-popup-name{	font-size:28px !important;}
+.popup-header-colII,.popup-header-colIII{	font-size:14px;}
 .popup-header-colIII{	font-weight:bold;}
 
 
@@ -468,9 +468,9 @@ div.ui-loader h1{	display:none;}
 
 /*****fonts******/
 #searchMenuContainer, .searchFormVisible, .score, #bottom2, #popupHeader, #profileScroolContainer{
-	font-family: "Arial" !important;
-	font-family: "Arial";
+/*	font-family: "Arial" !important;
+	font-family: "Arial";*/
 }
 #Organisation, #Individuals, #System{
-	font-family: "Arial" !important;
+/*	font-family: "Arial" !important;*/
 }
