@@ -324,7 +324,7 @@ button.full-width{
 .bluePagination{	background-image:url('../img/profileBluePagination.png');	background-repeat:no-repeat;}
 .grayPagination{	background-image:url('../img/profileGrayPagination.png');	background-repeat:no-repeat;}
 div.inline{	display: inline-block !important;}
-#searchBtn{	float:right; font-size:130% !important;}
+#searchBtn{	float:right; font-size:18px !important; text-shadow:none !important}
 .border_top_profile_details{	border-top:1px solid #cfc5a1;}
 .border_top_main_row{	border-top: 1px solid #cbcbcb;}
 .glob_no_line{	line-height: 60px  !important;}
@@ -473,4 +473,25 @@ div.ui-loader h1{	display:none;}
 }
 #Organisation, #Individuals, #System{
 /*	font-family: "Arial" !important;*/
+}
+.logo{
+	left: 0;
+    position: absolute;
+    top: 0px;
+	width: calc(130 * 100% / 1024);
+}
+
+
+/* italic placeholder */
+input::-webkit-input-placeholder {
+	font-style: italic;
+}
+input::-moz-placeholder {
+	font-style: italic;
+}
+input:-moz-placeholder {   /* Older versions of Firefox */
+	font-style: italic;
+}
+input:-ms-input-placeholder { 
+	font-style: italic;
 }

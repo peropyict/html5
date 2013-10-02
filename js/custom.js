@@ -133,12 +133,16 @@ function emptyPopup(){
 	$("#customerHierarchyContainer").empty();
 	$("#profileBottomContainer").empty();
 }
-function positionOfCompanyTitleInPopup(){
+/*function positionOfCompanyTitleInPopup(){
 	$("#companyTitle").css({
 				position: "absolute",
 				top: $("#profile").position().top + $("#profile").height()/10 + "px",
 				left: ($("#profile").position().left + 20) + "px"
 			}).show();
+}*/
+function logoClick()
+{
+	window.location = window.location.pathname;
 }
 function searchPlusExpand(elem,e){
 		
