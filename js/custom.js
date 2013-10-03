@@ -20,11 +20,22 @@ $(document).on('pageinit', function(event){
 		$( ".rightPaginationArrow" ).trigger( "click" );
 	});
 });
+
+$(document).on('pageshow', function(event){
+	$("#pageloader").hide();
+});
 /****drag****/
 
 var translationInProgress = false;
 $(document).ready(function (e) {
-
+	var hash = location.hash;
+	if (hash == null || hash=='' || !hash){
+		//$("body").css({'overflow':'visible !important'});
+		$("body").addClass("visible-overflow");
+	}	
+	else
+	{
+	}
 	$("#nameSearch, #codeSearch").each(function(){
 		$(this).height($("#searchForm").height()-2);
 	});
@@ -142,7 +153,9 @@ function emptyPopup(){
 }*/
 function logoClick()
 {
+	$("#pageloader").show();
 	window.location = window.location.pathname;
+	$("#pageloader").hide();
 }
 function searchPlusExpand(elem,e){
 		
