@@ -28,7 +28,7 @@ function customerOrganisationSearch(){
         },
         dataType:"jsonp",
 		success: function (json){
-			customersearchCallback(json);
+			customersearchCallback(json, "organisation");
 			waitHide();
 		}
     });	
@@ -63,7 +63,7 @@ function customerIndividualSearch(){
         },
         dataType:"jsonp",
 		success: function (json){
-			customersearchCallback(json);
+			customersearchCallback(json, "individual");
 			waitHide();
 		}
     });	
@@ -98,12 +98,12 @@ function customerSystemSearch(){
         },
         dataType:"jsonp",
 		success: function (json){
-			customersearchCallback(json);
+			customersearchCallback(json, "system");
 			waitHide();
 		}
     });	
 }
-function customersearchCallback(json){
+function customersearchCallback(json, searchType){
 
 	/**************remove validation warnings commented********************/
 	/*$(".has-error").each(function(){
@@ -126,22 +126,24 @@ function customersearchCallback(json){
 			totalResultsNumber = "No results found";
 		$("#noOfSearchResult").append(totalResultsNumber);
     }
-	$(".customerResultName").each(function(){
-		var resultname = $(this).html();
-		var newresultName = resultname;
-		var orgSearchedName = $("#nameSearch").val();
+	if(searchType == "organisation"){
+		$(".customerResultName").each(function(){
+			var resultname = $(this).html();
+			var newresultName = resultname;
+			var orgSearchedName = $("#nameSearch").val();
 
-		if (resultname.indexOf(orgSearchedName) >= 0){
-			newresultname = resultname.substring(0, resultname.indexOf(orgSearchedName))+ "<strong>" + orgSearchedName + "</strong>" + resultname.substring(resultname.indexOf(orgSearchedName) + orgSearchedName.length, resultname.length);
-		
-			$(this).html(newresultname);
-		}
-		else if (resultname.indexOf(orgSearchedName.toUpperCase()) >= 0){
-			newresultname = resultname.substring(0, resultname.indexOf(orgSearchedName.toUpperCase()))+ "<strong>" + orgSearchedName.toUpperCase() + "</strong>" + resultname.substring(resultname.indexOf(orgSearchedName.toUpperCase()) + orgSearchedName.length, resultname.length);
-		
-			$(this).html(newresultname);
-		}		
-	});
+			if (resultname.indexOf(orgSearchedName) >= 0){
+				newresultname = resultname.substring(0, resultname.indexOf(orgSearchedName))+ "<strong>" + orgSearchedName + "</strong>" + resultname.substring(resultname.indexOf(orgSearchedName) + orgSearchedName.length, resultname.length);
+			
+				$(this).html(newresultname);
+			}
+			else if (resultname.indexOf(orgSearchedName.toUpperCase()) >= 0){
+				newresultname = resultname.substring(0, resultname.indexOf(orgSearchedName.toUpperCase()))+ "<strong>" + orgSearchedName.toUpperCase() + "</strong>" + resultname.substring(resultname.indexOf(orgSearchedName.toUpperCase()) + orgSearchedName.length, resultname.length);
+			
+				$(this).html(newresultname);
+			}		
+		});
+	}
 	
 }
 function writeCustomerSearchResults(node){
