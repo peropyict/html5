@@ -1,3 +1,4 @@
+APIURL = "http://gcs.ventiv.com.au/gcs/v1/";
 var profile_scrollbar_width = 0;
 function customerOrganisationSearch(){
 	/**empty previous results**/
@@ -18,10 +19,10 @@ function customerOrganisationSearch(){
 	//$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
         type:"POST",
-        url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.jsonp" + '?callback=?',
+        url: APIURL + "customersearch.jsonp" + '?callback=?',
 		//jsonpCallback: "customersearchCallback",
         data: { "orgName": orgName, "orgLocation": orgLocation},
-        contentType:"application/json",
+        //contentType:"application/json",
         beforeSend: function(jqXHR) {
             jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
         },
@@ -53,7 +54,7 @@ function customerIndividualSearch(){
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
         type:"POST",
-        url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.jsonp" + '?callback=?',
+        url: APIURL + "customersearch.jsonp" + '?callback=?',
 		//jsonpCallback: "customersearchCallback",
         data: { "individualName": individualName, "individualLocation": individualLocation},
         contentType:"application/json",
@@ -88,7 +89,7 @@ function customerSystemSearch(){
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
         type:"POST",
-        url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.jsonp" + '?callback=?',
+        url: APIURL + "customersearch.jsonp" + '?callback=?',
 		//jsonpCallback: "customersearchCallback",
         data: { "systemId": systemId},
         contentType:"application/json",
@@ -184,7 +185,7 @@ function expandMembersAjax(entityId, entityType){
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
         type:"GET",
-        url: "http://gcs.ventiv.com.au/gcs/v1/" + "expandcustomermembers.jsonp" + '?callback=?',
+        url: APIURL + "expandcustomermembers.jsonp" + '?callback=?',
         data: { "entityType": entityType, "entityId": entityId},
         contentType:"application/json",
         beforeSend: function(jqXHR) {
@@ -228,7 +229,7 @@ function fillPopupData(element)
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
         type:"GET",
-        url: "http://gcs.ventiv.com.au/gcs/v1/" + "customerdetails.jsonp" + '?callback=?',
+        url: APIURL + "customerdetails.jsonp" + '?callback=?',
         data: { "entityType": entityType, "entityId": entityId},
         contentType:"application/json",
         beforeSend: function(jqXHR) {
@@ -323,7 +324,7 @@ function CustomerOverViewMemberDetailsNew(elem, parent, systemId, srcCode, entit
 	waitShow();
 	$.ajax({
 			type:"GET",
-			url: "http://gcs.ventiv.com.au/gcs/v1/" + "memberdetails.jsonp" + '?callback=?',
+			url: APIURL + "memberdetails.jsonp" + '?callback=?',
 			data: { "entityType": entityType, "srcCode": srcCode, "memberId":systemId},
 			contentType:"application/json",
 			beforeSend: function(jqXHR) {
@@ -354,7 +355,7 @@ function CustomerOverviewMemberDetails(entityType){
 		waitShow();
 		$.ajax({
 			type:"GET",
-			url: "http://gcs.ventiv.com.au/gcs/v1/" + "memberdetails.jsonp" + '?callback=?',
+			url: APIURL + "memberdetails.jsonp" + '?callback=?',
 			data: { "entityType": entityType, "srcCode": srcCode, "memberId":systemId},
 			contentType:"application/json",
 			beforeSend: function(jqXHR) {
@@ -387,7 +388,7 @@ function adjustProfileHeaderElementsWidth(scrollWidth){
 function writeCustomerOverviewMemberDetails(parent, node){
 	var output = $('#popupSubRowsTemplate').parseTemplate(node);
 	$(parent).append(output);
-	$("#profileRowsContainer").append(output);
+	//$("#profileRowsContainer").append(output);
 
 }
 function writeCustomerOverviewBottom(node, entityId){
@@ -405,7 +406,7 @@ function writeCustomerHierarchy(node, entityType, entityId){
 	/*console.log("hierarchy");
 	$.ajax({
         type:"GET",
-        url: "http://gcs.ventiv.com.au/gcs/v1/" + "customerchartdata.jsonp" + '?callback=?',
+        url: APIURL + "customerchartdata.jsonp" + '?callback=?',
         data: { "entityType": entityType, "entityId": entityId, "type": "CREDIT"},
         contentType:"application/json",
         beforeSend: function(jqXHR) {

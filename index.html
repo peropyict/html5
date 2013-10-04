@@ -44,10 +44,10 @@
 	<script src="js/jquery.extensions.js" type="text/javascript"></script>		
 	<script src="js/bootstrap.js" type="text/javascript"></script>
 		
-	<script type="text/javascript">
-		$(function(){
+	<script type="text/javascript">	
+	$(function(){
 		enableInputClearOption();
-		});
+	});
 	</script>
 	
 	<script type="text/javascript" src="chart/prettify.js"></script>
@@ -433,7 +433,7 @@
 					  </div>
 					</div>
 					<div class="row margin_top_30 margin_bottom_15 ">							
-						<div class="col-md-4 col-xs-4 externalRegistryEntities">
+						<!--div class="col-md-4 col-xs-4 externalRegistryEntities">
 							<div class="col-md-12 col-xs-12 externalRegistryEntitiesContent padding_right_10 padding_top_10 padding_bottom_10 padding_left_10">
 								<span class="color_black">External Registry:&nbsp</span>
 								<#
@@ -449,6 +449,25 @@
 								}
 								#>
 							</div>
+						</div-->
+						<div class="col-md-4 col-xs-4 ">
+						<div class="row externalRegistryEntities">
+							<div class="col-md-12 col-xs-12 externalRegistryEntitiesContent padding_right_10 padding_top_10 padding_bottom_10 padding_left_10">
+								<span class="color_black">External Registry:&nbsp</span>
+								<#
+								if(entity.externalRegistryEntities.length == 0)
+									#><div class="row col-xs-11 col-md-11 col-xs-11"><span class="color_white font_bold"> None</span></div><#
+								else{
+									for(var i=0; i < entity.externalRegistryEntities.length; i++)     
+									{
+										#><div class="row col-xs-11 col-md-11 col-xs-11">
+											<span class="color_white font_bold"> <#= entity.externalRegistryEntities[i] #></span>
+										</div><#
+									}								
+								}
+								#>
+							</div>
+						</div>
 						</div>
 						
 
@@ -462,7 +481,7 @@
 								else{
 									for(var i=0; i < entity.tradingEntities.length; i++)     
 									{
-										#><div class="row col-xs-11 col-md-11 col-xs-11">
+										#><div class="row col-xs-11 col-md-11 col-xs-11"><div class="row col-xs-11 col-md-11 col-xs-11"></div>
 											<span class="color_white font_bold"> <#= entity.tradingEntities[i] #></span>
 										</div><#
 									}								
@@ -579,22 +598,53 @@
 	<script id="popupSubRowsTemplate" type="text/html">
 		<div class="row" id="subResultContainer">
 					
-				<div class="row border_top_profile_details "> 
+				
 				<#
+				for(var i=0; i< otherNames.length; i++)
+				{#>
+					<div class="row">
+						<div class="col-xs-12 col-md-15 padding_left_none">
+							<div class="col-xs-6 col-md-6 padding_left_none col-width-profile-row-part-I" style="width: calc(47.6663%); margin-top: -10px; line-height: 20px; padding-bottom: 10px;">  
+								<div class="row">
+									<div style="width:60px" id="subFirstColResult" class="col-xs-1 col-sm-1 col-md-1"><span style="font-size:0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+									
+									
+									<div class="col-xs-8 col-md-9 padding_left_none">           
+										<div class="row">            
+											<div class="row">             
+												<div class="col-xs-5 col-md-5"> <#= otherNames[i].type #> </div>             
+												<div class="col-xs-7 col-md-7"> <#= otherNames[i].name #> </div>            
+											</div>           
+										</div>          
+									</div>
+									
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				<# } #>
+				<div class="row border_top_profile_details " style="padding-top:5px;padding-bottom:5px;"> 
+				<#
+				
+				
+				
 				for(var i=0; i < addresses.length; i++)     
 					{#>
-					<div class="row ">
+					<div class="row " style="line-height:30px;">
 						<div class="col-xs-12 col-md-15 padding_left_none">
 							<div class="row padding_left_none">
 								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
 								</div>
-								<div class="col-xs-10 col-sm-10 col-md-10 ">
-									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg" class="pointer padding_top_10 padding_right_10" onclick="gotoAddress($(this))">
+								<div class="col-xs-10 col-sm-10 col-md-10 " >
+
+									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg" class="pointer padding_top_10 padding_right_10" onclick="gotoAddress($(this))">			
 									<# if(typeof addresses[i].type != 'undefined') { #>
-									<div class="text-muted" style="padding-right:20px; float:left"><#= addresses[i].type #>&nbsp<#= addresses[i].name #></div>
+									<div class="text-muted" style="float:left"><b class="removeInSearch"><#= addresses[i].type #></b>&nbsp<div id="addressName"><#= addresses[i].name #></div></div>
 									<# } 
 									else{ #>
-										<div class="text-muted" style="padding-right:20px; float:left"><#= addresses[i].name #></div>
+										<div class="text-muted" style="float:left"><div id="addressName"><#= addresses[i].name #></div></div>
 									<# }
 									#>
 									
@@ -608,7 +658,7 @@
 					
 				
 				<div class="row border_top_profile_details padding_bottom_10"> 
-					<div class="row  ">
+					<div class="row  " style="line-height:30px;">
 						<div class="col-xs-6 col-md-6 padding_left_none padding_top_10 col-width-profile-row-part-I">					
 						<#
 						for(var i=0; i < metadata.length; i++)     

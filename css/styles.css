@@ -138,7 +138,8 @@ h5 {
 #subResultContainer{
 	/*background-image:url('../img/detailsResult.png');
 	background-repeat:x;*/
-	background: #FCF6D4;
+	/*background: #FCF6D4;*/
+	background-image:url("../img/detailsResult40.png") !important;
 	height:auto;
 	line-height:35px;
 	display:none;
@@ -450,6 +451,7 @@ div.font_bold, span.font_bold{	font-weight:bold !important;}
 div.ui-loader h1{	display:none;}
 
 .ProfileRowsContainer {	font-size:14px !important;}
+.searchResultIofII{	font-size:14px !important;}
 .searchResultIIofII{	font-size:12px !important;}
 .col-width-popup-name{	font-size:28px !important;}
 .popup-header-colII,.popup-header-colIII{	font-size:14px;}

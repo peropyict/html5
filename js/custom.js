@@ -44,7 +44,7 @@ $(document).ready(function (e) {
 		var container = $(this).parents("div#ProfileRowsContainer");
 
 		if($(this).hasClass('plusResult')){
-			container.css({'background-image': "url(img/detailsResult.png)", 'background-repeat':"x" });
+			container.css({'background-image': "url(img/detailsResult40.png)", 'background-repeat':"x" });
 			container.css({'border-bottom':'3px outset #cfc5a1'});
 			$(this).css({'background-image':'url(img/profileMinusPic.png)'});
 			container.children("div#subResultContainer").each(function(){
@@ -213,8 +213,8 @@ function COPlusExpand(elem){
 		var container = elem.parents("div.ProfileRowsContainer");
 
 		if(elem.hasClass('plusResult')){
-			container.css({'background-image': "url(img/detailsResult.png)", 'background-repeat':"x" });
-			container.css({'border-bottom':'3px outset #cfc5a1'});
+			container.css({'background-image': "url(img/detailsResult40.png)", 'background-repeat':"x" });
+			//container.css({'border-bottom':'3px outset #cfc5a1'});
 			elem.css({'background-image':'url(img/profileMinusPic.png)'});
 
 			container.children("div#subResultContainer").each(function(){
@@ -235,7 +235,7 @@ function COPlusExpand(elem){
 		}	
 }
 function gotoAddress(elem){
-	var googleMapUrl = "https://maps.google.com.au/maps?q=" + elem.next().text();
+	var googleMapUrl = "https://maps.google.com.au/maps?q=" + elem.next().children("div#addressName").text();
 	window.open(googleMapUrl);
 }
 /*function showCustomerHierarchy(){
