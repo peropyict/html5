@@ -637,14 +637,14 @@
 							<div class="row padding_left_none">
 								<div class="col-xs-1 col-sm-1 col-md-1 padding_left_none" id="subFirstColResult" style="width:60px"><span style="font-size:0px">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
 								</div>
-								<div class="col-xs-10 col-sm-10 col-md-10 " >
+								<div class="row col-xs-10 col-sm-10 col-md-10 " >
 
 									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg" class="pointer padding_top_10 padding_right_10" onclick="gotoAddress($(this))">			
 									<# if(typeof addresses[i].type != 'undefined') { #>
-									<div class="text-muted" style="float:left"><b class="removeInSearch"><#= addresses[i].type #></b>&nbsp<div id="addressName"><#= addresses[i].name #></div></div>
+									<div class="text-muted row " style="float:left"><b class="removeInSearch" style="float:left;"><#= addresses[i].type #>&nbsp&nbsp</b>&nbsp<div id="addressName" style="float:left;"><#= addresses[i].name #></div></div>
 									<# } 
 									else{ #>
-										<div class="text-muted" style="float:left"><div id="addressName"><#= addresses[i].name #></div></div>
+										<div class="text-muted row col-xs-12 col-sm-12 col-md-12" style="float:left"><div id="addressName"><#= addresses[i].name #></div></div>
 									<# }
 									#>
 									

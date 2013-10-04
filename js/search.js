@@ -57,7 +57,7 @@ function customerIndividualSearch(){
         url: APIURL + "customersearch.jsonp" + '?callback=?',
 		//jsonpCallback: "customersearchCallback",
         data: { "individualName": individualName, "individualLocation": individualLocation},
-        contentType:"application/json",
+        //contentType:"application/json",
         beforeSend: function(jqXHR) {
             jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
         },
@@ -92,7 +92,7 @@ function customerSystemSearch(){
         url: APIURL + "customersearch.jsonp" + '?callback=?',
 		//jsonpCallback: "customersearchCallback",
         data: { "systemId": systemId},
-        contentType:"application/json",
+        //contentType:"application/json",
         beforeSend: function(jqXHR) {
             jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
         },
@@ -187,7 +187,7 @@ function expandMembersAjax(entityId, entityType){
         type:"GET",
         url: APIURL + "expandcustomermembers.jsonp" + '?callback=?',
         data: { "entityType": entityType, "entityId": entityId},
-        contentType:"application/json",
+        //contentType:"application/json",
         beforeSend: function(jqXHR) {
             jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
         },
@@ -231,7 +231,7 @@ function fillPopupData(element)
         type:"GET",
         url: APIURL + "customerdetails.jsonp" + '?callback=?',
         data: { "entityType": entityType, "entityId": entityId},
-        contentType:"application/json",
+        //contentType:"application/json",
         beforeSend: function(jqXHR) {
             jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
         },
@@ -326,7 +326,7 @@ function CustomerOverViewMemberDetailsNew(elem, parent, systemId, srcCode, entit
 			type:"GET",
 			url: APIURL + "memberdetails.jsonp" + '?callback=?',
 			data: { "entityType": entityType, "srcCode": srcCode, "memberId":systemId},
-			contentType:"application/json",
+			//contentType:"application/json",
 			beforeSend: function(jqXHR) {
 				jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
 			},
@@ -357,7 +357,7 @@ function CustomerOverviewMemberDetails(entityType){
 			type:"GET",
 			url: APIURL + "memberdetails.jsonp" + '?callback=?',
 			data: { "entityType": entityType, "srcCode": srcCode, "memberId":systemId},
-			contentType:"application/json",
+			//contentType:"application/json",
 			beforeSend: function(jqXHR) {
 				jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
 			},
