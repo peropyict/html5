@@ -67,7 +67,7 @@ h5 {
     font-style: italic !important;
 	font-size:12px !important;
 }
-#nameSearch, #fnameSearch, #systemTypeSearch{	
+#nameSearch, #fnameSearch, #systemIDSearch{	
 	background-image: url("../img/searchLeftBtn.png");
 	background-position: left center;
 	background-repeat: no-repeat;

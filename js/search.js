@@ -37,8 +37,7 @@ function customerIndividualSearch(){
 	$("#resultContainers").empty();
 	$("#noOfSearchResult").empty();	
 	/**get input values**/
-	var individualFamilyName = $("#fnameSearch").val();
-	var individualGivenName = $("#gnameSearch").val();
+	var individualName = $("#fnameSearch").val();
 	var individualLocation = $("#postcodeSearch").val();
 	/**validation commented**/
 	/*if((individualFamilyName == "") && (individualGivenName == "") && (individualLocation == "")){
@@ -56,7 +55,7 @@ function customerIndividualSearch(){
         type:"POST",
         url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.jsonp" + '?callback=?',
 		//jsonpCallback: "customersearchCallback",
-        data: { "individualFamilyName": individualFamilyName, "individualGivenName": individualGivenName, "individualLocation": individualLocation},
+        data: { "individualName": individualName, "individualLocation": individualLocation},
         contentType:"application/json",
         beforeSend: function(jqXHR) {
             jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
@@ -73,8 +72,8 @@ function customerSystemSearch(){
 	$("#resultContainers").empty();
 	$("#noOfSearchResult").empty();	
 	/**get input values**/
-	var systemType = $("#systemTypeSearch").val();
-	var systemId = $("#systemIdSearch").val();
+	//var systemType = $("#systemTypeSearch").val();
+	var systemId = $("#systemIDSearch").val();
 	/**validation commented**/
 	/*if((systemType == "") && (systemId == "")){
 		$("#SystemSearchForm").children().each(function(){
@@ -91,7 +90,7 @@ function customerSystemSearch(){
         type:"POST",
         url: "http://gcs.ventiv.com.au/gcs/v1/" + "customersearch.jsonp" + '?callback=?',
 		//jsonpCallback: "customersearchCallback",
-        data: { "systemType": systemType, "systemId": systemId},
+        data: { "systemId": systemId},
         contentType:"application/json",
         beforeSend: function(jqXHR) {
             jqXHR.setRequestHeader("X-Requested-With","XMLHttpRequest");
