@@ -7,7 +7,12 @@
 	<!--meta content="width=device-width, initial-scale=1.0" name="viewport"-->
 	<meta content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1" name="viewport">	  
 	<link href="css/bootstrap-theme.css" rel="stylesheet">	
-	
+	<script type="text/javascript">	
+	/*******settings start*******/
+	APIURL = "http://gcs.ventiv.com.au/gcs/v1/";
+	hierarchyHiden = true;
+	/*******settings end*******/
+	</script>
 	
 	<style>
 	.row {
@@ -59,7 +64,9 @@
 	<link rel="stylesheet" href="chart/custom.css"/>
 
 	</head>
-	<body><div id="ajaxBusy"><p id="ajaxBusyMsg"></p></div>
+	<body>
+		<div id="ajaxBusy"><p id="ajaxBusyMsg"></p></div>
+		<div id="ajaxExpandBusy"><div id="ajaxBusyIn"><p id="ajaxBusyMsg"></p></div></div>
 	<script type="text/javascript">
 	$(window).hashchange( function(){
 		var hash = location.hash;
@@ -641,10 +648,10 @@
 
 									<img style="float:left" src="img/mapPointer.png" id="mapPointerImg" class="pointer padding_top_10 padding_right_10" onclick="gotoAddress($(this))">			
 									<# if(typeof addresses[i].type != 'undefined') { #>
-									<div class="text-muted row " style="float:left"><b class="removeInSearch" style="float:left;"><#= addresses[i].type #>&nbsp&nbsp</b>&nbsp<div id="addressName" style="float:left;"><#= addresses[i].name #></div></div>
+									<div class="text-muted row col-xs-10 col-sm-10 col-md-10" style="float:left"><b class="removeInSearch" style="float:left;"><#= addresses[i].type #>&nbsp&nbsp</b>&nbsp<div id="addressName" style="float:left;"><#= addresses[i].name #></div></div>
 									<# } 
 									else{ #>
-										<div class="text-muted row col-xs-12 col-sm-12 col-md-12" style="float:left"><div id="addressName"><#= addresses[i].name #></div></div>
+										<div class="text-muted row col-xs-10 col-sm-10 col-md-10" style="float:left"><div id="addressName"><#= addresses[i].name #></div></div>
 									<# }
 									#>
 									
@@ -762,12 +769,12 @@
 	
 	<script id="popupBottomTemplate" type="text/html">
 		<div class="row" style="background-image:url('img/profileBottomBack.png');background-repeat:x">
-					<div class="row" style="line-height: 50px;">
+					<div class="row" style="line-height: 50px; height:60px;">
 						<div class="col-xs-12 col-md-7 col-sm-7 col-md-offset-5 col-sm-offset-5" >
 						<div class="col-xs-12 col-md-8 col-sm-8" style="float:center">
 							<div class="row margin_top_10">
 								<div class="col-xs-12 col-md-12 col-sm-12 ">
-
+									<# if (!hierarchyHiden){ #>
 										<div class="col-xs-1 col-md-1 col-sm-1 pointer leftPaginationArrow" onclick="showHideCustomerHierarchy($(this));">
 											<span style="font-size:0px">&nbsp&nbsp</span>
 										</div>
@@ -780,6 +787,7 @@
 										<div class="col-xs-1 col-md-1 col-sm-1 pointer rightPaginationArrow" onclick="showHideCustomerHierarchy($(this));">
 											<span style="font-size:0px">&nbsp&nbsp</span>
 										</div>
+									<# } #>
 								</div>
 							</div>
 						</div>

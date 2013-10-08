@@ -1,8 +1,6 @@
-APIURL = "http://gcs.ventiv.com.au/gcs/v1/";
 var profile_scrollbar_width = 0;
 function customerOrganisationSearch(){
-	/**empty previous results**/
-	
+	/**empty previous results**/	
 	$("#resultContainers").empty();
 	$("#noOfSearchResult").empty();	
 	/**get input values**/
@@ -184,6 +182,7 @@ function adjustSearchResultExpandedRowElementsWidth(scrollWidth){
 function expandMembersAjax(entityId, entityType){
 
 	waitShow();
+	//waitExpandShow();
 	$.mobile.loading( "show", {text: "",textVisible: false,theme: "a",html: ""});
 	$.ajax({
         type:"GET",
@@ -203,6 +202,7 @@ function expandMembersAjax(entityId, entityType){
 				}
 				writexpandMembersResults(json.results[json.results.length - 1], this.helperData.entityId, true);
 				waitHide();
+				//waitExpandHide();
 				adjustSearchResultExpandedRowElementsWidth(window.SCROLLBAR_WIDTH);
 			}
 		}
@@ -324,6 +324,7 @@ function CustomerOverViewMemberDetailsNew(elem, parent, systemId, srcCode, entit
 		return;
 	}
 	waitShow();
+	//waitExpandShow();
 	$.ajax({
 			type:"GET",
 			url: APIURL + "memberdetails.jsonp" + '?callback=?',
@@ -339,6 +340,7 @@ function CustomerOverViewMemberDetailsNew(elem, parent, systemId, srcCode, entit
 				}
 				parent.addClass("called");
 				waitHide();
+				//waitExpandHide();
 				/***********scroolbar? -> adjust elements**************/
 				profile_scrollbar_width = $("#customerContainer").outerWidth() - $("#customerProfileContainer").outerWidth();
 				adjustProfileHeaderElementsWidth(profile_scrollbar_width);
@@ -355,6 +357,7 @@ function CustomerOverviewMemberDetails(entityType){
 		systemId = parentId;
 		srcCode = $(this).children().first().attr("id");
 		waitShow();
+		//waitExpandShow();
 		$.ajax({
 			type:"GET",
 			url: APIURL + "memberdetails.jsonp" + '?callback=?',
@@ -369,6 +372,7 @@ function CustomerOverviewMemberDetails(entityType){
 					writeCustomerOverviewMemberDetails(parentId, json.entity);
 				}
 				waitHide();
+				//waitExpandHide();
 				/***********scroolbar? -> adjust elements**************/
 				profile_scrollbar_width = $("#customerContainer").outerWidth() - $("#customerProfileContainer").outerWidth();
 				adjustProfileHeaderElementsWidth(profile_scrollbar_width);

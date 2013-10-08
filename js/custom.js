@@ -1,3 +1,4 @@
+/****drag between popups****/
 $(function(){
 $('#customerContainer').on('mousedown', function(e) {
     $(this).data('p0', { x: e.pageX, y: e.pageY });
@@ -24,7 +25,30 @@ $(document).on('pageinit', function(event){
 $(document).on('pageshow', function(event){
 	$("#pageloader").hide();
 });
-/****drag****/
+/*******loader css*********/
+function waitShow(){
+	backgroundOpacity('0.5');
+	$("#ajaxBusy").css({'top': $(".searchPage").height()/2 - 20 });
+	$('#ajaxBusy').css({'display':'block'});
+}
+function waitHide(){
+	$('#ajaxBusy').css({'display':'none'});
+	backgroundOpacity('1');
+}
+function waitExpandShow(){
+	backgroundOpacity('0.5');
+	$('#ajaxExpandBusy').css({'top': $('.searchPage').height()/2 - 20 });
+	$('#ajaxExpandBusy').css({'display':'block'});
+	
+}
+function waitExpandHide(){
+	$('#ajaxExpandBusy').css({'display':'none'});
+	backgroundOpacity('1');
+}
+function backgroundOpacity(percent){
+	$('body').css({'opacity':percent});	
+}
+/***loader css end***/
 
 var translationInProgress = false;
 $(document).ready(function (e) {
@@ -108,12 +132,7 @@ $(document).ready(function (e) {
 	});
 	/******** "GO" keypress event end********/
 });
-function waitShow(){
-	$('#ajaxBusy').css({'display':'block'});
-}
-function waitHide(){
-	$('#ajaxBusy').css({'display':'none'});
-}
+
 function showPopup(e){
 	if($("#ajaxBusy").css('display') == 'block')//prevent double click
 		return;
