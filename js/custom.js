@@ -1,3 +1,73 @@
+/****hash change****/
+$(function(){
+	$(window).hashchange( function(){
+		var hash = location.hash;
+		document.title = "Responsive HTML5 / " + hash.substring(1,hash.length);
+		//if(hash == "#search"){
+		if(hash.indexOf("search") > 0){
+			$(".home").css({'display':'none'});
+			$(".searchPage").css({'display':'block'});
+			/*var oHead = document.getElementsByTagName('HEAD').item(0);
+			var oScript= document.createElement("script");
+			oScript.type = "text/javascript";
+			oScript.src="js/jquery.mobile-1.3.2.min.js";
+			oHead.appendChild( oScript);*/
+
+
+
+			
+			/*if(hash.indexOf("o=") > 0){
+				$("#nameSearch").val(hash.substring(hash.indexOf("o=") + 2, hash.length));
+				customerOrganisationSearch();
+			}*/
+			/*if((jQuery.bbq.getState("o") != undefined) ){
+				if((jQuery.bbq.getState("o") != "") ){
+					$("#nameSearch").val(jQuery.bbq.getState("o"));
+					customerOrganisationSearch();
+
+				}
+			}*/
+			if(jQuery.bbq.getState("stype") != undefined){
+				var searchType = jQuery.bbq.getState("stype");
+				var searchTerm = jQuery.bbq.getState(searchType);
+				
+				$('.searchCategoryActive').each(function(){
+					$(this).addClass('searchCategoryPasive').removeClass('searchCategoryActive');
+					$("."+$(this).attr("id")).addClass('searchFormHiden').removeClass('searchFormVisible');
+				});
+				$("#nameSearch").val(jQuery.bbq.getState("oname"));
+				$("#codeSearch").val(jQuery.bbq.getState("ocode"));
+				$("#fnameSearch").val(jQuery.bbq.getState("ifname"));
+				$("#postcodeSearch").val(jQuery.bbq.getState("ipost"));
+				$("#systemIDSearch").val(jQuery.bbq.getState("sid"));
+				
+				if(searchType == "o"){
+					$("#Organisation").addClass('searchCategoryActive').removeClass('searchCategoryPasive');
+					$(".Organisation").addClass('searchFormVisible').removeClass('searchFormHiden');
+					customerOrganisationSearch();
+				}
+				else if(searchType == "i"){
+					$("#Individuals").addClass('searchCategoryActive').removeClass('searchCategoryPasive');
+					$(".Individuals").addClass('searchFormVisible').removeClass('searchFormHiden');					
+					customerIndividualSearch();
+				}
+				else if(searchType == "s"){
+					$("#System").addClass('searchCategoryActive').removeClass('searchCategoryPasive');
+					$(".System").addClass('searchFormVisible').removeClass('searchFormHiden');					
+					customerSystemSearch();
+				}
+			}
+			
+		}
+		else if (hash == ""){
+			$(".home").css({'display':'block'});
+			$(".searchPage").css({'display':'none'});
+		}
+
+	});
+	$(window).hashchange();
+});
+/*******hash change end********/
 /****drag between popups****/
 $(function(){
 $('#customerContainer').on('mousedown', function(e) {
@@ -52,6 +122,27 @@ function backgroundOpacity(percent){
 
 var translationInProgress = false;
 $(document).ready(function (e) {
+
+	if(jQuery.bbq.getState("et") != undefined){
+				var entityType = jQuery.bbq.getState("et");
+				var entityId = jQuery.bbq.getState("eid");
+				var searchType = "";
+				var searchTerm = "";
+				if(jQuery.bbq.getState("o") != ""){
+					searchType = "o"; searchTerm = jQuery.bbq.getState("o");
+				}
+				else if(jQuery.bbq.getState("i") != ""){
+					searchType = "i"; searchTerm = jQuery.bbq.getState("i")
+				}
+				else if(jQuery.bbq.getState("s") != ""){
+					searchType = "s"; searchTerm = jQuery.bbq.getState("s")
+				}
+				fillPopupData(entityType, entityId, searchType, searchTerm);
+				//BEFORE TRANSLATION 
+				/*$('#popupProfileContainer').fadeIn('slow', function() {$('#popupProfileContainer').css('display','block');});
+				$("#searchPageContainer").css({'display':'none'});*/	
+				showPopupMain();
+	}
 	var hash = location.hash;
 	if (hash == null || hash=='' || !hash){
 		//$("body").css({'overflow':'visible !important'});
@@ -136,7 +227,14 @@ $(document).ready(function (e) {
 function showPopup(e){
 	if($("#ajaxBusy").css('display') == 'block')//prevent double click
 		return;
-	fillPopupData(e);	
+	//fillPopupData(e);	
+	var entityType = e.parent().attr("id");
+	var entityId = e.attr("id");
+	var searchTerm = $("#nameSearch").val(); 
+	var searchType = $("#searchMenuContainer").children("div.searchCategoryActive").attr("id").toLowerCase().substring(0,1);
+
+	
+	fillPopupData(entityType, entityId, searchType, searchTerm);
 	//BEFORE TRANSLATION 
 	/*$('#popupProfileContainer').fadeIn('slow', function() {$('#popupProfileContainer').css('display','block');});
 	$("#searchPageContainer").css({'display':'none'});*/	
@@ -153,7 +251,7 @@ function closePopup(){
 		$('#searchPageContainer').css('display','block');		
     });
 	$("#popupProfileContainer").css({'display':'none'});	
-
+	jQuery.bbq.removeState(["et","eid"]);
 	emptyPopup();
 }
 function emptyPopup(){
