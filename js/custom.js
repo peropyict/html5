@@ -7,14 +7,6 @@ $(function(){
 		if(hash.indexOf("search") > 0){
 			$(".home").css({'display':'none'});
 			$(".searchPage").css({'display':'block'});
-			/*var oHead = document.getElementsByTagName('HEAD').item(0);
-			var oScript= document.createElement("script");
-			oScript.type = "text/javascript";
-			oScript.src="js/jquery.mobile-1.3.2.min.js";
-			oHead.appendChild( oScript);*/
-
-
-
 			
 			/*if(hash.indexOf("o=") > 0){
 				$("#nameSearch").val(hash.substring(hash.indexOf("o=") + 2, hash.length));

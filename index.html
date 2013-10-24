@@ -158,7 +158,7 @@
 					<div class="col-xs-6 col-md-6 col-wrap form-group searchInputIIofII" id="inputContainer"><input type="text" placeholder="Enter suburb or postcode" id="postcodeSearch" class="form-control padding_left_28" style="height: 50px;"></div>
 				</div>
 				<div class="col-xs-2 col-md-2 searchButton" >
-					<button class="btn btn-block full-width" onclick="customerIndividualSearch()"><strong>Search</strong></button>
+					<button class="btn btn-block full-width" id="searchBtn" onclick="customerIndividualSearch()"><strong>Search</strong></button>
 				</div>
 			</div>
 			
@@ -183,7 +183,7 @@
 					<div class="col-xs-6 col-md-6 col-wrap form-group searchInputIIofII" id="inputContainer"><input type="text" placeholder="Enter Identifier" id="systemIdSearch" class="form-control padding_left_28" style="height: 50px;"></div-->
 				</div>
 				<div class="col-xs-2 col-md-2 searchButton" >
-					<button class="btn btn-block full-width" onclick="customerSystemSearch()"><strong>Search</strong></button>
+					<button class="btn btn-block full-width" id="searchBtn" onclick="customerSystemSearch()"><strong>Search</strong></button>
 				</div>
 			</div>
 			
@@ -245,7 +245,8 @@
 										<div class=" col-xs-8 col-sm-8 col-md-8 padding_left_28" style="width:calc(100% - 50px); height:60px; display:inline-clock; overflow:hidden;" onclick="showPopupOnRowClick($(this));">
 											<# if(address != null) { #>
 												<div class="customerResultName" style="line-height: 25px;">	
-													<#= name #> &nbsp(<#= memberCount #>)
+													<!--<#= name #> &nbsp(<#= memberCount #>) -->
+													<#= name #> (<#= memberCount #>)
 												</div>
 												<div style="line-height: 30px; ">
 													<small><#= address #></small>
@@ -253,7 +254,8 @@
 											<#}
 											else{ #>
 												<div class="customerResultName" style="padding-top: 21px; ">
-													<#= name #> &nbsp(<#= memberCount #>)
+													<!--<#= name #> &nbsp(<#= memberCount #>) -->
+													<#= name #> (<#= memberCount #>)
 												</div>
 											<#}
 											#>
@@ -300,7 +302,7 @@
 							</div>
 						</div>
 						</div>							
-					<div class="col-xs-6 col-md-6 searchResultIIofII" style="float:right; border-bottom:1px solid #d0c7a8;">
+					<div class="col-xs-6 col-md-6 searchResultIIofII" style="float:right; border-bottom:1px solid #d0c7a8; font-size:12px !important;">
 						<div class="col-xs-4 col-sm-4 col-md-4 searchResultIofIIPartI" id="subsubUrb"  float:left"><#= systemType #></div>
 						<div class="col-xs-6 col-sm-6 col-md-6 searchResultIofIIPartII" id="subpostCode" style="float:left"><#= systemId #></div>
 					</div>

@@ -220,7 +220,7 @@ function expandMembersAjax(entityId, entityType){
 				writexpandMembersResults(json.results[json.results.length - 1], this.helperData.entityId, true);
 				waitHide();
 				//waitExpandHide();
-				adjustSearchResultExpandedRowElementsWidth(window.SCROLLBAR_WIDTH);
+				//adjustSearchResultExpandedRowElementsWidth(window.SCROLLBAR_WIDTH);
 			}
 		}
     });

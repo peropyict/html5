@@ -120,7 +120,8 @@ h5 {
 	font-size:12px !important;
 }
 .customerResultName{
-	font-size:16px !important;
+	/*font-size:16px !important;*/
+	font-size:14px !important;
 	height:60px;
 	overflow:hidden;
 }
@@ -438,7 +439,8 @@ div.ui-loader h1{	display:none;}
 
 .ProfileRowsContainer {	font-size:14px !important;}
 .searchResultIofII{	font-size:14px !important;}
-.searchResultIIofII{	font-size:12px !important;}
+/*.searchResultIIofII{	font-size:12px !important;}*/
+.searchResultIIofII{	font-size:14px !important;}
 .col-width-popup-name{	font-size:28px !important;}
 .popup-header-colII,.popup-header-colIII{	font-size:14px;}
 .popup-header-colIII{	font-weight:bold;}
