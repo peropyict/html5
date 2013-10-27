@@ -19,7 +19,7 @@ $(function(){
 
 				}
 			}*/
-			if(jQuery.bbq.getState("stype") != undefined){
+			/*if(jQuery.bbq.getState("stype") != undefined){
 				var searchType = jQuery.bbq.getState("stype");
 				var searchTerm = jQuery.bbq.getState(searchType);
 				
@@ -36,19 +36,19 @@ $(function(){
 				if(searchType == "o"){
 					$("#Organisation").addClass('searchCategoryActive').removeClass('searchCategoryPasive');
 					$(".Organisation").addClass('searchFormVisible').removeClass('searchFormHiden');
-					customerOrganisationSearch();
+					//customerOrganisationSearch();
 				}
 				else if(searchType == "i"){
 					$("#Individuals").addClass('searchCategoryActive').removeClass('searchCategoryPasive');
 					$(".Individuals").addClass('searchFormVisible').removeClass('searchFormHiden');					
-					customerIndividualSearch();
+					//customerIndividualSearch();
 				}
 				else if(searchType == "s"){
 					$("#System").addClass('searchCategoryActive').removeClass('searchCategoryPasive');
 					$(".System").addClass('searchFormVisible').removeClass('searchFormHiden');					
-					customerSystemSearch();
+					//customerSystemSearch();
 				}
-			}
+			}*/
 			
 		}
 		else if (hash == ""){
@@ -115,6 +115,40 @@ function backgroundOpacity(percent){
 var translationInProgress = false;
 $(document).ready(function (e) {
 
+
+	if(jQuery.bbq.getState("stype") != undefined){
+				var searchType = jQuery.bbq.getState("stype");
+				var searchTerm = jQuery.bbq.getState(searchType);
+				
+				$('.searchCategoryActive').each(function(){
+					$(this).addClass('searchCategoryPasive').removeClass('searchCategoryActive');
+					$("."+$(this).attr("id")).addClass('searchFormHiden').removeClass('searchFormVisible');
+				});
+				$("#nameSearch").val(jQuery.bbq.getState("oname"));
+				$("#codeSearch").val(jQuery.bbq.getState("ocode"));
+				$("#fnameSearch").val(jQuery.bbq.getState("ifname"));
+				$("#postcodeSearch").val(jQuery.bbq.getState("ipost"));
+				$("#systemIDSearch").val(jQuery.bbq.getState("sid"));
+				
+				if(searchType == "o"){
+					$("#Organisation").addClass('searchCategoryActive').removeClass('searchCategoryPasive');
+					$(".Organisation").addClass('searchFormVisible').removeClass('searchFormHiden');
+					customerOrganisationSearch();
+				}
+				else if(searchType == "i"){
+					$("#Individuals").addClass('searchCategoryActive').removeClass('searchCategoryPasive');
+					$(".Individuals").addClass('searchFormVisible').removeClass('searchFormHiden');					
+					customerIndividualSearch();
+				}
+				else if(searchType == "s"){
+					$("#System").addClass('searchCategoryActive').removeClass('searchCategoryPasive');
+					$(".System").addClass('searchFormVisible').removeClass('searchFormHiden');					
+					customerSystemSearch();
+				}
+			}
+
+
+	
 	if(jQuery.bbq.getState("et") != undefined){
 				var entityType = jQuery.bbq.getState("et");
 				var entityId = jQuery.bbq.getState("eid");
