@@ -348,6 +348,18 @@ div.color_blue{	color:#0099ec;}
 div.font_bold, span.font_bold{	font-weight:bold !important;}
 @gridGutterWidth: 0px;
 .row{	margin: 0;}
+@media (min-width:1024px){
+	body{
+		width:1024; 
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.logo{
+		margin-left: auto;
+		margin-right: auto;
+		left:auto !important;
+	}
+}
 @media (max-width: 979px) and (min-width: 768px) {
 	.glob_no_line{		line-height: 60px !important;	}
 }
