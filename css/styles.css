@@ -363,6 +363,9 @@ div.font_bold, span.font_bold{	font-weight:bold !important;}
 }
 @media (max-width: 600px)  {
 	body{font-size:8px;}	
+	.col-600{
+		width:100%;
+	}
 }
 @media (max-width: 520px)  {
 	body{font-size:6px;}	
