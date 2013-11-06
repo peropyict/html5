@@ -1,3 +1,33 @@
+/****used to resize line-height if name spans two lines in div****/
+function resizeHeigthOfRow(classname){
+	$("."+classname).each(function(){
+		if($(this).height() > 50)
+		{
+			name = $(this).html();
+			$(this).html("");
+			$(this).append("<div style='line-height:25px'></div>");
+			$(this).children().html(name);
+			
+		}
+	});
+}
+
+/*****resize height*****/
+function setSizes() {
+   //var searchResultContainerHeight = $("#listContainer").height();
+   //TODO change fixed values with elements.height()
+   
+   $("#resultContainers").height($(window).height() - 90 - 50 - 22 - 65);
+   $("#popupProfileContainer").height($(window).height() - 40 ); 
+
+   var mainH = $("#popupProfileContainer").height();
+   var child1 = $("#popupHeader").height();
+   var child2 = $("#profileBottomContainer").height();
+   
+   $("#customerContainer").height( mainH - child1 - child2);
+   
+}
+$(window).resize(function() { setSizes(); });
 /****hash change****/
 $(function(){
 	$(window).hashchange( function(){
@@ -114,7 +144,7 @@ function backgroundOpacity(percent){
 
 var translationInProgress = false;
 $(document).ready(function (e) {
-
+	setSizes(); /*important to calculate elements height in order to place footer to the bottom of page*/
 
 	if(jQuery.bbq.getState("stype") != undefined){
 				var searchType = jQuery.bbq.getState("stype");

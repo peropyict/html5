@@ -266,6 +266,8 @@ function fillPopupData(entityType, entityId, searchType, searchTerm)
 					$("#searchPageContainer").css({'display':'none'});
 					$("#searchPageContainer").css({'height':'auto'});
 				});	
+				setSizes();
+				resizeHeigthOfRow("popupMainRowName");
 				//history.pushState(null, null, "#search#"+searchType+"="+searchTerm+"#et="+entityType+"#eid="+entityId);
 
 				

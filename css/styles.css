@@ -528,3 +528,24 @@ input:-ms-input-placeholder {
 	z-index:100;
 	text-align: center;
 }
+#searchPageContainer{
+	height:calc(100vh - 40px);
+}
+
+/**footer Search page**/
+#bottom1{
+position: absolute;
+bottom:60px;
+width: 1024;
+}
+#bottom2{
+position: absolute;
+bottom:0px;
+width: 1024;
+}
+/**footer Popup page**/
+#profileBottomContainer{
+	position: absolute;
+	bottom:0px;
+	width: 1024;
+}
