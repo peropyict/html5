@@ -144,6 +144,16 @@ function backgroundOpacity(percent){
 
 var translationInProgress = false;
 $(document).ready(function (e) {
+
+	if(jQuery.browser.mobile)
+	{
+	   console.log('You are using a mobile device!');
+	}
+	else
+	{
+	   console.log('You are not using a mobile device!');
+	}
+	
 	setSizes(); /*important to calculate elements height in order to place footer to the bottom of page*/
 
 	if(jQuery.bbq.getState("stype") != undefined){
